@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<escola xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="escola.xsd" nome="">
+	<professores>
+		<professor codigo="1" nome="Alberto"/>
+	</professores>
+	<estudantes>
+		<estudante codigo="1" nome="Roberto"/>
+	</estudantes>
+	<aulas>
+		<aula professor="1" materia="Fisica">
+			<estudante codigo="1"/>
+		</aula>
+	</aulas>
+</escola>

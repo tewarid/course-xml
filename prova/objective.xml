@@ -1,0 +1,877 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE article SYSTEM "file://c:/xml/docbkx412/docbookx.dtd">
+<?xml-stylesheet type="text/xsl" href="C:\dados\work\xml\\docbook-xsl-1.50.0\html\docbook.xsl"?>
+<article lang="pt_br">
+    <title>Prova de XML</title>
+    <para>Tempo máximo: 60 minutos</para>
+    <qandaset defaultlabel="number">
+        <qandaentry>
+            <question>
+                <para>O que significa a sigla XML?</para>
+                <orderedlist numeration="loweralpha">
+                    <listitem>
+                        <para>eXtensible Markup Language</para>
+                    </listitem>
+                    <listitem>
+                        <para>eXtra Markup Language</para>
+                    </listitem>
+                    <listitem>
+                        <para>eXample Markup Language</para>
+                    </listitem>
+                    <listitem>
+                        <para>XhtML</para>
+                    </listitem>
+                </orderedlist>
+            </question>
+            <answer>
+                <para>a</para>
+            </answer>
+        </qandaentry>
+        <qandaentry>
+            <question>
+                <para>Para definir o tipo de um documento XML podemos utilizar?</para>
+                <orderedlist numeration="loweralpha">
+                    <listitem>
+                        <para>XSL</para>
+                    </listitem>
+                    <listitem>
+                        <para>Esquema</para>
+                    </listitem>
+                    <listitem>
+                        <para>DTD</para>
+                    </listitem>
+                    <listitem>
+                        <para>Todas as opções em cima.</para>
+                    </listitem>
+                </orderedlist>
+            </question>
+            <answer>
+                <para>b, c</para>
+            </answer>
+        </qandaentry>
+        <qandaentry>
+            <question>
+                <para>Qual é a forma correta de declarar a versão da XML utilizada pelo um documento?</para>
+                <orderedlist numeration="loweralpha">
+                    <listitem>
+                        <programlisting><![CDATA[<?xml version="1.0"/>]]></programlisting>
+                    </listitem>
+                    <listitem>
+                        <programlisting><![CDATA[<?xml version="1.0"?>]]></programlisting>
+                    </listitem>
+                    <listitem>
+                        <programlisting><![CDATA[<xml version="1.0"/>]]></programlisting>
+                    </listitem>
+                </orderedlist>
+            </question>
+            <answer>
+                <para>b</para>
+            </answer>
+        </qandaentry>
+        <qandaentry>
+            <question>
+                <para>Qual das opções a seguir são válidas?</para>
+                <orderedlist numeration="loweralpha">
+                    <listitem>
+                        <para>Nome de todos os elementos XML deveriam ser em minúsculo.</para>
+                    </listitem>
+                    <listitem>
+                        <para>Todos os elementos deveriam ter o marcador de fechamento.</para>
+                    </listitem>
+                    <listitem>
+                        <para>Todos os documentos XML deveriam conter uma DTD.</para>
+                    </listitem>
+                    <listitem>
+                        <para>Todas as opções em cima.</para>
+                    </listitem>
+                </orderedlist>
+            </question>
+            <answer>
+                <para>b</para>
+            </answer>
+        </qandaentry>
+        <qandaentry>
+            <question>
+                <para>Qual das opções a seguir são válidas?</para>
+                <orderedlist numeration="loweralpha">
+                    <listitem>
+                        <para>Cada documento XML deveria ter um marcador raiz.</para>
+                    </listitem>
+                    <listitem>
+                        <para>Elementos XML deveriam ser corretamente aninhados.</para>
+                    </listitem>
+                    <listitem>
+                        <para>Marcador XML é sensível ao caso.</para>
+                    </listitem>
+                    <listitem>
+                        <para>Todas as opções em cima.</para>
+                    </listitem>
+                </orderedlist>
+            </question>
+            <answer>
+                <para>d</para>
+            </answer>
+        </qandaentry>
+        <qandaentry>
+            <question>
+                <para>O documento XML a seguir está correto?</para>
+                <programlisting><![CDATA[
+<?xml version="1.0"?>
+<nota>
+<de idade=29>Maria</de>
+<para>Jani</para>
+</nota> 
+]]></programlisting>
+                <orderedlist numeration="loweralpha">
+                    <listitem>
+                        <para>Verdadeiro.</para>
+                    </listitem>
+                    <listitem>
+                        <para>Falso.</para>
+                    </listitem>
+                </orderedlist>
+            </question>
+            <answer>
+                <para>b</para>
+            </answer>
+        </qandaentry>
+        <qandaentry>
+            <question>
+                <para>Escolha os nomes de elementos inválidos?</para>
+                <orderedlist numeration="loweralpha">
+                    <listitem>
+                        <programlisting><![CDATA[<Nota>]]></programlisting>
+                    </listitem>
+                    <listitem>
+                        <programlisting><![CDATA[<xmldocumento>]]></programlisting>
+                    </listitem>
+                    <listitem>
+                        <programlisting><![CDATA[<17agosto>]]></programlisting>
+                    </listitem>
+                    <listitem>
+                        <programlisting><![CDATA[<data pedido>]]></programlisting>
+                    </listitem>
+                </orderedlist>
+            </question>
+            <answer>
+                <para>b, c, d</para>
+            </answer>
+        </qandaentry>
+        <qandaentry>
+            <question>
+                <para>Qual é a forma correta para avisar um leitor a ignorar algum texto no documento XML?</para>
+                <orderedlist numeration="loweralpha">
+                    <listitem>
+                        <programlisting><![CDATA[<CDATA> Texto para ignorar </CDATA>]]></programlisting>
+                    </listitem>
+                    <listitem>
+                        <programlisting><![CDATA[<PCDATA> Texto para ignorar </PCDATA>]]></programlisting>
+                    </listitem>
+                    <listitem>
+                        <programlisting>&lt;![CDATA[ Texto para ignorar ]]&gt;</programlisting>
+                    </listitem>
+                    <listitem>
+                        <programlisting><![CDATA[<xml:CDATA[ Texto para ignorar ]>]]></programlisting>
+                    </listitem>
+                </orderedlist>
+            </question>
+            <answer>
+                <para>c</para>
+            </answer>
+        </qandaentry>
+        <qandaentry>
+            <question>
+                <para>Qual das opções a seguir estão corretas?</para>
+                <orderedlist numeration="loweralpha">
+                    <listitem>
+                        <para>Com a DTD podemos restringir o valor texto de um atributo.</para>
+                    </listitem>
+                    <listitem>
+                        <para>Com a DTD podemos especificar relacionamentos entre elementos.</para>
+                    </listitem>
+                    <listitem>
+                        <para>Com a DTD podemos restringir o valor texto de um elemento.</para>
+                    </listitem>
+                    <listitem>
+                        <para>Todas as opções em cima.</para>
+                    </listitem>
+                </orderedlist>
+            </question>
+            <answer>
+                <para>a, b</para>
+            </answer>
+        </qandaentry>
+        <qandaentry>
+            <question>
+                <para>Notações (Notation) são utilizadas para:</para>
+                <orderedlist numeration="loweralpha">
+                    <listitem>
+                        <para>Criar elementos.</para>
+                    </listitem>
+                    <listitem>
+                        <para>Criar atributos.</para>
+                    </listitem>
+                    <listitem>
+                        <para>Especificar processadores externos para conteúdo não XML.</para>
+                    </listitem>
+                    <listitem>
+                        <para>Criar texto reutilizável.</para>
+                    </listitem>
+                </orderedlist>
+            </question>
+            <answer>
+                <para>c</para>
+            </answer>
+        </qandaentry>
+        <qandaentry>
+            <question>
+                <para>Qual é a sintaxe correta para declarar um novo tipo de elemento sem conteúdo?</para>
+                <orderedlist numeration="loweralpha">
+                    <listitem>
+                        <programlisting><![CDATA[<!ELEMENT livro ANY>]]></programlisting>
+                    </listitem>
+                    <listitem>
+                        <programlisting><![CDATA[<!ELEMENT livro (EMPTY)>]]></programlisting>
+                    </listitem>
+                    <listitem>
+                        <programlisting><![CDATA[<!ELEMENT livro EMPTY>]]></programlisting>
+                    </listitem>
+                    <listitem>
+                        <programlisting><![CDATA[<!ELEMENT livro (ANY)>]]></programlisting>
+                    </listitem>
+                </orderedlist>
+            </question>
+            <answer>
+                <para>c</para>
+            </answer>
+        </qandaentry>
+        <qandaentry>
+            <question>
+                <para>Esquema XML e DTD não podem ser utilizados juntos.</para>
+                <orderedlist numeration="loweralpha">
+                    <listitem>
+                        <para>Verdadeiro.</para>
+                    </listitem>
+                    <listitem>
+                        <para>Falso.</para>
+                    </listitem>
+                </orderedlist>
+            </question>
+            <answer>
+                <para>b</para>
+            </answer>
+        </qandaentry>
+        <qandaentry>
+            <question>
+                <para>Um tipo complexo pode ser usado para:</para>
+                <orderedlist numeration="loweralpha">
+                    <listitem>
+                        <para>Declarar novos elementos.</para>
+                    </listitem>
+                    <listitem>
+                        <para>Declarar novos atributos.</para>
+                    </listitem>
+                    <listitem>
+                        <para>Definir outros tipos complexos.</para>
+                    </listitem>
+                    <listitem>
+                        <para>Todas as opções em cima.</para>
+                    </listitem>
+                </orderedlist>
+            </question>
+            <answer>
+                <para>a, c</para>
+            </answer>
+        </qandaentry>
+        <qandaentry>
+            <question>
+                <para>Um tipo simples pode ser usado para:</para>
+                <orderedlist numeration="loweralpha">
+                    <listitem>
+                        <para>Declarar novos elementos.</para>
+                    </listitem>
+                    <listitem>
+                        <para>Declarar novos atributos.</para>
+                    </listitem>
+                    <listitem>
+                        <para>Definir outros tipos complexos.</para>
+                    </listitem>
+                    <listitem>
+                        <para>Todas as opções em cima.</para>
+                    </listitem>
+                </orderedlist>
+            </question>
+            <answer>
+                <para>d</para>
+            </answer>
+        </qandaentry>
+        <qandaentry>
+            <question>
+                <para>Um documento XML no DOM é representado pelo objeto:</para>
+                <orderedlist numeration="loweralpha">
+                    <listitem>
+                        <para>Element</para>
+                    </listitem>
+                    <listitem>
+                        <para>Node</para>
+                    </listitem>
+                    <listitem>
+                        <para>Attr</para>
+                    </listitem>
+                    <listitem>
+                        <para>Document</para>
+                    </listitem>
+                </orderedlist>
+            </question>
+            <answer>
+                <para>d</para>
+            </answer>
+        </qandaentry>
+        <qandaentry>
+            <question>
+                <para>Que objetos do DOM herdam do objeto Node:</para>
+                <orderedlist numeration="loweralpha">
+                    <listitem>
+                        <para>Element</para>
+                    </listitem>
+                    <listitem>
+                        <para>Attr</para>
+                    </listitem>
+                    <listitem>
+                        <para>Document</para>
+                    </listitem>
+                    <listitem>
+                        <para>Todas as opções em cima.</para>
+                    </listitem>
+                </orderedlist>
+            </question>
+            <answer>
+                <para>d</para>
+            </answer>
+        </qandaentry>
+        <qandaentry>
+            <question>
+                <para>SAX é uma API baseada em:</para>
+                <orderedlist numeration="loweralpha">
+                    <listitem>
+                        <para>Propriedades</para>
+                    </listitem>
+                    <listitem>
+                        <para>Eventos</para>
+                    </listitem>
+                    <listitem>
+                        <para>Pull</para>
+                    </listitem>
+                    <listitem>
+                        <para>Push</para>
+                    </listitem>
+                </orderedlist>
+            </question>
+            <answer>
+                <para>b, d</para>
+            </answer>
+        </qandaentry>
+        <qandaentry>
+            <question>
+                <para>XSLT é utilizada para:</para>
+                <orderedlist numeration="loweralpha">
+                    <listitem>
+                        <para>Transformar documento XML para HTML.</para>
+                    </listitem>
+                    <listitem>
+                        <para>Transformar documento XML para XML.</para>
+                    </listitem>
+                    <listitem>
+                        <para>Transformar documento XML para Texto.</para>
+                    </listitem>
+                    <listitem>
+                        <para>Transformar documento XML para PDF.</para>
+                    </listitem>
+                </orderedlist>
+            </question>
+            <answer>
+                <para>a, b, c</para>
+            </answer>
+        </qandaentry>
+        <qandaentry>
+            <question>
+                <para>Para inserir o caractere reservado &lt; podemos usar a entidade:</para>
+                <orderedlist numeration="loweralpha">
+                    <listitem>
+                        <programlisting><![CDATA[&lt;]]></programlisting>
+                    </listitem>
+                    <listitem>
+                        <programlisting><![CDATA[&gt;]]></programlisting>
+                    </listitem>
+                    <listitem>
+                        <programlisting><![CDATA[&amp;]]></programlisting>
+                    </listitem>
+                    <listitem>
+                        <programlisting><![CDATA[&quot;]]></programlisting>
+                    </listitem>
+                </orderedlist>
+            </question>
+            <answer>
+                <para>a</para>
+            </answer>
+        </qandaentry>
+        <qandaentry>
+            <question>
+                <para>Para que o código XSLT a seguir:</para>
+                <programlisting><![CDATA[
+<xsl:text disable-output-escaping="?">Editora A &amp; B</xsl:text>
+]]></programlisting>
+                <para>Gere o texto a seguir na saída:</para>
+                <programlisting><![CDATA[
+Editora A & B
+]]></programlisting>
+                <para>Qual deveria ser o valor do atributo disable-output-escaping?</para>
+                <orderedlist numeration="loweralpha">
+                    <listitem>
+                        <programlisting>no</programlisting>
+                    </listitem>
+                    <listitem>
+                        <programlisting>yes</programlisting>
+                    </listitem>
+                </orderedlist>
+            </question>
+            <answer>
+                <para>b</para>
+            </answer>
+        </qandaentry>
+        <qandaentry>
+            <question>
+                <para>Para associar uma folha de estilo em cascata a um documento XML podemos usar:</para>
+                <orderedlist numeration="loweralpha">
+                    <listitem>
+                        <programlisting><![CDATA[<?xml-stylesheet href="teste.xsl" type="text/xsl"?>]]></programlisting>
+                    </listitem>
+                    <listitem>
+                        <programlisting><![CDATA[<?stylesheet href="teste.css" type="text/css"?>]]></programlisting>
+                    </listitem>
+                    <listitem>
+                        <programlisting><![CDATA[<?xml-stylesheet href="teste.css" type="text/css"?>]]></programlisting>
+                    </listitem>
+                    <listitem>
+                        <programlisting><![CDATA[<?link href="teste.css" type="text/css"?>]]></programlisting>
+                    </listitem>
+                </orderedlist>
+            </question>
+            <answer>
+                <para>c</para>
+            </answer>
+        </qandaentry>
+        <qandaentry>
+            <question>
+                <para>Para especificar a chave primária dentro de um esquema utilizamos:</para>
+                <orderedlist numeration="loweralpha">
+                    <listitem>
+                        <para>XLINK</para>
+                    </listitem>
+                    <listitem>
+                        <para>XPOINTER</para>
+                    </listitem>
+                    <listitem>
+                        <para>XPATH</para>
+                    </listitem>
+                    <listitem>
+                        <para>XHTML</para>
+                    </listitem>
+                </orderedlist>
+            </question>
+            <answer>
+                <para>c</para>
+            </answer>
+        </qandaentry>
+        <qandaentry>
+            <question>
+                <para>Em XPATH para selecionar o nó raiz usamos:</para>
+                <orderedlist numeration="loweralpha">
+                    <listitem>
+                        <para>.</para>
+                    </listitem>
+                    <listitem>
+                        <para>/</para>
+                    </listitem>
+                    <listitem>
+                        <para>//</para>
+                    </listitem>
+                    <listitem>
+                        <para>*</para>
+                    </listitem>
+                </orderedlist>
+            </question>
+            <answer>
+                <para>b</para>
+            </answer>
+        </qandaentry>
+        <qandaentry>
+            <question>
+                <para>O comando xsl:sort pode ser usado dentro dos comandos:</para>
+                <orderedlist numeration="loweralpha">
+                    <listitem>
+                        <para>xsl:apply-templates</para>
+                    </listitem>
+                    <listitem>
+                        <para>xsl:for-each</para>
+                    </listitem>
+                    <listitem>
+                        <para>xsl:template</para>
+                    </listitem>
+                    <listitem>
+                        <para>Todas as opções em cima.</para>
+                    </listitem>
+                </orderedlist>
+            </question>
+            <answer>
+                <para>a, b</para>
+            </answer>
+        </qandaentry>
+        <qandaentry>
+            <question>
+                <para>Para importar um arquivo XSLT dentro do outro podemos usar:</para>
+                <orderedlist numeration="loweralpha">
+                    <listitem>
+                        <para>xsl:import</para>
+                    </listitem>
+                    <listitem>
+                        <para>xsl:use</para>
+                    </listitem>
+                    <listitem>
+                        <para>xsl:include</para>
+                    </listitem>
+                    <listitem>
+                        <para>xsl:apply</para>
+                    </listitem>
+                </orderedlist>
+            </question>
+            <answer>
+                <para>a, c</para>
+            </answer>
+        </qandaentry>
+        <qandaentry>
+            <question>
+                <para>Para chamar um template nomeado usamos o comando:</para>
+                <orderedlist numeration="loweralpha">
+                    <listitem>
+                        <para>xsl:call-template</para>
+                    </listitem>
+                    <listitem>
+                        <para>xsl:apply-templates</para>
+                    </listitem>
+                    <listitem>
+                        <para>xsl:template</para>
+                    </listitem>
+                    <listitem>
+                        <para>xsl:use-template</para>
+                    </listitem>
+                </orderedlist>
+            </question>
+            <answer>
+                <para>a</para>
+            </answer>
+        </qandaentry>
+        <qandaentry>
+            <question>
+                <para>Para passar parâmetros do mundo externo para uma folha de estilo XSL podemos usar o elemento:</para>
+                <orderedlist numeration="loweralpha">
+                    <listitem>
+                        <para>xsl:parameter</para>
+                    </listitem>
+                    <listitem>
+                        <para>xsl:variable</para>
+                    </listitem>
+                    <listitem>
+                        <para>xsl:param</para>
+                    </listitem>
+                    <listitem>
+                        <para>xsl:option</para>
+                    </listitem>
+                </orderedlist>
+            </question>
+            <answer>
+                <para>c</para>
+            </answer>
+        </qandaentry>
+        <qandaentry>
+            <question>
+                <para>A CSS é utilizada para:</para>
+                <orderedlist numeration="loweralpha">
+                    <listitem>
+                        <para>Visualizar um documento XML.</para>
+                    </listitem>
+                    <listitem>
+                        <para>Transformar um documento XML.</para>
+                    </listitem>
+                    <listitem>
+                        <para>Gerar HTML a partir do documento XML.</para>
+                    </listitem>
+                    <listitem>
+                        <para>Reorganizar um documento XML.</para>
+                    </listitem>
+                </orderedlist>
+            </question>
+            <answer>
+                <para>a</para>
+            </answer>
+        </qandaentry>
+        <qandaentry>
+            <question>
+                <para>JDOM dispensa o uso de um parser DOM ou SAX.</para>
+                <orderedlist numeration="loweralpha">
+                    <listitem>
+                        <para>Verdadeiro.</para>
+                    </listitem>
+                    <listitem>
+                        <para>Falso.</para>
+                    </listitem>
+                </orderedlist>
+            </question>
+            <answer>
+                <para>b</para>
+            </answer>
+        </qandaentry>
+        <qandaentry>
+            <question>
+                <para>O curinga <![CDATA[<xs:any/>]]> quer dizer que qualquer elemento de qualquer espaço identificador pode aparacer dentro do elemento?</para>
+                <orderedlist numeration="loweralpha">
+                    <listitem>
+                        <para>Verdadeiro.</para>
+                    </listitem>
+                    <listitem>
+                        <para>Falso.</para>
+                    </listitem>
+                </orderedlist>
+            </question>
+            <answer>
+                <para>b</para>
+            </answer>
+        </qandaentry>
+        <qandaentry>
+            <question>
+                <para>O exemplo a seguir é um exemplo válido de definição de tipo complexo:</para>
+                <programlisting><![CDATA[            
+<xs:complexType name="tipoLivro">
+    <xs:sequence>
+        <xs:element name="autor" type="xs:string"/>
+        <xs:attribute name="nome" type="xs:string"/>
+    </xs:sequence>
+</xs:complexType>
+]]></programlisting>
+                <orderedlist numeration="loweralpha">
+                    <listitem>
+                        <para>Verdadeiro.</para>
+                    </listitem>
+                    <listitem>
+                        <para>Falso.</para>
+                    </listitem>
+                </orderedlist>
+            </question>
+            <answer>
+                <para>b</para>
+            </answer>
+        </qandaentry>
+        <qandaentry>
+            <question>
+                <para>SAX é uma especificação do W3C.</para>
+                <orderedlist numeration="loweralpha">
+                    <listitem>
+                        <para>Verdadeiro.</para>
+                    </listitem>
+                    <listitem>
+                        <para>Falso.</para>
+                    </listitem>
+                </orderedlist>
+            </question>
+            <answer>
+                <para>b</para>
+            </answer>
+        </qandaentry>
+        <qandaentry>
+            <question>
+                <para>Atributos não formam parte da árvore gerado pelo parser DOM.</para>
+                <orderedlist numeration="loweralpha">
+                    <listitem>
+                        <para>Verdadeiro.</para>
+                    </listitem>
+                    <listitem>
+                        <para>Falso.</para>
+                    </listitem>
+                </orderedlist>
+            </question>
+            <answer>
+                <para>a</para>
+            </answer>
+        </qandaentry>
+        <qandaentry>
+            <question>
+                <para>Padrão Esquema XML tem suporte para tipos de dados utilizados nas linguagens de programação.</para>
+                <orderedlist numeration="loweralpha">
+                    <listitem>
+                        <para>Verdadeiro.</para>
+                    </listitem>
+                    <listitem>
+                        <para>Falso.</para>
+                    </listitem>
+                </orderedlist>
+            </question>
+            <answer>
+                <para>a</para>
+            </answer>
+        </qandaentry>
+        <qandaentry>
+            <question>
+                <para>DTD tem suporte completo para espaços identificadores (namespaces).</para>
+                <orderedlist numeration="loweralpha">
+                    <listitem>
+                        <para>Verdadeiro.</para>
+                    </listitem>
+                    <listitem>
+                        <para>Falso.</para>
+                    </listitem>
+                </orderedlist>
+            </question>
+            <answer>
+                <para>b</para>
+            </answer>
+        </qandaentry>
+        <qandaentry>
+            <question>
+                <para>Num esquema podemos utilizar quais das opções a seguir para especificar que podem ocorrer infinitas ocorrências de um elemento.</para>
+                <orderedlist numeration="loweralpha">
+                    <listitem>
+                        <programlisting>maxOccurs="unbounded"</programlisting>
+                    </listitem>
+                    <listitem>
+                        <programlisting>maximumOccurs="unbounded"</programlisting>
+                    </listitem>
+                    <listitem>
+                        <programlisting>maxOccurs="infinite"</programlisting>
+                    </listitem>
+                    <listitem>
+                        <programlisting>Nenhuma das opções em cima.</programlisting>
+                    </listitem>
+                </orderedlist>
+            </question>
+            <answer>
+                <para>a</para>
+            </answer>
+        </qandaentry>
+        <qandaentry>
+            <question>
+                <para>Se um esquema XML iniciar com o elemento a seguir como podemos declarar um elemento ou atributo do tipo texto.</para>
+                <programlisting><![CDATA[<schema xmlns="http://www.w3.org/2001/XMLSchema">]]></programlisting>
+                <orderedlist numeration="loweralpha">
+                    <listitem>
+                        <para>type="xs:string"</para>
+                    </listitem>
+                    <listitem>
+                        <para>type="STRING"</para>
+                    </listitem>
+                    <listitem>
+                        <para>type="xs:text"</para>
+                    </listitem>
+                    <listitem>
+                        <para>type="string"</para>
+                    </listitem>
+                </orderedlist>
+            </question>
+            <answer>
+                <para>d</para>
+            </answer>
+        </qandaentry>
+        <qandaentry>
+            <question>
+                <para>Para um elemento declarado como:</para>
+                <programlisting><![CDATA[
+<xs:element name="livro">
+    <xs:complexType>
+        <xs:choice minOccurs="0" maxOccurs="unbounded">
+            <xs:element name="autor"/>
+            <xs:element name="autora"/>
+        </xs:choice>
+        <xs:attribute name="nome" type="xs:string"/>
+    </xs:complexType>
+</xs:element>
+]]></programlisting>
+                <para>O documento XML a seguir está correto?</para>
+                <programlisting><![CDATA[
+<livro nome="Nome do Livro">
+    <autor>autor1</autor>
+    <autor>autor2</autor>
+    <autora>autora1</autora>
+</livro>
+]]></programlisting>
+                <orderedlist numeration="loweralpha">
+                    <listitem>
+                        <para>Verdadeiro.</para>
+                    </listitem>
+                    <listitem>
+                        <para>Falso.</para>
+                    </listitem>
+                </orderedlist>
+            </question>
+            <answer>
+                <para>a</para>
+            </answer>
+        </qandaentry>
+        <qandaentry>
+            <question>
+                <para>O elemento raiz a seguir está válido considerando que o documento XML utiliza para definição do seu tipo um esquema chamado catalogo.xsd com targetNamespace http://www.exemplo.org/catalogo?</para>
+                <programlisting><![CDATA[
+<catalogo xmlns="http://www.w3.org/2001/XMLSchema-instance" 
+noNamespaceSchemaLocation="catalogo.xsd" 
+xmlns="http://www.exemplo.org/catalogo">
+]]></programlisting>
+                <orderedlist numeration="loweralpha">
+                    <listitem>
+                        <para>Verdadeiro.</para>
+                    </listitem>
+                    <listitem>
+                        <para>Falso.</para>
+                    </listitem>
+                </orderedlist>
+            </question>
+            <answer>
+                <para>b</para>
+            </answer>
+        </qandaentry>
+        <qandaentry>
+            <question>
+                <para>Considere um documento XML a seguir:</para>
+                <programlisting><![CDATA[
+<livro nome="DEF">
+    <autor>ABC</autor>
+    <autor>XYZ</autor>
+</livro>
+]]></programlisting>
+                <para>Se utilizarmos o template a seguir para transformar o documento:</para>
+                <programlisting><![CDATA[
+<xsl:template match="livro">
+    <xsl:if test="autor[text()='XYZ']">
+        <xsl:value-of select="@nome"/>
+    </xsl:if>
+</xsl:template>
+]]></programlisting>
+                <para>Qual é a saída esperada?</para>
+                <orderedlist numeration="loweralpha">
+                    <listitem>
+                        <para>ABC</para>
+                    </listitem>
+                    <listitem>
+                        <para>DEF</para>
+                    </listitem>
+                    <listitem>
+                        <para>XYZ</para>
+                    </listitem>
+                    <listitem>
+                        <para>Não vai aparecer nada na saída.</para>
+                    </listitem>
+                </orderedlist>
+            </question>
+            <answer>
+                <para>b</para>
+            </answer>
+        </qandaentry>
+    </qandaset>
+</article>

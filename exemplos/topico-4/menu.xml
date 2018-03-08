@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet href="menu.xsl" type="text/xsl"?>
+<menu>
+	<link url="1.asp" nome="1"/>
+	<link url="2.asp" nome="2"/>
+	<titulo nome="t1">
+		<link url="3.asp" nome="3"/>
+	</titulo>
+	<titulo nome="t2">
+		<link url="4.asp" nome="4"/>
+	</titulo>
+</menu>

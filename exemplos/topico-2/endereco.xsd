@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema targetNamespace="devendra/catalogo" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns="devendra/catalogo" elementFormDefault="qualified" attributeFormDefault="unqualified" version="1.0">
+    <xs:element name="Endereco">
+        <xs:complexType name ="tipoEnderecoBrasil">
+            <xs:attribute name="logradouro" type="xs:string"/>
+            <xs:attribute name="numero" type="xs:string"/>
+            <xs:attribute name="complemento" type="xs:string"/>
+            <xs:attribute name="bairro" type="xs:string"/>
+            <xs:attribute name="cidade" type="xs:string"/>
+            <xs:attribute name="uf" type="xs:string"/>
+            <xs:attribute name="cep" type="xs:positiveInteger"/>
+        </xs:complexType>
+    </xs:element>
+    <!-- <xs:element name="e1" type="tipoEnderecoBrasil"/> 
+    Invalido usar um tipo definido dentro da declaração do outro elemento -->
+</xs:schema>

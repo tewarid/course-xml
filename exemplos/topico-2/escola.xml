@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE escola SYSTEM "escola.dtd">
+<escola nome="São Joseph">
+	<professores>
+		<professor codigo="p1" nome="Alberto"/>
+	</professores>
+	<estudantes>
+		<estudante codigo="e1" nome="Roberto"/>
+		<estudante codigo="e2" nome="Larisa"/>
+	</estudantes>
+	<aulas>
+		<aula professor="p1" materia="Matématica">
+			<estudante_aula codigo="e1"/>
+			<estudante_aula codigo="e2"/>
+		</aula>
+	</aulas>
+</escola>

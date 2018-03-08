@@ -1,0 +1,145 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html xmlns:v="urn:schemas-microsoft-com:vml"
+xmlns:o="urn:schemas-microsoft-com:office:office"
+xmlns:w="urn:schemas-microsoft-com:office:word"
+xmlns="http://www.w3.org/TR/REC-html40">
+
+<head>
+<meta http-equiv=Content-Type content="text/html; charset=iso-8859-1">
+<meta name=ProgId content=Word.Document>
+<meta name=Generator content="Microsoft Word 9">
+<meta name=Originator content="Microsoft Word 9">
+<link rel=File-List href="./mvc_arquivos/filelist.xml">
+<link rel=Edit-Time-Data href="./mvc_arquivos/editdata.mso">
+<!--[if !mso]>
+<style>
+v\:* {behavior:url(#default#VML);}
+o\:* {behavior:url(#default#VML);}
+w\:* {behavior:url(#default#VML);}
+.shape {behavior:url(#default#VML);}
+</style>
+<![endif]--><!--[if gte mso 9]><xml>
+ <o:DocumentProperties>
+  <o:Author>Devendra Tewari</o:Author>
+  <o:LastAuthor>Devendra Tewari</o:LastAuthor>
+  <o:Revision>3</o:Revision>
+  <o:TotalTime>5</o:TotalTime>
+  <o:Created>2002-05-01T12:38:00Z</o:Created>
+  <o:LastSaved>2002-05-01T12:43:00Z</o:LastSaved>
+  <o:Pages>1</o:Pages>
+  <o:Words>215</o:Words>
+  <o:Characters>1227</o:Characters>
+  <o:Company>Devendra Tewari</o:Company>
+  <o:Lines>10</o:Lines>
+  <o:Paragraphs>2</o:Paragraphs>
+  <o:CharactersWithSpaces>1506</o:CharactersWithSpaces>
+  <o:Version>9.4402</o:Version>
+ </o:DocumentProperties>
+</xml><![endif]--><!--[if gte mso 9]><xml>
+ <w:WordDocument>
+  <w:HyphenationZone>21</w:HyphenationZone>
+ </w:WordDocument>
+</xml><![endif]-->
+<style>
+<!--
+ /* Font Definitions */
+@font-face
+	{font-family:ZapfDingbats;
+	panose-1:0 0 0 0 0 0 0 0 0 0;
+	mso-font-alt:"Times New Roman";
+	mso-font-charset:0;
+	mso-generic-font-family:roman;
+	mso-font-format:other;
+	mso-font-pitch:auto;
+	mso-font-signature:0 0 0 0 0 0;}
+ /* Style Definitions */
+p.MsoNormal, li.MsoNormal, div.MsoNormal
+	{mso-style-parent:"";
+	margin:0cm;
+	margin-bottom:.0001pt;
+	mso-pagination:widow-orphan;
+	font-size:12.0pt;
+	font-family:"Times New Roman";
+	mso-fareast-font-family:"Times New Roman";}
+p
+	{font-size:12.0pt;
+	font-family:"Times New Roman";
+	mso-fareast-font-family:"Times New Roman";}
+@page Section1
+	{size:612.0pt 792.0pt;
+	margin:72.0pt 90.0pt 72.0pt 90.0pt;
+	mso-header-margin:35.4pt;
+	mso-footer-margin:35.4pt;
+	mso-paper-source:0;}
+div.Section1
+	{page:Section1;}
+-->
+</style>
+<!--[if gte mso 9]><xml>
+ <o:shapedefaults v:ext="edit" spidmax="1027"/>
+</xml><![endif]--><!--[if gte mso 9]><xml>
+ <o:shapelayout v:ext="edit">
+  <o:idmap v:ext="edit" data="1"/>
+ </o:shapelayout></xml><![endif]-->
+</head>
+
+<body bgcolor=white lang=PT-BR link=blue vlink=blue style='tab-interval:35.4pt'>
+
+<div class=Section1>
+
+<p><b>Modelo-Visão-Controlador (MVC)<o:p></o:p></b></p>
+
+<p><b><img width=301 height=252 id="_x0000_i1031" src=mvc.png>&nbsp;<o:p></o:p></b></p>
+
+<p><b>Modelo<o:p></o:p></b></p>
+
+<p>O modelo contém a funcionalidade principal do aplicativo. O modelo encapsula
+o estado do aplicativo. As vezes, como no caso de base de dados, a única
+funcionalidade contida é o estado.&nbsp;O modelo desconhece&nbsp;a visão e o
+controlador.</p>
+
+<p><span style='font-size:7.5pt'>&nbsp;<o:p></o:p></span></p>
+
+<p><b>Visão<o:p></o:p></b></p>
+
+<p>A visão prove a apresentação do modelo. Isso representa a visão do
+aplicativo. A visão tem acesso a dados do modelo, mas não pode atualizar o
+modelo.&nbsp;A visão não tem conhecimento do controlador.&nbsp;A visão precisa
+ser&nbsp;avisado quando o modelo for alterado.</p>
+
+<p><span style='font-size:7.5pt'>&nbsp;<o:p></o:p></span></p>
+
+<p><b>Controlador<o:p></o:p></b></p>
+
+<p>O controlador reage a entrada do usuário.&nbsp;O controlador cria e atualiza
+o modelo.</p>
+
+<p>&nbsp;</p>
+
+<p><strong>Exemplo</strong></p>
+
+<p>Considere o caso de um relógio. A função central de qualquer relógio é
+manter o horário. Isso é o modelo. A visão é a forma que o relógio é mostrado.
+Visão obtém seus dados do modelo. O controlador recebe entrada do usuário a
+partir&nbsp;do teclado ou mouse e atualiza o modelo. A atualização do modelo
+altera a visão.</p>
+
+<p><span style='font-size:7.5pt;font-family:ZapfDingbats'>&nbsp;<o:p></o:p></span></p>
+
+<p><strong><span style='font-family:ZapfDingbats'>Fonte</span></strong><span
+style='font-size:7.5pt;font-family:ZapfDingbats'><o:p></o:p></span></p>
+
+<p><span style='font-family:ZapfDingbats'>1. </span><span style='font-size:
+7.5pt;font-family:ZapfDingbats'><a
+href="http://www-106.ibm.com/developerworks/java/library/j-struts/"><span
+style='font-size:12.0pt'>http://www-106.ibm.com/developerworks/java/library/j-struts/</span></a><o:p></o:p></span></p>
+
+<p>2. <span style='font-size:10.0pt;font-family:Arial'><a
+href="http://www.object-arts.com/EducationCentre/Overviews/MVC.htm"><span
+style='font-size:12.0pt;font-family:"Times New Roman"'>http://www.object-arts.com/EducationCentre/Overviews/MVC.htm</span></a><o:p></o:p></span></p>
+
+</div>
+
+</body>
+
+</html>

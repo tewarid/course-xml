@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema targetNamespace="devendra/catalogo" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns="devendra/catalogo" elementFormDefault="qualified" attributeFormDefault="unqualified" version="1.0">
+    <!-- Notations -->
+    <xs:notation name="jpeg" public="image/jpeg" system="image.exe"/>
+    <!-- Qualquer nome é composto de dois partes -->
+    <xs:group name="grupoElementosNome">
+        <xs:annotation>
+            <xs:documentation source="Qualquer nome é composto de dois partes"/>
+        </xs:annotation>
+        <xs:all>
+            <xs:element name="primeiroNome" type="xs:string"/>
+            <xs:element name="sobreNome" type="xs:string"/>
+        </xs:all>
+    </xs:group>
+    <!-- Tipo Nome -->
+    <xs:complexType name="tipoNome">
+        <xs:group ref="grupoElementosNome"/>
+    </xs:complexType>
+    <!-- tipo representando uma coleção de autores -->
+    <xs:complexType name="tipoAutores">
+        <xs:sequence maxOccurs="unbounded">
+            <xs:element name="autor" type="tipoNome"/>
+        </xs:sequence>
+    </xs:complexType>
+    <!-- tipo representando um livro -->
+    <xs:complexType name="tipoLivro" mixed="true">
+        <xs:sequence>
+            <xs:element name="autor" type="tipoNome" maxOccurs="unbounded"/>
+            <xs:element name="imagem">
+                <xs:complexType mixed="true"> <!-- mixed – conteúdo misto contendo texto -->
+                    <xs:attribute name="imagemTipo" type="xs:NOTATION" use="required"/>
+                </xs:complexType>
+            </xs:element>
+        </xs:sequence>
+        <xs:attribute name="nome" type="xs:string" use="required"/>
+        <xs:attribute name="tipo" use="required">
+            <xs:simpleType>
+                <xs:restriction base="xs:NMTOKEN">
+                    <xs:enumeration value="1"/>
+                    <xs:enumeration value="2"/>
+                </xs:restriction>
+            </xs:simpleType>
+        </xs:attribute>
+    </xs:complexType>
+    <!-- tipo representando uma coleção de livros -->
+    <xs:complexType name="tipoLivros">
+        <xs:sequence maxOccurs="unbounded">
+            <xs:element name="livro" type="tipoLivro"/>
+        </xs:sequence>
+    </xs:complexType>
+    <!-- elemento catalogo -->
+    <xs:element name="catalogo">
+        <xs:annotation>
+            <xs:documentation source="catalogo de livros"/>
+        </xs:annotation>
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="autores" type="tipoAutores"/>
+                <xs:element name="livros" type="tipoLivros"/>
+            </xs:sequence>
+        </xs:complexType>
+        <xs:unique name="nomeLivroUnico">
+            <xs:selector xpath="livros/livro"/>
+            <xs:field xpath="@nome"/>
+        </xs:unique>
+        <xs:key name="keyAutor">
+            <xs:selector xpath="autores/autor"/>
+            <xs:field xpath="primeiroNome"/>
+            <xs:field xpath="sobreNome"/>
+        </xs:key>
+        <xs:keyref name="keyrefAutorLivro" refer="keyAutor">
+            <xs:selector xpath="livros/livro/autor"/>
+            <xs:field xpath="primeiroNome"/>
+            <xs:field xpath="sobreNome"/>
+        </xs:keyref>
+    </xs:element>
+</xs:schema>

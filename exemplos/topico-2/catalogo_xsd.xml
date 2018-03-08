@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<catalogo xmlns="devendra/catalogo" xmlns:xsi="http://www.w3.org/2000/10/XMLSchema-instance" xsi:schemaLocation="devendra/catalogo catalogo.xsd">
+    <!-- Dados sobre autores -->
+    <autores>
+        <autor>
+            <primeiroNome>Albert</primeiroNome>
+            <sobreNome>Pinto</sobreNome>
+        </autor>
+        <autor>
+            <primeiroNome>Vitória</primeiroNome>
+            <sobreNome>Silva</sobreNome>
+        </autor>
+        <autor>
+            <primeiroNome>Autor</primeiroNome>
+            <sobreNome>Desconhecido</sobreNome>
+        </autor>
+    </autores>
+    <!-- Dados sobre livros -->
+    <livros>
+        <livro tipo="1" nome="Alibaba">Texto qualquer
+		<autor>
+                <primeiroNome>Autor</primeiroNome>
+                <sobreNome>Desconhecido</sobreNome>
+            </autor>
+            <autor>
+                <primeiroNome>Albert</primeiroNome>
+                <sobreNome>Pinto</sobreNome>
+            </autor>
+            <imagem imagemTipo="jpeg">dados da imagem</imagem>
+        </livro>
+        <livro nome="Alibaba II" tipo="2">
+            <autor>
+                <primeiroNome>Albert</primeiroNome>
+                <sobreNome>Pinto</sobreNome>
+            </autor>
+            <imagem imagemTipo="jpeg">dados da imagem</imagem>
+        </livro>
+    </livros>
+</catalogo>

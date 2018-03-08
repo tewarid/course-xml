@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE endereço [
+    <!ELEMENT endereço (rua, complemento?, bairro, cidade, cep, uf)>
+    <!ATTLIST endereço
+    preferred (true | false) "false"
+>
+    <!ELEMENT rua (#PCDATA)>
+    <!ELEMENT complemento (#PCDATA)>
+    <!ELEMENT bairro (#PCDATA)>
+    <!ELEMENT cidade (#PCDATA)>
+    <!ELEMENT cep (#PCDATA)>
+    <!ELEMENT uf (#PCDATA)>
+]>
+<endereço preferred="true">
+    <rua>Av. Boa Viagem 128</rua>
+    <complemento>Apt° 101</complemento>
+    <bairro>Boa Viagem</bairro>
+    <cidade>Recife</cidade>
+    <cep>50000-000</cep>
+    <uf>PE</uf>
+</endereço>

@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema">
+    <xs:element name="cpf">
+        <xs:simpleType>
+            <xs:union memberTypes="tipoCPF tipoCPFFormatado"/>
+        </xs:simpleType>
+    </xs:element>
+    <xs:simpleType name="tipoCPF">
+        <xs:restriction base="xs:string">
+            <xs:pattern value="[0-9]{11}"/>
+        </xs:restriction>
+    </xs:simpleType>
+    <xs:simpleType name="tipoCPFFormatado">
+        <xs:restriction base="xs:string">
+            <xs:pattern value="[0-9]{3}\.[0-9]{3}\.[0-9]{3}-[0-9]{2}"/>
+        </xs:restriction>
+    </xs:simpleType>
+</xs:schema>

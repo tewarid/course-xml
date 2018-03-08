@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- edited with XML Spy v4.0.1 U (http://www.xmlspy.com) by Devendra Tewari (Devendra Tewari) -->
+<!ENTITY copyright "(c) Livraria Cataloga">
+<!ENTITY % parâmetrosNome "primeiro CDATA #REQUIRED último CDATA #REQUIRED">
+<!NOTATION jpg SYSTEM "jpgviewer.exe">
+<!NOTATION gif SYSTEM "gifviewer.exe">
+<!ELEMENT catalogo ANY>
+<!ELEMENT livro EMPTY>
+<!ELEMENT autor EMPTY>
+<!ATTLIST livro
+	nome CDATA #REQUIRED
+	tipo IDREF #REQUIRED
+	autores IDREFS #REQUIRED
+	copyright ENTITY #IMPLIED
+	editora NMTOKEN #REQUIRED
+	imagem CDATA #IMPLIED
+	imagemTipo NOTATION (gif | jpg) "gif"
+	grau (primeiro | segundo | terceiro | superior) #REQUIRED
+>
+<!ATTLIST autor
+	código ID #REQUIRED
+	%parâmetrosNome; 
+>
+<!ELEMENT tipo_livro EMPTY>
+<!ATTLIST tipo_livro
+	tipo ID #REQUIRED
+>

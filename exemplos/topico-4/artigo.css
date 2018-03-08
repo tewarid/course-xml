@@ -1,0 +1,10 @@
+/* Folha de estilo artigo.css */
+:lang(pt-br) {color: red}
+instrumento { display: inline }
+artigo, titulo, autor, paragrafo { display: block }
+titulo { font-size: 1.3em }
+autor { font-style: italic }
+artigo, titulo, autor, paragrafo { margin: 0.5em }
+paragrafo { color: blue }
+instrumento { color: blue; font-style: italic }
+paragrafo instrumento { color: red }

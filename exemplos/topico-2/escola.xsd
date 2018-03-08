@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema">
+    <xs:element name="escola">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element ref="professores"/>
+                <xs:element ref="estudantes"/>
+                <xs:element ref="aulas"/>
+            </xs:sequence>
+            <xs:attribute name="nome" type="xs:string" use="required"/>
+        </xs:complexType>
+        <xs:key name="keyProfessor">
+            <xs:selector xpath="professores/professor"/>
+            <xs:field xpath="@codigo"/>
+        </xs:key>
+        <xs:key name="keyEstudante">
+            <xs:selector xpath="estudantes/estudante"/>
+            <xs:field xpath="@codigo"/>
+        </xs:key>
+        <xs:unique name="uniqueEstudanteAula">
+            <xs:selector xpath="aulas/aula/estudante_aula"/>
+            <xs:field xpath="@codigo"/>
+        </xs:unique>
+        <xs:keyref name="fkeyProfessorAula" refer="keyProfessor">
+            <xs:selector xpath="aulas/aula"/>
+            <xs:field xpath="@professor"/>
+        </xs:keyref>
+        <xs:keyref name="fkeyEstudanteAula" refer="keyEstudante">
+            <xs:selector xpath="aulas/aula/estudante_aula"/>
+            <xs:field xpath="@codigo"/>
+        </xs:keyref>
+    </xs:element> <!--escola-->
+    <xs:element name="professores">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element ref="professor" maxOccurs="unbounded"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="professor">
+        <xs:complexType>
+            <xs:attribute name="codigo" type="xs:positiveInteger" use="required"/>
+            <xs:attribute name="nome" type="xs:string" use="required"/>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="estudantes">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element ref="estudante" maxOccurs="unbounded"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="estudante">
+        <xs:complexType>
+            <xs:attribute name="codigo" type="xs:positiveInteger" use="required"/>
+            <xs:attribute name="nome" type="xs:string" use="required"/>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="aulas">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element ref="aula" maxOccurs="unbounded"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="aula">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="estudante" type="estudante_aula" maxOccurs="unbounded"/>
+            </xs:sequence>
+            <xs:attribute name="professor" type="xs:positiveInteger" use="required"/>
+            <xs:attribute name="materia" type="nome_materia" use="required"/>
+        </xs:complexType>
+    </xs:element>
+    <xs:simpleType name="nome_materia">
+        <xs:restriction base="xs:string">
+            <xs:enumeration value="Matematica"/>
+            <xs:enumeration value="Quimica"/>
+            <xs:enumeration value="Fisica"/>
+        </xs:restriction>
+    </xs:simpleType>
+    <xs:complexType name="estudante_aula">
+        <xs:attribute name="codigo" type="xs:positiveInteger" use="required"/>
+    </xs:complexType>
+</xs:schema>

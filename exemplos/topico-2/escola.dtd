@@ -1,0 +1,27 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<!ELEMENT escola (professores, estudantes, aulas)>
+<!ATTLIST escola
+	nome CDATA #REQUIRED
+>
+<!ELEMENT professores (professor+)>
+<!ELEMENT professor EMPTY>
+<!ATTLIST professor
+	codigo ID #REQUIRED
+	nome CDATA #REQUIRED
+>
+<!ELEMENT estudantes (estudante+)>
+<!ELEMENT estudante EMPTY>
+<!ATTLIST estudante
+	codigo ID #REQUIRED
+	nome CDATA #REQUIRED
+>
+<!ELEMENT aulas (aula+)>
+<!ELEMENT aula (estudante_aula+)>
+<!ATTLIST aula
+	professor IDREF #REQUIRED
+	materia (Matemática | Física | Química) #REQUIRED
+>
+<!ELEMENT estudante_aula EMPTY>
+<!ATTLIST estudante_aula
+	codigo IDREF #REQUIRED
+>

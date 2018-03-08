@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- edited with XML Spy v4.0.1 U (http://www.xmlspy.com) by Devendra Tewari (Devendra Tewari) -->
+<!DOCTYPE catalogo SYSTEM "catalogo.dtd">
+<catalogo>
+	<livro autores="a1 a2" tipo="historia" nome="História do Mundo" copyright="copyright" editora="LivrariaCataloga" imagemTipo="gif" grau="superior"/>
+	<autor código="a1" primeiro="Devendra" último="Tewari"/>
+	<autor código="a2" primeiro="Guilherme" último="Jofili"/>
+	<tipo_livro tipo="historia"/>
+</catalogo>
