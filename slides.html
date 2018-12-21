@@ -1,0 +1,2317 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="generator" content="pandoc">
+  <meta name="author" content="Devendra Tewari">
+  <meta name="dcterms.date" content="2005-02-09">
+  <title>eXtensible Markup Language</title>
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
+  <link rel="stylesheet" href="reveal.js/css/reveal.css">
+  <style type="text/css">
+      code{white-space: pre-wrap;}
+      span.smallcaps{font-variant: small-caps;}
+      span.underline{text-decoration: underline;}
+      div.column{display: inline-block; vertical-align: top; width: 50%;}
+  </style>
+  <style type="text/css">
+a.sourceLine { display: inline-block; line-height: 1.25; }
+a.sourceLine { pointer-events: none; color: inherit; text-decoration: inherit; }
+a.sourceLine:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode { white-space: pre; position: relative; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+code.sourceCode { white-space: pre-wrap; }
+a.sourceLine { text-indent: -1em; padding-left: 1em; }
+}
+pre.numberSource a.sourceLine
+  { position: relative; left: -4em; }
+pre.numberSource a.sourceLine::before
+  { content: attr(data-line-number);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; pointer-events: all; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {  }
+@media screen {
+a.sourceLine::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+  </style>
+  <link rel="stylesheet" href="reveal.js/css/theme/black.css" id="theme">
+  <!-- Printing and PDF exports -->
+  <script>
+    var link = document.createElement( 'link' );
+    link.rel = 'stylesheet';
+    link.type = 'text/css';
+    link.href = window.location.search.match( /print-pdf/gi ) ? 'reveal.js/css/print/pdf.css' : 'reveal.js/css/print/paper.css';
+    document.getElementsByTagName( 'head' )[0].appendChild( link );
+  </script>
+  <!--[if lt IE 9]>
+  <script src="reveal.js/lib/js/html5shiv.js"></script>
+  <![endif]-->
+</head>
+<body>
+  <div class="reveal">
+    <div class="slides">
+
+<section id="title-slide">
+  <h1 class="title">eXtensible Markup Language</h1>
+  <p class="author">Devendra Tewari</p>
+  <p class="date">February 09, 2005</p>
+</section>
+
+<section><section id="extensible-markup-language" class="title-slide slide level1"><h1>eXtensible Markup Language</h1></section><section id="conteúdo" class="slide level2">
+<h2>Conteúdo</h2>
+<ul>
+<li><p>XML bem Formada – Sintaxe XML</p></li>
+<li><p>XML Válida – DTD e Esquema</p></li>
+<li><p>Acesso Programático – DOM e SAX</p></li>
+<li><p>Transformando XML – CSS e XSL</p></li>
+</ul>
+</section><section id="bibliografia" class="slide level2">
+<h2>Bibliografia</h2>
+<h3 id="livros">Livros</h3>
+<ul>
+<li><p>Professional XML – Wrox e Ciência Moderna – Vários Autores</p></li>
+<li><p>XML Conceitos e Aplicações – Benoît Marchal – QUE e Berkeley</p></li>
+<li><p>Aprendendo XML – O’Reilly e Campus – Erik T. Ray</p></li>
+</ul>
+<h3 id="sites">Sites</h3>
+<ul>
+<li><p><a href="https://www.w3.org">Site do W3C</a></p></li>
+<li><p><a href="https://www.oasis-open.org">Site da OASIS</a></p></li>
+</ul>
+</section><section id="estado-de-padrões-do-w3c" class="slide level2">
+<h2>Estado de padrões do W3C</h2>
+<table>
+<tbody>
+<tr class="odd">
+<td></td>
+<td>1996</td>
+<td>1997</td>
+<td>1998</td>
+<td>1999</td>
+<td>2000</td>
+<td>2001</td>
+<td>2002</td>
+</tr>
+<tr class="even">
+<td>CSS</td>
+<td>1.0</td>
+<td></td>
+<td>2.0</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="odd">
+<td>DOM</td>
+<td></td>
+<td></td>
+<td>Level-1</td>
+<td></td>
+<td>Level-2</td>
+<td></td>
+<td></td>
+</tr>
+<tr class="even">
+<td>HTML</td>
+<td></td>
+<td>4.0</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="odd">
+<td>MathML</td>
+<td></td>
+<td></td>
+<td></td>
+<td>1.01</td>
+<td></td>
+<td>2.0</td>
+<td></td>
+</tr>
+<tr class="even">
+<td>NS</td>
+<td></td>
+<td></td>
+<td></td>
+<td>1.0</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="odd">
+<td>RDF</td>
+<td></td>
+<td></td>
+<td></td>
+<td>Parcial</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="even">
+<td>SMIL</td>
+<td></td>
+<td></td>
+<td>1.0</td>
+<td></td>
+<td></td>
+<td>2.0</td>
+<td></td>
+</tr>
+<tr class="odd">
+<td>SOAP</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="even">
+<td>SVG</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td>1.0</td>
+<td></td>
+</tr>
+<tr class="odd">
+<td>XHTML</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td>1.0</td>
+<td></td>
+<td></td>
+</tr>
+<tr class="even">
+<td>XLink</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td>1.0</td>
+<td></td>
+</tr>
+<tr class="odd">
+<td>XML/DTD</td>
+<td></td>
+<td></td>
+<td>1.0</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="even">
+<td>XMLBase</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td>1.0</td>
+<td></td>
+</tr>
+<tr class="odd">
+<td>XMLProtocol</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="even">
+<td>XPATH</td>
+<td></td>
+<td></td>
+<td></td>
+<td>1.0</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="odd">
+<td>XPointer</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td>1.0</td>
+</tr>
+<tr class="even">
+<td>XQuery</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="odd">
+<td>XS</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td>1.0</td>
+<td></td>
+</tr>
+<tr class="even">
+<td>XSL:FO</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td>1.0</td>
+<td></td>
+</tr>
+<tr class="odd">
+<td>XSLT</td>
+<td></td>
+<td></td>
+<td></td>
+<td>1.0</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+</section></section>
+<section><section id="sintaxe-da-xml-xml-bem-formada" class="title-slide slide level1"><h1>Sintaxe da XML – XML Bem Formada</h1></section><section id="o-que-é-xml" class="slide level2">
+<h2>O que é XML?</h2>
+<ul>
+<li><p>XML - <code>eXtensible</code> Markup Language</p></li>
+<li><p>Baseada em marcadores (tags) como HTML</p></li>
+<li><p>Por Exemplo</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode xml"><code class="sourceCode xml"><a class="sourceLine" id="cb1-1" data-line-number="1"><span class="kw">&lt;livros&gt;</span></a>
+<a class="sourceLine" id="cb1-2" data-line-number="2">  <span class="kw">&lt;livro</span><span class="ot"> nome=</span><span class="st">&quot;Aprenda Java&quot;</span><span class="kw">&gt;&lt;/livro&gt;</span></a>
+<a class="sourceLine" id="cb1-3" data-line-number="3">  <span class="kw">&lt;livro</span><span class="ot"> nome=</span><span class="st">&quot;Aprenda XML&quot;</span><span class="kw">&gt;&lt;/livro&gt;</span></a>
+<a class="sourceLine" id="cb1-4" data-line-number="4"><span class="kw">&lt;/livros&gt;</span></a></code></pre></div></li>
+</ul>
+</section><section id="porque-xml" class="slide level2">
+<h2>Porque XML?</h2>
+<ul>
+<li><p>XML é uma HTML melhorada?</p></li>
+<li><p>Nenhum marcador predefinido</p>
+<ul>
+<li>Extensível</li>
+</ul></li>
+<li><p>Sintaxe mais rígida</p>
+<ul>
+<li>Fácil validar</li>
+</ul></li>
+</ul>
+</section><section id="quem-controla-xml" class="slide level2">
+<h2>Quem controla XML?</h2>
+<ul>
+<li><p>É um padrão aberto</p></li>
+<li><p>Padronizada pelo World Wide Web Consortium (W3C)</p></li>
+<li><p>Evoluiu da SGML (padrão da ISO - ISO8879)</p></li>
+<li><p>Recomendação do W3C desde Fevereiro de 1998</p></li>
+</ul>
+</section><section id="uso-de-xml" class="slide level2">
+<h2>Uso de XML</h2>
+<ul>
+<li><p>Armazenagem de Documentos</p></li>
+<li><p>Intercâmbio de Dados</p>
+<ul>
+<li><p>Entre base de dados e aplicação</p></li>
+<li><p>Entre aplicações</p></li>
+</ul></li>
+<li><p>Armazenagem de Dados</p>
+<ul>
+<li><p>Base de dados</p></li>
+<li><p>Arquivos de configuração</p></li>
+</ul></li>
+</ul>
+</section><section id="outros-padrões-relacionados-a-xml" class="slide level2">
+<h2>Outros Padrões Relacionados a XML</h2>
+<ul>
+<li><p>Espaços identificadores (namespaces)</p></li>
+<li><p>XPATH</p></li>
+<li><p>Folhas de Estilo (style-sheets)</p>
+<ul>
+<li><p>CSS</p></li>
+<li><p>XSL</p></li>
+</ul></li>
+<li><p>DOM e SAX</p></li>
+<li><p>XLink e XPointer</p></li>
+</ul>
+</section><section id="trabalhando-com-xml" class="slide level2">
+<h2>Trabalhando com XML</h2>
+<ul>
+<li><p>Browser XML</p></li>
+<li><p>Editor XML</p></li>
+<li><p>Parser XML</p></li>
+<li><p>Processador de XSL</p></li>
+</ul>
+</section><section id="estrutura-de-um-documento-xml" class="slide level2">
+<h2>Estrutura de um Documento XML</h2>
+<ul>
+<li><p>A declaração <code>xml</code></p></li>
+<li><p>Elementos</p></li>
+<li><p>Atributos</p></li>
+<li><p>Comentários</p></li>
+</ul>
+</section><section id="entidades-xml" class="slide level2">
+<h2>Entidades XML</h2>
+<ul>
+<li><p>Usadas para criar dados predefinidos</p></li>
+<li><p>A ocorrência de uma entidade no documento XML é substituída pelo seu valor pelo parser</p></li>
+<li><p>A ocorrência começa com <code>&amp;</code> e termina com <code>;</code></p></li>
+<li><p>A XML utiliza entidades para representar alguns caracteres reservados pela linguagem, como <code>&gt;</code> (<code>&amp;gt;</code>) e <code>&lt;</code> (<code>&amp;lt;</code>)</p></li>
+<li><p>Novas entidades podem ser criadas usando uma DTD</p></li>
+</ul>
+</section><section id="atributos-especiais" class="slide level2">
+<h2>Atributos Especiais</h2>
+<h3 id="xmlspace"><code>xml:space</code></h3>
+<ul>
+<li>Preservar ou não espaços em branco duplicados</li>
+</ul>
+<h3 id="xmllang"><code>xml:lang</code></h3>
+<ul>
+<li>Linguagem natural do valor texto de um elemento</li>
+</ul>
+</section><section id="instruções-de-processamento" class="slide level2">
+<h2>Instruções de Processamento</h2>
+<ul>
+<li><p>Podem ser usadas para associar arquivos CSS e XSL</p></li>
+<li><p>Iniciam com <code>&lt;?</code> e terminam com <code>?&gt;</code></p></li>
+<li><p>Depois de <code>&lt;?</code> aparece a aplicação destinatária</p></li>
+<li><p>Depois da aplicação aparece o texto da instrução</p></li>
+<li><p>Exemplo</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode xml"><code class="sourceCode xml"><a class="sourceLine" id="cb2-1" data-line-number="1"><span class="kw">&lt;?xml-stylesheet</span> href=&quot;teste.xsl&quot; type=&quot;text/xsl&quot;<span class="kw">?&gt;</span></a></code></pre></div></li>
+</ul>
+</section><section id="seção-cdata" class="slide level2">
+<h2>Seção CDATA</h2>
+<ul>
+<li><p>CDATA significa dados caractere</p></li>
+<li><p>É usada para colocar texto qualquer como scripts de código, como VBScript ou JScript, dentro da XML</p></li>
+<li><p>É delimitada pelo <code>&lt;![CDATA[</code> e <code>]]&gt;</code></p></li>
+<li><p>Uma seção CDATA não pode ser aninhada dentro da outra</p></li>
+</ul>
+</section><section id="xml-bem-formada" class="slide level2">
+<h2>XML Bem Formada</h2>
+<h3 id="condições">Condições</h3>
+<ul>
+<li><p>Apenas um elemento raiz</p></li>
+<li><p>Elementos sem sobreposição</p></li>
+<li><p>Início e fim de elementos corretamente demarcado</p></li>
+<li><p>Nome de elementos e atributos corretamente formado</p></li>
+<li><p>Valor do atributo demarcado com aspas duplas</p></li>
+<li><p>Texto caractere sem caracteres reservados ou inválidos</p></li>
+</ul>
+</section><section id="projetando-documentos-xml" class="slide level2">
+<h2>Projetando Documentos XML</h2>
+<ul>
+<li><p>Identificar nomes para coisas e conceitos</p></li>
+<li><p>Identificar hierarquia das coisas</p>
+<ul>
+<li>Identificar os relacionamentos entre coisas</li>
+</ul></li>
+<li><p>Definir propriedades das coisas</p></li>
+<li><p>Isso é modelagem orientado objeto</p>
+<ul>
+<li>Documentos XML podem ser gerados exportando uma hierarquia de objetos</li>
+</ul></li>
+</ul>
+</section><section id="quando-usar-atributos-para-propriedades" class="slide level2">
+<h2>Quando usar Atributos para Propriedades</h2>
+<ul>
+<li><p>Vantagens</p>
+<ul>
+<li><p>Possível restringir valor usando DTD</p></li>
+<li><p>Validação de ID e IDREF</p></li>
+<li><p>Requer menos espaço</p></li>
+<li><p>Fácil processar usando DOM e SAX</p></li>
+</ul></li>
+<li><p>Desvantagens</p>
+<ul>
+<li><p>Valores simples</p></li>
+<li><p>Não suporta atributos sobre atributos</p></li>
+</ul></li>
+</ul>
+</section><section id="quando-usar-elementos-filhos-para-propriedades" class="slide level2">
+<h2>Quando usar Elementos Filhos para Propriedades</h2>
+<ul>
+<li><p>Vantagens</p>
+<ul>
+<li><p>Suporta valores complexos</p></li>
+<li><p>Suporta atributos sobre atributos</p></li>
+<li><p>Extensível quando modelo de dados muda (um livro vários autores)</p></li>
+</ul></li>
+<li><p>Desvantagens</p>
+<ul>
+<li><p>Requer mais espaço</p></li>
+<li><p>Mais difícil processar</p></li>
+</ul></li>
+</ul>
+</section><section id="exercício-1" class="slide level2">
+<h2>Exercício 1</h2>
+<ul>
+<li><p>Como utilizar XMLSpy</p></li>
+<li><p>Crie um catálogo de livros usando XML</p>
+<ul>
+<li><p>Sugira um modelo para o documento</p></li>
+<li><p>Crie o documento usando o modelo</p></li>
+</ul></li>
+</ul>
+</section></section>
+<section><section id="xml-válida-dtd" class="title-slide slide level1"><h1>XML Válida – DTD</h1></section><section id="porque-utilizar-dtd" class="slide level2">
+<h2>Porque Utilizar DTD</h2>
+<ul>
+<li><p>DTD significa Definição do Tipo de Documento</p></li>
+<li><p>XML bem formada não basta</p>
+<ul>
+<li><p>Precisa haver uma forma de definir o vocabulário do documento XML com precisão</p></li>
+<li><p>Parsers XML podem usar a DTD para validação de uma instância do documento XML</p></li>
+<li><p>Editores de XML (como XMLSpy) podem usar a DTD para fazer valer as regras contidas nele na hora de editar um documento XML</p></li>
+</ul></li>
+</ul>
+</section><section id="associando-dtd-com-documento-xml" class="slide level2">
+<h2>Associando DTD com Documento XML</h2>
+<ul>
+<li><p>Usando a instrução de processamento <code>DOCTYPE</code></p></li>
+<li><p>Duas formas</p>
+<ul>
+<li><p>DTD Interna</p>
+<ul>
+<li>DTD fica dentro do documento XML</li>
+</ul></li>
+<li><p>DTD Externa</p>
+<ul>
+<li><p>DTD fica num arquivo separado</p></li>
+<li><p>Facilmente aplicada a vários documentos XML</p></li>
+</ul></li>
+</ul></li>
+</ul>
+</section><section id="componentes-de-dtd" class="slide level2">
+<h2>Componentes de DTD</h2>
+<ul>
+<li><p>Sintaxe da DTD não utiliza XML</p></li>
+<li><p>Uma DTD contém os componentes a seguir</p>
+<ul>
+<li><p>ELEMENT</p></li>
+<li><p>ATTLIST</p></li>
+<li><p>ENTITY</p></li>
+<li><p>NOTATION</p></li>
+</ul></li>
+</ul>
+</section><section id="declaração-element" class="slide level2">
+<h2>Declaração ELEMENT</h2>
+<ul>
+<li><p>Declarar um novo tipo de elemento XML</p>
+<ul>
+<li><p><code>&lt;!ELEMENT</code> seguido pelo nome do elemento</p></li>
+<li><p>Nome tem que ser identificador XML válido</p></li>
+<li><p>Nome seguido pela definição de conteúdo</p></li>
+</ul></li>
+<li><p>Exemplos</p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode xml"><code class="sourceCode xml"><a class="sourceLine" id="cb3-1" data-line-number="1"><span class="er">&lt;</span>!ELEMENT livro (#PCDATA)&gt;</a>
+<a class="sourceLine" id="cb3-2" data-line-number="2"></a>
+<a class="sourceLine" id="cb3-3" data-line-number="3"><span class="er">&lt;</span>!ELEMENT autor (titulo, nome)&gt;</a>
+<a class="sourceLine" id="cb3-4" data-line-number="4"></a>
+<a class="sourceLine" id="cb3-5" data-line-number="5"><span class="er">&lt;</span>!ELEMENT autor ANY&gt;</a></code></pre></div></li>
+</ul>
+</section><section id="declaração-element-modelo-de-conteúdo" class="slide level2">
+<h2>Declaração ELEMENT – Modelo de Conteúdo</h2>
+<ul>
+<li><p>Para especificar conteúdo dentro de um elemento</p></li>
+<li><p>Contém uma combinação de</p>
+<ul>
+<li><p>Texto – indicado usando <code>#PCDATA</code></p></li>
+<li><p>Elementos filhos</p></li>
+<li><p>Operadores</p></li>
+</ul></li>
+<li><p>Exemplos</p>
+<div class="sourceCode" id="cb4"><pre class="sourceCode xml"><code class="sourceCode xml"><a class="sourceLine" id="cb4-1" data-line-number="1"><span class="er">&lt;</span>!ELEMENT livro (#PCDATA | autor)*&gt;</a>
+<a class="sourceLine" id="cb4-2" data-line-number="2"></a>
+<a class="sourceLine" id="cb4-3" data-line-number="3"><span class="er">&lt;</span>!ELEMENT livro (autor+, custo?)&gt;</a>
+<a class="sourceLine" id="cb4-4" data-line-number="4"></a>
+<a class="sourceLine" id="cb4-5" data-line-number="5"><span class="er">&lt;</span>!ELEMENT livro (custo, (autor | editora)+)&gt;</a></code></pre></div></li>
+</ul>
+</section><section id="declaração-attlist" class="slide level2">
+<h2>Declaração ATTLIST</h2>
+<ul>
+<li><p>Atributos são propriedades de um elemento</p></li>
+<li><p>Declarados usando a sintaxe</p>
+<div class="sourceCode" id="cb5"><pre class="sourceCode xml"><code class="sourceCode xml"><a class="sourceLine" id="cb5-1" data-line-number="1"><span class="er">&lt;</span>!ATTLIST elemento atributo tipo uso&gt;</a></code></pre></div></li>
+<li><p>Exemplo</p>
+<div class="sourceCode" id="cb6"><pre class="sourceCode xml"><code class="sourceCode xml"><a class="sourceLine" id="cb6-1" data-line-number="1"><span class="er">&lt;</span>!ATTLIST autor</a>
+<a class="sourceLine" id="cb6-2" data-line-number="2">  primeiro CDATA #REQUIRED</a>
+<a class="sourceLine" id="cb6-3" data-line-number="3">  ultimo CDATA #REQUIRED</a>
+<a class="sourceLine" id="cb6-4" data-line-number="4">  conveniado CDATA #FIXED &quot;sim&quot;</a>
+<a class="sourceLine" id="cb6-5" data-line-number="5">&gt;</a></code></pre></div></li>
+</ul>
+</section><section id="atributos-do-tipo-id-idref-e-idrefs" class="slide level2">
+<h2>Atributos do tipo ID, IDREF e IDREFS</h2>
+<ul>
+<li><p>ID é usado para definir um nome único no documento</p>
+<ul>
+<li>Uso de um ID é sempre <code>#REQUIRED</code></li>
+</ul></li>
+<li><p>IDREF refere-se a um ID declarado no documento</p>
+<ul>
+<li>Usado para criar relacionamentos um para um</li>
+</ul></li>
+<li><p>IDREFS refere-se a vários ID ao mesmo tempo</p>
+<ul>
+<li>Usado para criar relacionamentos um para vários</li>
+</ul></li>
+<li><p>Exemplos</p>
+<div class="sourceCode" id="cb7"><pre class="sourceCode xml"><code class="sourceCode xml"><a class="sourceLine" id="cb7-1" data-line-number="1"><span class="er">&lt;</span>!ATTLIST livro nome ID #REQUIRED&gt;</a>
+<a class="sourceLine" id="cb7-2" data-line-number="2"></a>
+<a class="sourceLine" id="cb7-3" data-line-number="3"><span class="er">&lt;</span>!ATTLIST livro tipo IDREF #REQUIRED&gt;</a></code></pre></div></li>
+</ul>
+</section><section id="atributos-do-tipo-entity-e-entities" class="slide level2">
+<h2>Atributos do tipo ENTITY e ENTITIES</h2>
+<ul>
+<li><p>Apontam para Entidades definidas no mesmo documento usando declaração ENTITY</p></li>
+<li><p>ENTITIES é uma lista de ENTITY separadas por espaços</p></li>
+<li><p>Exemplo</p>
+<div class="sourceCode" id="cb8"><pre class="sourceCode xml"><code class="sourceCode xml"><a class="sourceLine" id="cb8-1" data-line-number="1"><span class="er">&lt;</span>!ENTITY textoCopyright &quot;(c) Livraria Cataloga&quot;&gt;</a>
+<a class="sourceLine" id="cb8-2" data-line-number="2"><span class="er">&lt;</span>!ATTLIST livro</a>
+<a class="sourceLine" id="cb8-3" data-line-number="3">  copyright ENTITY #IMPLIED</a>
+<a class="sourceLine" id="cb8-4" data-line-number="4">&gt;</a></code></pre></div>
+<p>O documento XML vai conter</p>
+<div class="sourceCode" id="cb9"><pre class="sourceCode xml"><code class="sourceCode xml"><a class="sourceLine" id="cb9-1" data-line-number="1"><span class="kw">&lt;livro</span><span class="ot"> copyright=</span><span class="st">&quot;textoCopyright&quot;</span><span class="kw">&gt;</span></a></code></pre></div></li>
+</ul>
+</section><section id="atributos-tipo-nmtoken-e-nmtokens" class="slide level2">
+<h2>Atributos tipo NMTOKEN e NMTOKENS</h2>
+<ul>
+<li><p>NMTOKEN são fichas nomeadas</p></li>
+<li><p>O processamento e checagem de validade das fichas fica por conta da aplicação</p></li>
+<li><p>Exemplo</p>
+<div class="sourceCode" id="cb10"><pre class="sourceCode xml"><code class="sourceCode xml"><a class="sourceLine" id="cb10-1" data-line-number="1"><span class="er">&lt;</span>!ELEMENT livro EMPTY&gt;</a>
+<a class="sourceLine" id="cb10-2" data-line-number="2"><span class="er">&lt;</span>!ATTLIST livro</a>
+<a class="sourceLine" id="cb10-3" data-line-number="3">  nome CDATA #REQUIRED</a>
+<a class="sourceLine" id="cb10-4" data-line-number="4">  tipo IDREF #REQUIRED</a>
+<a class="sourceLine" id="cb10-5" data-line-number="5">  autores IDREFS #REQUIRED</a>
+<a class="sourceLine" id="cb10-6" data-line-number="6">  copyright ENTITY #IMPLIED</a>
+<a class="sourceLine" id="cb10-7" data-line-number="7">  editora NMTOKEN #REQUIRED</a>
+<a class="sourceLine" id="cb10-8" data-line-number="8">&gt;</a></code></pre></div></li>
+</ul>
+</section><section id="atributo-tipo-notation" class="slide level2">
+<h2>Atributo tipo NOTATION</h2>
+<ul>
+<li><p>O atributo desse tipo é usado em conjunto com a declaração NOTATION (notação)</p></li>
+<li><p>Uma notação declara um formato e o aplicativo externo que deve processá lo</p></li>
+<li><p>Exemplo</p>
+<div class="sourceCode" id="cb11"><pre class="sourceCode xml"><code class="sourceCode xml"><a class="sourceLine" id="cb11-1" data-line-number="1"><span class="er">&lt;</span>!NOTATION jpg SYSTEM &quot;jpgviewer.exe&quot;&gt;</a>
+<a class="sourceLine" id="cb11-2" data-line-number="2"><span class="er">&lt;</span>!NOTATION gif SYSTEM &quot;gifviewer.exe&quot;&gt;</a>
+<a class="sourceLine" id="cb11-3" data-line-number="3"><span class="er">&lt;</span>!ELEMENT livro (imagem)&gt;</a>
+<a class="sourceLine" id="cb11-4" data-line-number="4"><span class="er">&lt;</span>!ELEMENT imagem (#PCDATA)&gt;</a>
+<a class="sourceLine" id="cb11-5" data-line-number="5"><span class="er">&lt;</span>!ATTLIST imagem</a>
+<a class="sourceLine" id="cb11-6" data-line-number="6">  tipo NOTATION (gif | jpg) &quot;gif&quot;</a>
+<a class="sourceLine" id="cb11-7" data-line-number="7">&gt;</a></code></pre></div></li>
+</ul>
+</section><section id="dtd-interna" class="slide level2">
+<h2>DTD Interna</h2>
+<ul>
+<li><p>Elementos declarados na DTD interna sobrepõem elementos da DTD externa</p></li>
+<li><p>Uso menos frequente porque</p>
+<ul>
+<li><p>Ocupa espaço em cada documento</p></li>
+<li><p>Difícil alterar por estar em vários documentos XML</p></li>
+</ul></li>
+</ul>
+</section><section id="exemplo-escola" class="slide level2">
+<h2>Exemplo Escola</h2>
+<ul>
+<li><p>Criar DTD para representar dados de uma escola</p></li>
+<li><p>Coisas</p>
+<ul>
+<li><p>Escola</p></li>
+<li><p>Estudante</p></li>
+<li><p>Professor</p></li>
+<li><p>Aula</p></li>
+</ul></li>
+<li><p><a href="school-dtd.xml">Link</a></p></li>
+</ul>
+</section><section id="limitação-de-dtd" class="slide level2">
+<h2>Limitação de DTD</h2>
+<ul>
+<li><p>Difícil de escrever e entender</p></li>
+<li><p>Difícil processar programaticamente</p></li>
+<li><p>Difícil de estender</p></li>
+<li><p>Sem suporte para espaços identificadores (namespace)</p></li>
+<li><p>Nenhum suporte para tipos de dados</p></li>
+<li><p>Nenhum suporte para herança</p></li>
+</ul>
+</section><section id="exercício-2" class="slide level2">
+<h2>Exercício 2</h2>
+<ul>
+<li>Crie uma DTD para o documento XML de catálogo de livros criado no Exercício 1</li>
+</ul>
+</section></section>
+<section><section id="xml-válida-esquemas" class="title-slide slide level1"><h1>XML Válida – Esquemas</h1></section><section id="o-que-é-esquema-xml" class="slide level2">
+<h2>O que é Esquema XML</h2>
+<ul>
+<li><p>Um esquema XML contém</p>
+<ul>
+<li><p>Definição de tipos</p></li>
+<li><p>Declaração de elementos</p></li>
+</ul></li>
+<li><p>Permite</p>
+<ul>
+<li><p>Validar elementos e atributos XML e seus valores</p></li>
+<li><p>Estender um esquema existente</p></li>
+</ul></li>
+<li><p>É uma recomendação do W3C</p></li>
+</ul>
+</section><section id="componentes-primários" class="slide level2">
+<h2>Componentes Primários</h2>
+<ul>
+<li><p>Definição de Tipos Simples</p></li>
+<li><p>Definição de Tipos Complexos</p></li>
+<li><p>Declaração de Atributos</p></li>
+<li><p>Declaração de Elementos</p></li>
+</ul>
+</section><section id="componentes-secundários" class="slide level2">
+<h2>Componentes Secundários</h2>
+<ul>
+<li><p>Declaração de Notações</p></li>
+<li><p>Definição de Grupos de Atributos</p></li>
+<li><p>Definição de Restrições de Identidade</p></li>
+<li><p>Definição de Grupos de Modelos</p></li>
+</ul>
+</section><section id="componentes-auxiliares" class="slide level2">
+<h2>Componentes Auxiliares</h2>
+<ul>
+<li><p>Anotações</p></li>
+<li><p>Grupos de Modelos</p></li>
+<li><p>Partículas</p></li>
+<li><p>Curingas (wildcards)</p></li>
+<li><p>Uso de Atributos</p></li>
+</ul>
+</section><section id="estrutura-do-arquivo-de-esquema" class="slide level2">
+<h2>Estrutura do Arquivo de Esquema</h2>
+<ul>
+<li><p>O arquivo tem a extensão xsd</p></li>
+<li><p>Contém um elemento raiz chamado <code>schema</code></p></li>
+<li><p>Elemento <code>schema</code> pode conter atributos</p>
+<ul>
+<li><p><code>attributeFormDefault</code></p></li>
+<li><p><code>elementFormDefault</code></p></li>
+<li><p><code>id</code></p></li>
+<li><p><code>targetNamespace</code></p></li>
+<li><p><code>version</code></p></li>
+<li><p><code>xmlns</code> (mais de uma ocorrência)</p></li>
+</ul></li>
+</ul>
+</section><section id="associando-esquema-ao-documento-xml" class="slide level2">
+<h2>Associando Esquema ao Documento XML</h2>
+<ul>
+<li><p>Um documento XML pode ser considerado como uma instância de um esquema</p></li>
+<li><p>O elemento raiz do documento XML deve declarar o espaço identificador ao qual ele pertence e isso deve corresponder ao espaço identificador especificado pelo atributo <code>targetNamespace</code> no esquema</p></li>
+<li><p>O elemento raiz deve declarar o espaço identificador <code>http://www.w3.org/2000/10/XMLSchema-instance</code> e atribuir para o atributo <code>schemaLocation</code> deste espaço identificador o nome do arquivo contendo o esquema</p></li>
+</ul>
+</section><section id="espaço-identificadores-namespaces" class="slide level2">
+<h2>Espaço Identificadores (namespaces)</h2>
+<ul>
+<li><p>Evitam ambigüidade e colisão de nomes quando um elemento XML utilizar esquemas diferentes</p></li>
+<li><p>O elemento declara a utilização de um esquema usando o atributo <code>xmlns</code> ou a forma <code>xmlns:</code><em><code>prefixo</code></em></p></li>
+<li><p>O <em><code>prefixo</code></em> é utilizado no nome de todos os elementos declarados no esquema</p></li>
+<li><p>O espaço identificador é identificado utilizando um URI (identificador universal de recursos)</p></li>
+<li><p>Geralmente, o URI é um URL</p></li>
+</ul>
+</section><section id="definição-de-tipos-simples" class="slide level2">
+<h2>Definição de Tipos Simples</h2>
+<ul>
+<li><p>Pode ser usada na declaração de</p>
+<ul>
+<li><p>Atributos</p></li>
+<li><p>Elementos simples contendo apenas texto</p></li>
+</ul></li>
+<li><p>Por Exemplo</p>
+<div class="sourceCode" id="cb12"><pre class="sourceCode xml"><code class="sourceCode xml"><a class="sourceLine" id="cb12-1" data-line-number="1"><span class="kw">&lt;xs:simpleType</span><span class="ot"> name=</span><span class="st">&quot;tipoTemperaturaAgua&quot;</span><span class="kw">&gt;</span></a>
+<a class="sourceLine" id="cb12-2" data-line-number="2">  <span class="kw">&lt;xs:restriction</span><span class="ot"> base=</span><span class="st">&quot;xs:number&quot;</span><span class="kw">&gt;</span></a>
+<a class="sourceLine" id="cb12-3" data-line-number="3">    <span class="kw">&lt;xs:minExclusive</span><span class="ot"> value=</span><span class="st">&quot;0.00&quot;</span><span class="kw">/&gt;</span></a>
+<a class="sourceLine" id="cb12-4" data-line-number="4">    <span class="kw">&lt;xs:maxExclusive</span><span class="ot"> value=</span><span class="st">&quot;100.00&quot;</span><span class="kw">/&gt;</span></a>
+<a class="sourceLine" id="cb12-5" data-line-number="5">  <span class="kw">&lt;/xs:restriction&gt;</span></a>
+<a class="sourceLine" id="cb12-6" data-line-number="6"><span class="kw">&lt;/xs:simpleType&gt;</span></a></code></pre></div></li>
+</ul>
+</section><section id="restringindo-valores-usando-expressões-regular" class="slide level2">
+<h2>Restringindo Valores Usando Expressões Regular</h2>
+<ul>
+<li><p>Podemos restringir valores utilizando expressões regulares</p></li>
+<li><p>Uma expressão regular é especificada utilizando o elemento <code>xs:pattern</code> dentro do elemento <code>xs:restriction</code></p></li>
+<li><p>Exemplo - <code>cpf.xml</code></p>
+<div class="sourceCode" id="cb13"><pre class="sourceCode xml"><code class="sourceCode xml"><a class="sourceLine" id="cb13-1" data-line-number="1"><span class="kw">&lt;cpf</span><span class="ot"> xmlns:xsi=</span><span class="st">&quot;http://www.w3.org/2001/XMLSchema-instance&quot;</span></a>
+<a class="sourceLine" id="cb13-2" data-line-number="2"><span class="ot">  xsi:noNamespaceSchemaLocation=</span><span class="st">&quot;cpf.xsd&quot;</span><span class="kw">&gt;</span>011.077.604-61<span class="kw">&lt;/cpf&gt;</span></a></code></pre></div></li>
+</ul>
+</section><section id="esquema-para-validar-cpf" class="slide level2">
+<h2>Esquema para validar CPF</h2>
+<ul>
+<li><p>Exemplo - <code>cpf.xsd</code></p>
+<div class="sourceCode" id="cb14"><pre class="sourceCode xsd"><code class="sourceCode xml"><a class="sourceLine" id="cb14-1" data-line-number="1"><span class="kw">&lt;xs:schema</span><span class="ot"> xmlns:xs=</span><span class="st">&quot;http://www.w3.org/2001/XMLSchema&quot;</span><span class="kw">&gt;</span></a>
+<a class="sourceLine" id="cb14-2" data-line-number="2">    <span class="kw">&lt;xs:element</span><span class="ot"> name=</span><span class="st">&quot;cpf&quot;</span><span class="kw">&gt;</span></a>
+<a class="sourceLine" id="cb14-3" data-line-number="3">        <span class="kw">&lt;xs:simpleType&gt;</span></a>
+<a class="sourceLine" id="cb14-4" data-line-number="4">            <span class="kw">&lt;xs:union</span><span class="ot"> memberTypes=</span><span class="st">&quot;tipoCPF tipoCPFFormatado&quot;</span><span class="kw">/&gt;</span></a>
+<a class="sourceLine" id="cb14-5" data-line-number="5">        <span class="kw">&lt;/xs:simpleType&gt;</span></a>
+<a class="sourceLine" id="cb14-6" data-line-number="6">    <span class="kw">&lt;/xs:element&gt;</span></a>
+<a class="sourceLine" id="cb14-7" data-line-number="7">    <span class="kw">&lt;xs:simpleType</span><span class="ot"> name=</span><span class="st">&quot;tipoCPF&quot;</span><span class="kw">&gt;</span></a>
+<a class="sourceLine" id="cb14-8" data-line-number="8">        <span class="kw">&lt;xs:restriction</span><span class="ot"> base=</span><span class="st">&quot;xs:string&quot;</span><span class="kw">&gt;</span></a>
+<a class="sourceLine" id="cb14-9" data-line-number="9">            <span class="kw">&lt;xs:pattern</span><span class="ot"> value=</span><span class="st">&quot;[0-9]{11}&quot;</span><span class="kw">/&gt;</span></a>
+<a class="sourceLine" id="cb14-10" data-line-number="10">        <span class="kw">&lt;/xs:restriction&gt;</span></a>
+<a class="sourceLine" id="cb14-11" data-line-number="11">    <span class="kw">&lt;/xs:simpleType&gt;</span></a>
+<a class="sourceLine" id="cb14-12" data-line-number="12">    <span class="kw">&lt;xs:simpleType</span><span class="ot"> name=</span><span class="st">&quot;tipoCPFFormatado&quot;</span><span class="kw">&gt;</span></a>
+<a class="sourceLine" id="cb14-13" data-line-number="13">        <span class="kw">&lt;xs:restriction</span><span class="ot"> base=</span><span class="st">&quot;xs:string&quot;</span><span class="kw">&gt;</span></a>
+<a class="sourceLine" id="cb14-14" data-line-number="14">            <span class="kw">&lt;xs:pattern</span><span class="ot"> value=</span><span class="st">&quot;[0-9]{3}\.[0-9]{3}\.[0-9]{3}-[0-9]{2}&quot;</span><span class="kw">/&gt;</span></a>
+<a class="sourceLine" id="cb14-15" data-line-number="15">        <span class="kw">&lt;/xs:restriction&gt;</span></a>
+<a class="sourceLine" id="cb14-16" data-line-number="16">    <span class="kw">&lt;/xs:simpleType&gt;</span></a>
+<a class="sourceLine" id="cb14-17" data-line-number="17"><span class="kw">&lt;/xs:schema&gt;</span></a></code></pre></div></li>
+</ul>
+</section><section id="definição-de-tipos-complexos" class="slide level2">
+<h2>Definição de Tipos Complexos</h2>
+<ul>
+<li><p>Usada para declarar elementos contendo</p>
+<ul>
+<li><p>Atributos</p></li>
+<li><p>Tipo do Conteúdo (elementos filhos)</p></li>
+</ul></li>
+<li><p>Tipos complexos podem estender outros tipos simples ou complexos</p></li>
+<li><p>Exemplo</p>
+<div class="sourceCode" id="cb15"><pre class="sourceCode xml"><code class="sourceCode xml"><a class="sourceLine" id="cb15-1" data-line-number="1"><span class="kw">&lt;xs:complexType</span><span class="ot"> name=</span><span class="st">&quot;tipoPedido&quot;</span><span class="kw">&gt;</span></a>
+<a class="sourceLine" id="cb15-2" data-line-number="2">  <span class="kw">&lt;xs:sequence&gt;</span></a>
+<a class="sourceLine" id="cb15-3" data-line-number="3">    <span class="kw">&lt;xs:element</span><span class="ot"> name=</span><span class="st">&quot;produtoPara&quot;</span><span class="ot"> type=</span><span class="st">&quot;tipoEnderecoBrasil&quot;</span><span class="kw">/&gt;</span></a>
+<a class="sourceLine" id="cb15-4" data-line-number="4">    <span class="kw">&lt;xs:element</span><span class="ot"> name=</span><span class="st">&quot;notaPara&quot;</span><span class="ot"> type=</span><span class="st">&quot;tipoEnderecoBrasil&quot;</span><span class="kw">/&gt;</span></a>
+<a class="sourceLine" id="cb15-5" data-line-number="5">    <span class="kw">&lt;xs:element</span><span class="ot"> name=</span><span class="st">&quot;itens&quot;</span><span class="ot"> type=</span><span class="st">&quot;tipoItens&quot;</span><span class="kw">/&gt;</span></a>
+<a class="sourceLine" id="cb15-6" data-line-number="6">  <span class="kw">&lt;/xs:sequence&gt;</span></a>
+<a class="sourceLine" id="cb15-7" data-line-number="7">  <span class="kw">&lt;xs:attribute</span><span class="ot"> name=</span><span class="st">&quot;dataPedido&quot;</span><span class="ot"> type=</span><span class="st">&quot;xs:date&quot;</span><span class="kw">/&gt;</span></a>
+<a class="sourceLine" id="cb15-8" data-line-number="8"><span class="kw">&lt;/xs:complexType&gt;</span></a></code></pre></div></li>
+</ul>
+</section><section id="declaração-de-atributos" class="slide level2">
+<h2>Declaração de Atributos</h2>
+<ul>
+<li><p>Uma associação entre um nome e um tipo simples</p></li>
+<li><p>Pode conter um valor padrão</p></li>
+<li><p>Exemplo</p>
+<div class="sourceCode" id="cb16"><pre class="sourceCode xml"><code class="sourceCode xml"><a class="sourceLine" id="cb16-1" data-line-number="1"><span class="kw">&lt;xs:attribute</span><span class="ot"> name=</span><span class="st">&quot;idade&quot;</span><span class="ot"> type=</span><span class="st">&quot;xs:positiveInteger&quot;</span></a>
+<a class="sourceLine" id="cb16-2" data-line-number="2"><span class="ot">  use=</span><span class="st">&quot;required&quot;</span><span class="ot"> value=</span><span class="st">&quot;1&quot;</span><span class="kw">/&gt;</span></a></code></pre></div></li>
+</ul>
+</section><section id="declaração-de-elementos" class="slide level2">
+<h2>Declaração de Elementos</h2>
+<ul>
+<li><p>É uma associação entre um nome e tipos simples ou complexos</p></li>
+<li><p>Pode estar contida dentro de uma definição de tipo complexo</p></li>
+<li><p>Equivalente as declarações ELEMENT e ATTLIST do DTD</p></li>
+<li><p>Exemplo</p>
+<div class="sourceCode" id="cb17"><pre class="sourceCode xml"><code class="sourceCode xml"><a class="sourceLine" id="cb17-1" data-line-number="1"><span class="kw">&lt;xs:element</span><span class="ot"> name=</span><span class="st">&quot;autor&quot;</span><span class="ot"> type=</span><span class="st">&quot;xs:string&quot;</span><span class="kw">/&gt;</span></a></code></pre></div></li>
+</ul>
+</section><section id="declaração-de-notações" class="slide level2">
+<h2>Declaração de Notações</h2>
+<ul>
+<li><p>É uma associação entre um nome e um identificador de notação</p></li>
+<li><p>Uma notação serve para identificar conteúdo não XML e o programa que processa o conteúdo</p></li>
+<li><p>Exemplo</p>
+<div class="sourceCode" id="cb18"><pre class="sourceCode xml"><code class="sourceCode xml"><a class="sourceLine" id="cb18-1" data-line-number="1"><span class="kw">&lt;xs:notation</span><span class="ot"> name=</span><span class="st">&quot;jpeg&quot;</span><span class="ot"> public=</span><span class="st">&quot;image/jpeg&quot;</span><span class="ot"> system=</span><span class="st">&quot;viewer.exe&quot;</span><span class="kw">/&gt;</span></a>
+<a class="sourceLine" id="cb18-2" data-line-number="2"><span class="kw">&lt;xs:element</span><span class="ot"> name=</span><span class="st">&quot;imagem&quot;</span><span class="kw">&gt;</span></a>
+<a class="sourceLine" id="cb18-3" data-line-number="3">  <span class="kw">&lt;xs:complexType</span><span class="ot"> mixed=</span><span class="st">&quot;true&quot;</span><span class="kw">&gt;</span></a>
+<a class="sourceLine" id="cb18-4" data-line-number="4">    <span class="kw">&lt;xs:attribute</span><span class="ot"> name=</span><span class="st">&quot;tipo&quot;</span><span class="ot"> type=</span><span class="st">&quot;xs:NOTATION&quot;</span><span class="ot"> use=</span><span class="st">&quot;required&quot;</span><span class="kw">/&gt;</span></a>
+<a class="sourceLine" id="cb18-5" data-line-number="5">  <span class="kw">&lt;/xs:complexType&gt;</span></a>
+<a class="sourceLine" id="cb18-6" data-line-number="6"><span class="kw">&lt;/xs:element&gt;</span></a></code></pre></div></li>
+</ul>
+</section><section id="definição-de-grupos-de-atributo" class="slide level2">
+<h2>Definição de Grupos de Atributo</h2>
+<ul>
+<li><p>É usada para reutilizar grupos de atributos em várias definições de tipos complexos</p></li>
+<li><p>Exemplo</p>
+<div class="sourceCode" id="cb19"><pre class="sourceCode xml"><code class="sourceCode xml"><a class="sourceLine" id="cb19-1" data-line-number="1"><span class="kw">&lt;xs:attributeGroup</span><span class="ot"> name=</span><span class="st">&quot;grupoNome&quot;</span><span class="kw">&gt;</span></a>
+<a class="sourceLine" id="cb19-2" data-line-number="2">  <span class="kw">&lt;xs:attribute</span><span class="ot"> name=</span><span class="st">&quot;primeiroNome&quot;</span><span class="kw">/&gt;</span></a>
+<a class="sourceLine" id="cb19-3" data-line-number="3">  <span class="kw">&lt;xs:attribute</span><span class="ot"> name=</span><span class="st">&quot;sobreNome&quot;</span><span class="kw">/&gt;</span></a>
+<a class="sourceLine" id="cb19-4" data-line-number="4"><span class="kw">&lt;/xs:attributeGroup&gt;</span></a>
+<a class="sourceLine" id="cb19-5" data-line-number="5"><span class="kw">&lt;xs:complexType</span><span class="ot"> name=</span><span class="st">&quot;tipoAutor&quot;</span><span class="kw">&gt;</span></a>
+<a class="sourceLine" id="cb19-6" data-line-number="6">  <span class="kw">&lt;xs:attributeGroup</span><span class="ot"> ref=</span><span class="st">&quot;grupoNome&quot;</span><span class="kw">/&gt;</span></a>
+<a class="sourceLine" id="cb19-7" data-line-number="7"><span class="kw">&lt;/xs:complexType&gt;</span></a></code></pre></div></li>
+</ul>
+</section><section id="definição-de-restrições-de-identidade" class="slide level2">
+<h2>Definição de Restrições de Identidade</h2>
+<ul>
+<li><p>É uma associação entre um nome e qualquer tipo de restrição como chave primária, chave única ou chave estrangeira</p></li>
+<li><p>Utiliza a especificação XPATH para indicar os registros aos quais se aplica a restrição</p></li>
+<li><p>Exemplo</p>
+<div class="sourceCode" id="cb20"><pre class="sourceCode xml"><code class="sourceCode xml"><a class="sourceLine" id="cb20-1" data-line-number="1"><span class="kw">&lt;xs:unique</span><span class="ot"> name=</span><span class="st">&quot;nomeLivroUnico&quot;</span><span class="kw">&gt;</span></a>
+<a class="sourceLine" id="cb20-2" data-line-number="2">  <span class="kw">&lt;xs:selector</span><span class="ot"> xpath=</span><span class="st">&quot;livros/livro&quot;</span><span class="kw">/&gt;</span></a>
+<a class="sourceLine" id="cb20-3" data-line-number="3">  <span class="kw">&lt;xs:field</span><span class="ot"> xpath=</span><span class="st">&quot;@nome&quot;</span><span class="kw">/&gt;</span></a>
+<a class="sourceLine" id="cb20-4" data-line-number="4"><span class="kw">&lt;/xs:unique&gt;</span></a></code></pre></div></li>
+</ul>
+</section><section id="anotações" class="slide level2">
+<h2>Anotações</h2>
+<ul>
+<li><p>Contém informação sobre o modelo</p></li>
+<li><p>Usadas por leitores humanos ou máquinas</p></li>
+<li><p>Exemplo</p>
+<div class="sourceCode" id="cb21"><pre class="sourceCode xml"><code class="sourceCode xml"><a class="sourceLine" id="cb21-1" data-line-number="1"><span class="kw">&lt;xs:annotation&gt;</span></a>
+<a class="sourceLine" id="cb21-2" data-line-number="2">  <span class="kw">&lt;xs:documentation</span></a>
+<a class="sourceLine" id="cb21-3" data-line-number="3"><span class="ot">    source=</span><span class="st">&quot;Temperatura em farenheits&quot;</span><span class="kw">/&gt;</span></a>
+<a class="sourceLine" id="cb21-4" data-line-number="4"><span class="kw">&lt;/xs:annotation&gt;</span></a></code></pre></div></li>
+</ul>
+</section><section id="grupos-de-modelos" class="slide level2">
+<h2>Grupos de Modelos</h2>
+<ul>
+<li><p>Compostos por uma lista de</p>
+<ul>
+<li><p>Elementos</p></li>
+<li><p>Curingas</p></li>
+<li><p>Grupos de Modelos</p></li>
+</ul></li>
+<li><p>Temos três tipos de grupos de modelos</p>
+<ul>
+<li><p>Seqüência</p></li>
+<li><p>Conjunção</p></li>
+<li><p>Disjunção</p></li>
+</ul></li>
+</ul>
+</section><section id="seqüência" class="slide level2">
+<h2>Seqüência</h2>
+<ul>
+<li><p>Todos os elementos deveriam ser especificados e seguem uma seqüência rígida</p></li>
+<li><p>Exemplo</p>
+<div class="sourceCode" id="cb22"><pre class="sourceCode xsd"><code class="sourceCode xml"><a class="sourceLine" id="cb22-1" data-line-number="1"><span class="kw">&lt;xs:sequence&gt;</span></a>
+<a class="sourceLine" id="cb22-2" data-line-number="2">    <span class="kw">&lt;xs:choice&gt;</span></a>
+<a class="sourceLine" id="cb22-3" data-line-number="3">        <span class="kw">&lt;xs:element</span><span class="ot"> name=</span><span class="st">&quot;esquerda&quot;</span><span class="kw">/&gt;</span></a>
+<a class="sourceLine" id="cb22-4" data-line-number="4">        <span class="kw">&lt;xs:element</span><span class="ot"> name=</span><span class="st">&quot;direita&quot;</span><span class="kw">/&gt;</span></a>
+<a class="sourceLine" id="cb22-5" data-line-number="5">    <span class="kw">&lt;/xs:choice&gt;</span></a>
+<a class="sourceLine" id="cb22-6" data-line-number="6">    <span class="kw">&lt;xs:element</span><span class="ot"> name=</span><span class="st">&quot;pontoReferencia&quot;</span><span class="kw">/&gt;</span></a>
+<a class="sourceLine" id="cb22-7" data-line-number="7"><span class="kw">&lt;/xs:sequence&gt;</span></a></code></pre></div></li>
+</ul>
+</section><section id="conjunção-e-disjunção" class="slide level2">
+<h2>Conjunção e Disjunção</h2>
+<ul>
+<li><p>Conjunção</p>
+<ul>
+<li><p>Todos os elementos deveriam ser especificados mas não seguem uma seqüência rígida</p></li>
+<li><p>Uma conjunção é criada usando elemento <code>xs:all</code></p></li>
+</ul></li>
+<li><p>Disjunção</p>
+<ul>
+<li><p>Qualquer um dos elementos precisa ser especificado</p></li>
+<li><p>Uma disjunção é criada usando o elemento <code>xs:choice</code></p></li>
+</ul></li>
+</ul>
+</section><section id="definição-de-grupos-de-modelos" class="slide level2">
+<h2>Definição de Grupos de Modelos</h2>
+<ul>
+<li><p>É uma associação entre um nome e um grupo de modelo</p></li>
+<li><p>Facilita a reutilização do mesmo grupo de modelo em vários tipos complexos</p></li>
+<li><p>Exemplo</p>
+<div class="sourceCode" id="cb23"><pre class="sourceCode xml"><code class="sourceCode xml"><a class="sourceLine" id="cb23-1" data-line-number="1"><span class="kw">&lt;xs:group</span><span class="ot"> name=</span><span class="st">&quot;grupoNome&quot;</span><span class="kw">&gt;</span></a>
+<a class="sourceLine" id="cb23-2" data-line-number="2">  <span class="kw">&lt;xs:sequence&gt;</span></a>
+<a class="sourceLine" id="cb23-3" data-line-number="3">    <span class="kw">&lt;xs:element</span><span class="ot"> name=</span><span class="st">&quot;primeiroNome&quot;</span><span class="ot"> type=</span><span class="st">&quot;xs:string&quot;</span><span class="kw">/&gt;</span></a>
+<a class="sourceLine" id="cb23-4" data-line-number="4">    <span class="kw">&lt;xs:element</span><span class="ot"> name=</span><span class="st">&quot;sobreNome&quot;</span><span class="ot"> type=</span><span class="st">&quot;xs:string&quot;</span><span class="kw">/&gt;</span></a>
+<a class="sourceLine" id="cb23-5" data-line-number="5">  <span class="kw">&lt;/xs:sequence&gt;</span></a>
+<a class="sourceLine" id="cb23-6" data-line-number="6"><span class="kw">&lt;/xs:group&gt;</span></a>
+<a class="sourceLine" id="cb23-7" data-line-number="7"><span class="kw">&lt;xs:complexType</span><span class="ot"> name=</span><span class="st">&quot;tipoNome&quot;</span><span class="kw">&gt;</span></a>
+<a class="sourceLine" id="cb23-8" data-line-number="8">  <span class="kw">&lt;xs:group</span><span class="ot"> ref=</span><span class="st">&quot;grupoNome&quot;</span><span class="kw">/&gt;</span></a>
+<a class="sourceLine" id="cb23-9" data-line-number="9"><span class="kw">&lt;/xs:complexType&gt;</span></a></code></pre></div></li>
+</ul>
+</section><section id="curingas" class="slide level2">
+<h2>Curingas</h2>
+<ul>
+<li><p>O elemento <code>xs:any</code> fornece um mecanismo para introduzir um curinga para o conteúdo dos elementos</p></li>
+<li><p>O elemento <code>xs:anyAttribute</code> é um curinga para qualquer atributo do espaço identificador especificado no atributo <code>namespace</code> do elemento</p></li>
+<li><p>Exemplo</p>
+<div class="sourceCode" id="cb24"><pre class="sourceCode xml"><code class="sourceCode xml"><a class="sourceLine" id="cb24-1" data-line-number="1"><span class="kw">&lt;xs:element</span><span class="ot"> name=</span><span class="st">&quot;contem_curingas&quot;</span><span class="kw">&gt;</span></a>
+<a class="sourceLine" id="cb24-2" data-line-number="2">  <span class="kw">&lt;xs:complexType&gt;</span></a>
+<a class="sourceLine" id="cb24-3" data-line-number="3">    <span class="kw">&lt;xs:sequence&gt;</span></a>
+<a class="sourceLine" id="cb24-4" data-line-number="4">      <span class="kw">&lt;xs:any/&gt;</span></a>
+<a class="sourceLine" id="cb24-5" data-line-number="5">    <span class="kw">&lt;/xs:sequence&gt;</span></a>
+<a class="sourceLine" id="cb24-6" data-line-number="6">    <span class="kw">&lt;xs:anyAttribute/&gt;</span></a>
+<a class="sourceLine" id="cb24-7" data-line-number="7">  <span class="kw">&lt;/xs:complexType&gt;</span></a>
+<a class="sourceLine" id="cb24-8" data-line-number="8"><span class="kw">&lt;/xs:element&gt;</span></a></code></pre></div></li>
+</ul>
+</section><section id="uso-de-atributos" class="slide level2">
+<h2>Uso de Atributos</h2>
+<ul>
+<li><p>Usado para especificar se a utilização de qualquer atributo é</p>
+<ul>
+<li><p>Requerido</p></li>
+<li><p>Opcional</p></li>
+<li><p>Proibido</p></li>
+</ul></li>
+<li><p>O atributo pode ter um valor fixo (constante)</p></li>
+<li><p>Exemplo</p>
+<div class="sourceCode" id="cb25"><pre class="sourceCode xml"><code class="sourceCode xml"><a class="sourceLine" id="cb25-1" data-line-number="1"><span class="kw">&lt;xs:attribute</span><span class="ot"> name=</span><span class="st">&quot;codigo&quot;</span><span class="ot"> use=</span><span class="st">&quot;required&quot;</span></a>
+<a class="sourceLine" id="cb25-2" data-line-number="2"><span class="ot">  type=</span><span class="st">&quot;xs:positiveInteger&quot;</span><span class="kw">/&gt;</span></a>
+<a class="sourceLine" id="cb25-3" data-line-number="3"></a>
+<a class="sourceLine" id="cb25-4" data-line-number="4"><span class="kw">&lt;xs:attribute</span><span class="ot"> name=</span><span class="st">&quot;segundoNome&quot;</span><span class="ot"> use=</span><span class="st">&quot;optional&quot;</span><span class="kw">/&gt;</span></a>
+<a class="sourceLine" id="cb25-5" data-line-number="5"></a>
+<a class="sourceLine" id="cb25-6" data-line-number="6"><span class="kw">&lt;xs:attribute</span><span class="ot"> name=</span><span class="st">&quot;copyright&quot;</span><span class="ot"> type=</span><span class="st">&quot;xs:string&quot;</span></a>
+<a class="sourceLine" id="cb25-7" data-line-number="7"><span class="ot">  fixed=</span><span class="st">&quot;© Livraria ABC&quot;</span><span class="kw">/&gt;</span></a></code></pre></div></li>
+</ul>
+</section><section id="tipos-de-dados-internos" class="slide level2">
+<h2>Tipos de Dados Internos</h2>
+<ul>
+<li>Tipos primitivos internos fazem parte da especificação de Esquemas XML</li>
+</ul>
+<table>
+<tbody>
+<tr class="odd">
+<td>string</td>
+<td>boolean</td>
+<td>decimal</td>
+</tr>
+<tr class="even">
+<td>float</td>
+<td>double</td>
+<td>duration</td>
+</tr>
+<tr class="odd">
+<td>dateTime</td>
+<td>time</td>
+<td>date</td>
+</tr>
+<tr class="even">
+<td>gYearMonth</td>
+<td>gYear</td>
+<td>gMonthDay</td>
+</tr>
+<tr class="odd">
+<td>gDay</td>
+<td>gMonth</td>
+<td>hexBinary</td>
+</tr>
+<tr class="even">
+<td>base64Binary</td>
+<td>anyURI</td>
+<td>QName</td>
+</tr>
+<tr class="odd">
+<td>NOTATION</td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+</section><section id="tipos-derivados-internos" class="slide level2">
+<h2>Tipos Derivados Internos</h2>
+<ul>
+<li>Tipos derivados a partir de tipos de dados primitivos internos</li>
+</ul>
+<table>
+<tbody>
+<tr class="odd">
+<td>normalizedString</td>
+<td>ID</td>
+<td>IDREF</td>
+<td>IDREFS</td>
+</tr>
+<tr class="even">
+<td>nonPositiveInteger</td>
+<td>int</td>
+<td>unsignedInt</td>
+<td>positiveInteger</td>
+</tr>
+<tr class="odd">
+<td>nonNegativeInteger</td>
+<td>long</td>
+<td>short</td>
+<td>negativeInteger</td>
+</tr>
+<tr class="even">
+<td>unsignedLong</td>
+<td>byte</td>
+<td>integer</td>
+<td>ENTITY</td>
+</tr>
+<tr class="odd">
+<td>unsignedShort</td>
+<td>Name</td>
+<td>NCName</td>
+<td>ENTITIES</td>
+</tr>
+<tr class="even">
+<td>unsignedByte</td>
+<td>token</td>
+<td>NMTOKEN</td>
+<td>NMTOKENS</td>
+</tr>
+<tr class="odd">
+<td>language</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+</section><section id="exemplo-escola---esquema" class="slide level2">
+<h2>Exemplo Escola - Esquema</h2>
+<ul>
+<li><p>Mesmos dados como no caso da DTD</p></li>
+<li><p>Esquema permite maior flexibilidade</p>
+<ul>
+<li><p>Definição das chaves</p>
+<ul>
+<li><p>Única</p></li>
+<li><p>Primária</p></li>
+<li><p>Estrangeira</p></li>
+</ul></li>
+<li><p>Definição e extensão de tipos simples e complexos</p></li>
+<li><p><a href="school-schema.xml">Link</a></p></li>
+</ul></li>
+</ul>
+</section><section id="exercício-3" class="slide level2">
+<h2>Exercício 3</h2>
+<ul>
+<li><p>Crie um esquema XML para a DTD de catálogo de livros criada no Exercício 2</p></li>
+<li><p>Estude tópicos avançados</p>
+<ul>
+<li><p>Expressões Regular</p></li>
+<li><p>Tipos abstratos</p></li>
+<li><p>Redefinir esquema usando elemento <code>xs:redefine</code></p></li>
+<li><p>Importando esquemas usando elemento <code>xs:include</code></p></li>
+<li><p>Derivando tipos usando elementos <code>xs:extension</code> e <code>xs:restriction</code></p></li>
+<li><p>Restringindo derivação de tipos usando atributos <code>final</code> e <code>block</code> do elemento <code>xs:complexType</code></p></li>
+<li><p>Formas de restringir valores de tipos simples (facets)</p></li>
+</ul></li>
+</ul>
+</section></section>
+<section><section id="acesso-programático---dom" class="title-slide slide level1"><h1>Acesso Programático - DOM</h1></section><section id="dom-document-object-model" class="slide level2">
+<h2>DOM – Document Object Model</h2>
+<ul>
+<li><p>Representa todo conteúdo do documento XML como uma árvore</p></li>
+<li><p>Cada elemento, texto de um elemento, atributo, comentário, instrução de processamento etc é representado como um nó nesta árvore</p></li>
+<li><p>É uma especificação recomendada pelo W3C</p></li>
+</ul>
+</section><section id="objetos-do-dom" class="slide level2">
+<h2>Objetos do DOM</h2>
+<ul>
+<li><p>O Node representa um nó na árvore do DOM</p></li>
+<li><p>NodeList e NamedNodeMap são utilizados para agregar nós</p></li>
+<li><p>O DOM é composto de vários tipos de objetos que herdam de Node</p></li>
+</ul>
+<table>
+<tbody>
+<tr class="odd">
+<td>Element</td>
+<td>Attr</td>
+<td>Text</td>
+<td>CDATAsection</td>
+</tr>
+<tr class="even">
+<td>EntityReference</td>
+<td>Entity</td>
+<td>ProcessingInstruction</td>
+<td>Comment</td>
+</tr>
+<tr class="odd">
+<td>Document</td>
+<td>DocumentType</td>
+<td>DocumentFragment</td>
+<td>Notation</td>
+</tr>
+</tbody>
+</table>
+</section><section id="objeto-node" class="slide level2">
+<h2>Objeto Node</h2>
+<ul>
+<li><p>O objeto Node disponibiliza várias propriedades para navegar a árvore do DOM</p>
+<ul>
+<li><p>nodeType: Tipo do objeto representado pelo nó</p></li>
+<li><p>parentNode: Objeto pai do nó atual</p></li>
+<li><p>childNodes: Lista de nós filhos do nó atual</p></li>
+<li><p>firstChild: Primeiro nó filho</p></li>
+<li><p>lastChild: Último nó filho</p></li>
+<li><p>previousSibling: Nó anterior no mesmo nível que o atual (último irmão)</p></li>
+<li><p>nextSibling: Nó posterior no mesmo nível que o atual (próximo irmão)</p></li>
+<li><p>attributes: Lista de atributos caso o nó atual tiver atributos</p></li>
+<li><p>nodeName: Nome do nó</p></li>
+<li><p>nodeValue: Valor texto do nó</p></li>
+</ul></li>
+</ul>
+</section><section id="métodos-do-objeto-node" class="slide level2">
+<h2>Métodos do Objeto Node</h2>
+<ul>
+<li><p>Disponibilizados pelo objeto Node para inserir, duplicar, remover e substituir outros objeto Node</p>
+<ul>
+<li><p>appendChild: Adiciona um novo nó filho.</p></li>
+<li><p>cloneNode: Cria cópia de um nó.</p></li>
+<li><p>hasAttributes: Retorna verdadeiro se o nó tiver atributos.</p></li>
+<li><p>hasChildNodes: Retorna verdadeiro se o nó tiver filhos</p></li>
+<li><p>insertBefore: Insere um nó filho antes do nó filho especificado</p></li>
+<li><p>isSupported: Retorna verdadeiro se tiver suporte para um recurso do DOM</p></li>
+<li><p>normalize: Normaliza a estrutura do nó</p></li>
+<li><p>removeChild: Remove um nó filho</p></li>
+<li><p>replaceChild: Substitui um nó filho</p></li>
+</ul></li>
+</ul>
+</section><section id="objetos-nodelist-e-namednodemap" class="slide level2">
+<h2>Objetos NodeList e NamedNodeMap</h2>
+<ul>
+<li><p>Objeto NodeList</p>
+<ul>
+<li><p>Fornece uma lista de nós</p></li>
+<li><p>É uma coleção indexada de nós começando com o índice 0</p></li>
+</ul></li>
+<li><p>Objeto NamedNodeMap</p>
+<ul>
+<li><p>Fornece uma coleção de nós</p></li>
+<li><p>Os nós podem ser acessados usando nomes</p></li>
+<li><p>Os nós também podem ser acessados usando um índice numérico</p></li>
+</ul></li>
+</ul>
+</section><section id="objeto-attr" class="slide level2">
+<h2>Objeto Attr</h2>
+<ul>
+<li><p>Representa atributos</p></li>
+<li><p>Objeto Attr herda do objeto Node mas não faz parte da árvore de documento</p>
+<ul>
+<li>Por isso atributos parentNode, previousSibling e nextSibling do objeto Node tem valor nulo</li>
+</ul></li>
+<li><p>Em MSXML 3.0 a interface é chamada de IXMLDOMAttribute</p></li>
+</ul>
+</section><section id="objeto-element" class="slide level2">
+<h2>Objeto Element</h2>
+<ul>
+<li><p>Representa um elemento XML</p></li>
+<li><p>Herda do objeto Node</p>
+<ul>
+<li>Tem todas as características e operações do objeto Node</li>
+</ul></li>
+<li><p>Contém métodos para recuperar objetos do tipo Attr pelo nome ou pelo índice</p></li>
+<li><p>Propriedades</p>
+<ul>
+<li>tagName: Nome do elemento</li>
+</ul></li>
+</ul>
+</section><section id="objetos-characterdata-e-text" class="slide level2">
+<h2>Objetos CharacterData e Text</h2>
+<ul>
+<li><p>Objeto CharacterData</p>
+<ul>
+<li><p>Representa dados caractere usando Unicode (UTF-16)</p></li>
+<li><p>Estende o objeto Node</p></li>
+</ul></li>
+<li><p>Objeto Text</p>
+<ul>
+<li><p>Representa dados texto dentro de um elemento.</p></li>
+<li><p>Herda do Objeto CharacterData</p></li>
+</ul></li>
+</ul>
+</section><section id="objeto-document" class="slide level2">
+<h2>Objeto Document</h2>
+<ul>
+<li><p>Representa um documento XML</p></li>
+<li><p>Herda do objeto Node</p></li>
+<li><p>Acrescenta algumas propriedades a mais</p>
+<ul>
+<li><p>documentElement: Elemento raiz</p></li>
+<li><p>doctype: Tipo do documento</p></li>
+</ul></li>
+<li><p>Acrescenta alguns métodos</p></li>
+<li><p>Métodos específicos do parser MSXML 3.0</p>
+<ul>
+<li><p>loadXML: Carregar texto XML</p></li>
+<li><p>load: Carregar arquivo XML</p></li>
+</ul></li>
+</ul>
+</section><section id="usando-dom-para-criar-documentos-xml" class="slide level2">
+<h2>Usando DOM para criar Documentos XML</h2>
+<ul>
+<li><p>Usaremos MSXML nos exemplos</p></li>
+<li><p>O exemplo a seguir</p>
+<ul>
+<li><p>Utiliza o objeto DOMDocument para criar um novo documento XML</p></li>
+<li><p>Insere uma nova instrução de processamento</p></li>
+<li><p>Cria nó do tipo <code>NODE_ELEMENT</code> e do tipo <code>NODE_ATTRIBUTE</code></p></li>
+<li><p>Gera a saída</p>
+<div class="sourceCode" id="cb26"><pre class="sourceCode xml"><code class="sourceCode xml"><a class="sourceLine" id="cb26-1" data-line-number="1"><span class="kw">&lt;?xml</span> version=&quot;1.0&quot;<span class="kw">?&gt;</span></a>
+<a class="sourceLine" id="cb26-2" data-line-number="2"><span class="kw">&lt;catalogo</span><span class="ot"> data=</span><span class="st">&quot;12/01/2001&quot;</span><span class="kw">&gt;&lt;livro</span><span class="ot"> nome=</span><span class="st">&quot;Programando em Java&quot;</span><span class="kw">/&gt;&lt;/catalogo&gt;</span></a></code></pre></div></li>
+</ul></li>
+</ul>
+</section><section id="exemplo-usando-msxml-parser-versao-3.0" class="slide level2">
+<h2>Exemplo usando MSXML Parser versão 3.0</h2>
+<div class="sourceCode" id="cb27"><pre class="sourceCode vb"><code class="sourceCode monobasic"><a class="sourceLine" id="cb27-1" data-line-number="1"><span class="kw">Dim</span> oDom <span class="kw">As</span> <span class="kw">New</span> MSXML2.DOMDocument</a>
+<a class="sourceLine" id="cb27-2" data-line-number="2"><span class="kw">Dim</span> oElemento <span class="kw">As</span> MSXML2.IXMLDOMNode</a>
+<a class="sourceLine" id="cb27-3" data-line-number="3"><span class="kw">Dim</span> oAtributo <span class="kw">As</span> MSXML2.IXMLDOMNode</a>
+<a class="sourceLine" id="cb27-4" data-line-number="4">oDom.appendChild oDom.createProcessingInstruction( _</a>
+<a class="sourceLine" id="cb27-5" data-line-number="5">  <span class="st">&quot;xml&quot;</span>, <span class="st">&quot;version=&quot;&quot;1.0&quot;&quot;&quot;</span>)</a>
+<a class="sourceLine" id="cb27-6" data-line-number="6"><span class="kw">Set </span>oElemento = oDom.appendChild( _</a>
+<a class="sourceLine" id="cb27-7" data-line-number="7">  oDom.createNode(NODE_ELEMENT, <span class="st">&quot;catalogo&quot;</span>, <span class="st">&quot;&quot;</span>))</a>
+<a class="sourceLine" id="cb27-8" data-line-number="8"><span class="kw">Set </span>oAtributo = oElemento.Attributes.setNamedItem( _</a>
+<a class="sourceLine" id="cb27-9" data-line-number="9">  oDom.createNode(NODE_ATTRIBUTE, <span class="st">&quot;data&quot;</span>, <span class="st">&quot;&quot;</span>))</a>
+<a class="sourceLine" id="cb27-10" data-line-number="10">oAtributo.Text = <span class="st">&quot;12/01/2001&quot;</span></a>
+<a class="sourceLine" id="cb27-11" data-line-number="11"><span class="kw">Set </span>oElemento = oElemento.appendChild( _</a>
+<a class="sourceLine" id="cb27-12" data-line-number="12">  oDom.createElement(<span class="st">&quot;livro&quot;</span>))</a>
+<a class="sourceLine" id="cb27-13" data-line-number="13"><span class="kw">Set </span>oAtributo = oElemento.Attributes.setNamedItem( _</a>
+<a class="sourceLine" id="cb27-14" data-line-number="14">  oDom.createAttribute(<span class="st">&quot;nome&quot;</span>))</a>
+<a class="sourceLine" id="cb27-15" data-line-number="15">oAtributo.Text = <span class="st">&quot;Programando em Java&quot;</span></a></code></pre></div>
+</section><section id="usando-dom-para-ler-documentos-xml" class="slide level2">
+<h2>Usando DOM para ler Documentos XML</h2>
+<ul>
+<li><p>Usaremos MSXML neste exemplo</p></li>
+<li><p>O objeto DOMDocument é usado para ler XML</p>
+<ul>
+<li>O método load carrega um arquivo XML</li>
+</ul></li>
+<li><p>No exemplo ilustramos</p>
+<ul>
+<li><p>Como tratar erros usando atributo parseError</p></li>
+<li><p>Como ler todos os nós de um documento XML usando um método recursivo</p></li>
+</ul></li>
+</ul>
+</section><section id="ler-documento-dom-usando-metodo-recursivo" class="slide level2">
+<h2>Ler documento DOM usando método recursivo</h2>
+<div class="sourceCode" id="cb28"><pre class="sourceCode vb"><code class="sourceCode monobasic"><a class="sourceLine" id="cb28-1" data-line-number="1">oDom.Load <span class="st">&quot;nome do arquivo XML&quot;</span></a>
+<a class="sourceLine" id="cb28-2" data-line-number="2"><span class="kw">If </span>oDom.parseError.errorCode = 0 <span class="kw">Then</span></a>
+<a class="sourceLine" id="cb28-3" data-line-number="3">  Debug.Print parse(oDom.documentElement, 0)</a>
+<a class="sourceLine" id="cb28-4" data-line-number="4"><span class="kw">End If</span></a>
+<a class="sourceLine" id="cb28-5" data-line-number="5"></a>
+<a class="sourceLine" id="cb28-6" data-line-number="6"><span class="kw">Function </span>parse(oNode <span class="kw">As</span> IXMLDOMNode, Nivel <span class="kw">As</span> <span class="dt">Long</span>) <span class="kw">As</span> <span class="dt">String</span></a>
+<a class="sourceLine" id="cb28-7" data-line-number="7">  <span class="kw">Dim</span> i <span class="kw">As</span> <span class="dt">Long</span></a>
+<a class="sourceLine" id="cb28-8" data-line-number="8">  <span class="kw">Dim</span> s <span class="kw">As</span> <span class="dt">String</span></a>
+<a class="sourceLine" id="cb28-9" data-line-number="9">  s = s &amp; <span class="dt">String</span>(Nivel, vbTab) &amp; oNode.nodeName &amp; vbCrLf</a>
+<a class="sourceLine" id="cb28-10" data-line-number="10">  <span class="kw">For </span>i = 0 <span class="kw">To</span> oNode.Attributes.length - 1</a>
+<a class="sourceLine" id="cb28-11" data-line-number="11">    s = s &amp; <span class="dt">String</span>(Nivel + 1, vbTab) _</a>
+<a class="sourceLine" id="cb28-12" data-line-number="12">          &amp; oNode.Attributes(i).nodeName _</a>
+<a class="sourceLine" id="cb28-13" data-line-number="13">          &amp; <span class="st">&quot;=&quot;</span> &amp; oNode.Attributes(i).nodeValue &amp; vbCrLf</a>
+<a class="sourceLine" id="cb28-14" data-line-number="14">  <span class="kw">Next</span></a>
+<a class="sourceLine" id="cb28-15" data-line-number="15">  <span class="kw">For </span>i = 0 <span class="kw">To</span> oNode.childNodes.length - 1</a>
+<a class="sourceLine" id="cb28-16" data-line-number="16">    s = s &amp; parse(oNode.childNodes.Item(i), Nivel + 1)</a>
+<a class="sourceLine" id="cb28-17" data-line-number="17">  <span class="kw">Next</span></a>
+<a class="sourceLine" id="cb28-18" data-line-number="18">  parse = s</a>
+<a class="sourceLine" id="cb28-19" data-line-number="19"><span class="kw">End Function</span></a></code></pre></div>
+</section><section id="resultado-da-leitura" class="slide level2">
+<h2>Resultado da Leitura</h2>
+<ul>
+<li><p>Aqui mostramos a saída gerada pela leitura do documento XML</p></li>
+<li><p>O documento XML utilizado foi:</p>
+<div class="sourceCode" id="cb29"><pre class="sourceCode xml"><code class="sourceCode xml"><a class="sourceLine" id="cb29-1" data-line-number="1"><span class="kw">&lt;catalogo&gt;</span></a>
+<a class="sourceLine" id="cb29-2" data-line-number="2"><span class="kw">&lt;livro</span><span class="ot"> nome=</span><span class="st">&quot;Programação Java&quot;</span><span class="kw">&gt;</span></a>
+<a class="sourceLine" id="cb29-3" data-line-number="3">  <span class="kw">&lt;autor</span><span class="ot"> nome=</span><span class="st">&quot;Paulo Junior&quot;</span><span class="kw">/&gt;</span></a>
+<a class="sourceLine" id="cb29-4" data-line-number="4"><span class="kw">&lt;/livro&gt;</span></a>
+<a class="sourceLine" id="cb29-5" data-line-number="5"><span class="kw">&lt;/catalogo&gt;</span></a></code></pre></div></li>
+<li><p>Resultado</p>
+<pre class="text"><code>catalogo
+    livro
+        nome=Programação Java
+        autor
+            nome=Paulo Junior</code></pre></li>
+</ul>
+</section><section id="exercício-4" class="slide level2">
+<h2>Exercício 4</h2>
+<ul>
+<li>Use o DOM para ler o catálogo de livros criado anteriormente e mostrar nome de todos os livros dentro de um controle como ListBox</li>
+</ul>
+</section></section>
+<section><section id="acesso-programático---sax" class="title-slide slide level1"><h1>Acesso Programático - SAX</h1></section><section id="simple-api-for-xml" class="slide level2">
+<h2>Simple API for XML</h2>
+<ul>
+<li><p>Está baseada em eventos</p></li>
+<li><p>É um padrão <em>de fato</em>, não é um padrão do W3C</p></li>
+<li><p>A versão preliminar chamado de SAX</p></li>
+<li><p>A versão atual é chamado SAX2</p>
+<ul>
+<li><p>Oficialmente disponível para Java</p></li>
+<li><p>Tem suporte para espaços identificadores</p></li>
+</ul></li>
+</ul>
+</section><section id="lendo-um-documento-xml-usando-sax" class="slide level2">
+<h2>Lendo um Documento XML Usando SAX</h2>
+<ul>
+<li><p>Utilizamos parser SAX do pacote MSXML 3.0</p></li>
+<li><p>Implementamos a interface <code>ContentHandler</code> para receber e tratar callbacks (eventos) SAX</p></li>
+<li><p>Usamos os eventos</p>
+<ul>
+<li><p>startElement</p></li>
+<li><p>endElement</p></li>
+</ul></li>
+<li><p>Para executar o exemplo podemos chamar o método <code>saxParse</code> passando como parâmetro o nome do arquivo XML</p></li>
+</ul>
+</section><section id="lendo-um-documento-xml-usando-sax-em-vb" class="slide level2">
+<h2>Lendo um Documento XML Usando SAX em VB</h2>
+<div class="sourceCode" id="cb31"><pre class="sourceCode vb"><code class="sourceCode monobasic"><a class="sourceLine" id="cb31-1" data-line-number="1">Implements IVBSAXContentHandler</a>
+<a class="sourceLine" id="cb31-2" data-line-number="2"><span class="kw">Const</span> MAX_DEPTH = 100</a>
+<a class="sourceLine" id="cb31-3" data-line-number="3"><span class="kw">Dim</span> nDepth <span class="kw">As</span> <span class="dt">Long</span>, sArray(MAX_DEPTH) <span class="kw">As</span> <span class="dt">String</span></a>
+<a class="sourceLine" id="cb31-4" data-line-number="4"><span class="kw">Private</span> <span class="kw">Sub </span>IVBSAXContentHandler_endElement( _</a>
+<a class="sourceLine" id="cb31-5" data-line-number="5">  strNamespaceURI <span class="kw">As</span> <span class="dt">String</span>, strLocalName <span class="kw">As</span> <span class="dt">String</span>, _</a>
+<a class="sourceLine" id="cb31-6" data-line-number="6">  strQName <span class="kw">As</span> <span class="dt">String</span>)</a>
+<a class="sourceLine" id="cb31-7" data-line-number="7">    <span class="kw">If </span>strQName = sArray(nDepth - 1) <span class="kw">Then</span> <span class="co">&#39;Found closing tag</span></a>
+<a class="sourceLine" id="cb31-8" data-line-number="8">        nDepth = nDepth - 1</a>
+<a class="sourceLine" id="cb31-9" data-line-number="9">    <span class="kw">End If</span></a>
+<a class="sourceLine" id="cb31-10" data-line-number="10"><span class="kw">End Sub</span></a>
+<a class="sourceLine" id="cb31-11" data-line-number="11"><span class="kw">Private</span> <span class="kw">Sub </span>IVBSAXContentHandler_startElement( _</a>
+<a class="sourceLine" id="cb31-12" data-line-number="12">  strNamespaceURI <span class="kw">As</span> <span class="dt">String</span>, strLocalName <span class="kw">As</span> <span class="dt">String</span>, _</a>
+<a class="sourceLine" id="cb31-13" data-line-number="13">  strQName <span class="kw">As</span> <span class="dt">String</span>, <span class="kw">ByVal</span> oAttributes <span class="kw">As</span> MSXML2.IVBSAXAttributes)</a>
+<a class="sourceLine" id="cb31-14" data-line-number="14">    sArray(nDepth) = strQName</a>
+<a class="sourceLine" id="cb31-15" data-line-number="15">    Debug.Print <span class="dt">String</span>(nDepth, vbTab) &amp; strQName</a>
+<a class="sourceLine" id="cb31-16" data-line-number="16">    nDepth = nDepth + 1</a>
+<a class="sourceLine" id="cb31-17" data-line-number="17"><span class="kw">End Sub</span></a>
+<a class="sourceLine" id="cb31-18" data-line-number="18"><span class="kw">Public</span> <span class="kw">Function </span>saxParse(<span class="kw">ByVal</span> fileName <span class="kw">As</span> <span class="dt">String</span>) <span class="kw">As</span> <span class="dt">Boolean</span></a>
+<a class="sourceLine" id="cb31-19" data-line-number="19">    <span class="kw">Dim</span> oReader <span class="kw">As</span> <span class="kw">New</span> SAXXMLReader</a>
+<a class="sourceLine" id="cb31-20" data-line-number="20">    <span class="kw">Set </span>oReader.contentHandler = <span class="kw">Me</span></a>
+<a class="sourceLine" id="cb31-21" data-line-number="21">    oReader.parseURL fileName</a>
+<a class="sourceLine" id="cb31-22" data-line-number="22">    <span class="kw">If </span>nDepth = 0 <span class="kw">Then</span></a>
+<a class="sourceLine" id="cb31-23" data-line-number="23">        saxParse = <span class="kw">True</span></a>
+<a class="sourceLine" id="cb31-24" data-line-number="24">    <span class="kw">Else</span></a>
+<a class="sourceLine" id="cb31-25" data-line-number="25">        saxParse = <span class="kw">False</span></a>
+<a class="sourceLine" id="cb31-26" data-line-number="26">    <span class="kw">End If</span></a>
+<a class="sourceLine" id="cb31-27" data-line-number="27"><span class="kw">End Function</span></a></code></pre></div>
+</section><section id="lendo-um-documento-xml-usando-sax---resultado" class="slide level2">
+<h2>Lendo um Documento XML Usando SAX - Resultado</h2>
+<pre class="text"><code>catalogo
+    autores
+        autor
+            primeiroNome
+            sobreNome
+    ...
+    livros
+        livro
+            autor
+                primeiroNome
+                sobreNome</code></pre>
+</section><section id="xml-e-java" class="slide level2">
+<h2>XML e Java</h2>
+<ul>
+<li><p>O mundo Java tem diversos APIs e parsers XML</p></li>
+<li><p>APIs</p>
+<ul>
+<li><p>JAXP da SUN</p></li>
+<li><p>JDOM</p></li>
+</ul></li>
+<li><p>Parsers DOM</p>
+<ul>
+<li><p>XML4J da IBM</p></li>
+<li><p>Xerces do Apache</p></li>
+</ul></li>
+<li><p>Parsers SAX</p>
+<ul>
+<li>Xerces do Apache</li>
+</ul></li>
+</ul>
+</section><section id="usando-jaxp---dom" class="slide level2">
+<h2>Usando JAXP - DOM</h2>
+<ul>
+<li><p>JAXP gera uma árvore DOM usando um parser SAX</p></li>
+<li><p>Pacotes JAXP utilizados no exemplo</p>
+<ul>
+<li><p>javax.xml.parsers</p>
+<ul>
+<li>Classes DocumentBuilder, DocumentBuilderFactory e ParserConfigurationException</li>
+</ul></li>
+<li><p>org.w3c.dom</p>
+<ul>
+<li>Classes Document, Node, NamedNodeMap e NodeList</li>
+</ul></li>
+<li><p>org.xml.sax</p>
+<ul>
+<li>Classe SAXException</li>
+</ul></li>
+</ul></li>
+</ul>
+</section><section id="usando-jaxp-dom---exemplo-java" class="slide level2">
+<h2>Usando JAXP DOM - Exemplo Java</h2>
+<div class="sourceCode" id="cb33"><pre class="sourceCode java"><code class="sourceCode java"><a class="sourceLine" id="cb33-1" data-line-number="1"><span class="kw">import</span><span class="im"> java.io.*;</span></a>
+<a class="sourceLine" id="cb33-2" data-line-number="2"><span class="kw">import</span><span class="im"> javax.xml.parsers.*;</span></a>
+<a class="sourceLine" id="cb33-3" data-line-number="3"><span class="kw">import</span><span class="im"> org.w3c.dom.*;</span></a>
+<a class="sourceLine" id="cb33-4" data-line-number="4"><span class="kw">import</span><span class="im"> org.xml.sax.*;</span></a>
+<a class="sourceLine" id="cb33-5" data-line-number="5"><span class="kw">class</span> LeitorDOM {</a>
+<a class="sourceLine" id="cb33-6" data-line-number="6">  <span class="kw">public</span> <span class="dt">static</span> <span class="dt">void</span> <span class="fu">main</span>(<span class="bu">String</span> args[]) <span class="kw">throws</span> <span class="bu">ParserConfigurationException</span>, <span class="bu">IOException</span>, <span class="bu">SAXException</span> {</a>
+<a class="sourceLine" id="cb33-7" data-line-number="7">    <span class="bu">DocumentBuilder</span> leitor = <span class="bu">DocumentBuilderFactory</span>.<span class="fu">newInstance</span>().<span class="fu">newDocumentBuilder</span>();</a>
+<a class="sourceLine" id="cb33-8" data-line-number="8">    <span class="bu">Document</span> documento = leitor.<span class="fu">parse</span>(<span class="st">&quot;catalogo.xml&quot;</span>);</a>
+<a class="sourceLine" id="cb33-9" data-line-number="9">    <span class="fu">processNode</span>(documento);</a>
+<a class="sourceLine" id="cb33-10" data-line-number="10">  }</a>
+<a class="sourceLine" id="cb33-11" data-line-number="11">  <span class="kw">private</span> <span class="dt">static</span> <span class="dt">void</span> <span class="fu">processNode</span>(<span class="bu">Node</span> no) {</a>
+<a class="sourceLine" id="cb33-12" data-line-number="12">      <span class="bu">System</span>.<span class="fu">out</span>.<span class="fu">println</span>(no.<span class="fu">getNodeName</span>());</a>
+<a class="sourceLine" id="cb33-13" data-line-number="13">      <span class="kw">if</span> (no.<span class="fu">hasAttributes</span>()) {</a>
+<a class="sourceLine" id="cb33-14" data-line-number="14">          <span class="bu">NamedNodeMap</span> attr = no.<span class="fu">getAttributes</span>();</a>
+<a class="sourceLine" id="cb33-15" data-line-number="15">          <span class="kw">for</span> (<span class="dt">int</span> i=<span class="dv">0</span>; i &lt; attr.<span class="fu">getLength</span>(); i++) {</a>
+<a class="sourceLine" id="cb33-16" data-line-number="16">              <span class="bu">System</span>.<span class="fu">out</span>.<span class="fu">println</span>(attr.<span class="fu">item</span>(i).<span class="fu">getNodeName</span>());</a>
+<a class="sourceLine" id="cb33-17" data-line-number="17">          }</a>
+<a class="sourceLine" id="cb33-18" data-line-number="18">      }</a>
+<a class="sourceLine" id="cb33-19" data-line-number="19">      <span class="kw">if</span> (no.<span class="fu">hasChildNodes</span>()) {</a>
+<a class="sourceLine" id="cb33-20" data-line-number="20">          <span class="bu">NodeList</span> nos = no.<span class="fu">getChildNodes</span>();</a>
+<a class="sourceLine" id="cb33-21" data-line-number="21">          <span class="kw">for</span> (<span class="dt">int</span> i=<span class="dv">0</span>; i &lt; nos.<span class="fu">getLength</span>(); i++) {</a>
+<a class="sourceLine" id="cb33-22" data-line-number="22">              <span class="fu">processNode</span>(nos.<span class="fu">item</span>(i));</a>
+<a class="sourceLine" id="cb33-23" data-line-number="23">          }</a>
+<a class="sourceLine" id="cb33-24" data-line-number="24">      }</a>
+<a class="sourceLine" id="cb33-25" data-line-number="25">  }</a>
+<a class="sourceLine" id="cb33-26" data-line-number="26">}</a></code></pre></div>
+</section><section id="usando-jaxp-sax" class="slide level2">
+<h2>Usando JAXP – SAX</h2>
+<ul>
+<li><p>JAXP vem com um parser SAX</p>
+<ul>
+<li>Isso não impede a utilização de outro parser SAX qualquer</li>
+</ul></li>
+<li><p>Pacotes JAXP utilizados no exemplo:</p>
+<ul>
+<li><p>javax.xml.parsers</p>
+<ul>
+<li>Classes SAXParser, SAXParserFactory e ParserConfigurationException</li>
+</ul></li>
+<li><p>org.xml.sax</p>
+<ul>
+<li>Classe SAXException</li>
+</ul></li>
+<li><p>org.xml.sax.helpers</p>
+<ul>
+<li>Classe DefaultHandler</li>
+</ul></li>
+</ul></li>
+</ul>
+</section><section id="usando-jaxp-sax---exemplo-java" class="slide level2">
+<h2>Usando JAXP SAX - Exemplo Java</h2>
+<div class="sourceCode" id="cb34"><pre class="sourceCode java"><code class="sourceCode java"><a class="sourceLine" id="cb34-1" data-line-number="1"><span class="kw">import</span><span class="im"> java.io.*;</span></a>
+<a class="sourceLine" id="cb34-2" data-line-number="2"><span class="kw">import</span><span class="im"> javax.xml.parsers.*;</span></a>
+<a class="sourceLine" id="cb34-3" data-line-number="3"><span class="kw">import</span><span class="im"> org.xml.sax.*;</span></a>
+<a class="sourceLine" id="cb34-4" data-line-number="4"><span class="kw">import</span><span class="im"> org.xml.sax.helpers.*;</span></a>
+<a class="sourceLine" id="cb34-5" data-line-number="5"><span class="kw">class</span> LeitorSAX <span class="kw">extends</span> <span class="bu">DefaultHandler</span> {</a>
+<a class="sourceLine" id="cb34-6" data-line-number="6">  <span class="kw">public</span> <span class="dt">static</span> <span class="dt">void</span> <span class="fu">main</span>(<span class="bu">String</span> args[]) <span class="kw">throws</span> <span class="bu">SAXException</span>, <span class="bu">ParserConfigurationException</span>, <span class="bu">IOException</span> {</a>
+<a class="sourceLine" id="cb34-7" data-line-number="7">    <span class="bu">SAXParser</span> leitor = <span class="bu">SAXParserFactory</span>.<span class="fu">newInstance</span>().<span class="fu">newSAXParser</span>();</a>
+<a class="sourceLine" id="cb34-8" data-line-number="8">    leitor.<span class="fu">parse</span>(<span class="st">&quot;catalogo.xml&quot;</span>, <span class="kw">new</span> <span class="fu">LeitorSAX</span>());</a>
+<a class="sourceLine" id="cb34-9" data-line-number="9">  }</a>
+<a class="sourceLine" id="cb34-10" data-line-number="10">  <span class="kw">public</span> <span class="dt">void</span> <span class="fu">startElement</span>(<span class="bu">String</span> namespaceURI, <span class="bu">String</span> lName, <span class="bu">String</span> qName, <span class="bu">Attributes</span> attrs) <span class="kw">throws</span> <span class="bu">SAXException</span> {</a>
+<a class="sourceLine" id="cb34-11" data-line-number="11">      <span class="bu">System</span>.<span class="fu">out</span>.<span class="fu">println</span>(qName);</a>
+<a class="sourceLine" id="cb34-12" data-line-number="12">  }</a>
+<a class="sourceLine" id="cb34-13" data-line-number="13">}</a></code></pre></div>
+<ul>
+<li>Empty methods have been pruned</li>
+</ul>
+</section><section id="exercício-5" class="slide level2">
+<h2>Exercício 5</h2>
+<ul>
+<li>Utilize SAX para ler o catálogo de livros criado anteriormente e mostrar o nome de todos os livros dentro de um controle como ListBox</li>
+</ul>
+</section><section id="jdom" class="slide level2">
+<h2>JDOM</h2>
+<ul>
+<li><p>Limitações do DOM</p>
+<ul>
+<li><p>Independente da Linguagem</p>
+<ul>
+<li><p>Não foi desenhado com a linguagem Java em mente</p></li>
+<li><p>Não faz uso das classes de coleção existentes</p></li>
+</ul></li>
+<li><p>Herança de classes estrita</p>
+<ul>
+<li>Demais objetos são derivados do objeto Node</li>
+</ul></li>
+<li><p>Baseado em Interface</p></li>
+</ul></li>
+<li><p>Vantagens da <a href="http://www.jdom.org">JDOM</a></p>
+<ul>
+<li><p>Para Java</p></li>
+<li><p>Hierarquias de classes inexistentes</p></li>
+</ul></li>
+</ul>
+</section><section id="método-pull-em-microsoft-.net" class="slide level2">
+<h2>Método Pull em Microsoft .NET</h2>
+<ul>
+<li><p>A API SAX utiliza callbacks para avisar quando elementos são encontrados</p></li>
+<li><p>O método Pull utiliza chamadas explícitas a um método que recupera um elemento após outro</p></li>
+<li><p>Implementada pela classe XmlTextReader do espaço identificador System.Xml</p></li>
+<li><p>O exemplo utiliza a linguagem C## da plataforma .NET</p></li>
+</ul>
+</section><section id="metodo-pull-para-ler-documento-xml-em-c" class="slide level2">
+<h2>Método Pull para ler documento XML em C#</h2>
+<div class="sourceCode" id="cb35"><pre class="sourceCode c#"><code class="sourceCode cs"><a class="sourceLine" id="cb35-1" data-line-number="1"><span class="kw">using</span> System;</a>
+<a class="sourceLine" id="cb35-2" data-line-number="2"><span class="kw">using</span> System.<span class="fu">Xml</span>;</a>
+<a class="sourceLine" id="cb35-3" data-line-number="3"></a>
+<a class="sourceLine" id="cb35-4" data-line-number="4"><span class="kw">public</span> <span class="kw">class</span> TestXMLReader {</a>
+<a class="sourceLine" id="cb35-5" data-line-number="5">  <span class="kw">public</span> <span class="kw">static</span> <span class="dt">void</span> <span class="fu">Main</span>() {</a>
+<a class="sourceLine" id="cb35-6" data-line-number="6">    XmlTextReader reader = <span class="kw">new</span> <span class="fu">XmlTextReader</span>(<span class="st">&quot;teste.xml&quot;</span>);</a>
+<a class="sourceLine" id="cb35-7" data-line-number="7">    <span class="kw">while</span> (reader.<span class="fu">Read</span>()) {</a>
+<a class="sourceLine" id="cb35-8" data-line-number="8">      <span class="kw">if</span> (reader.<span class="fu">NodeType</span> == XmlNodeType.<span class="fu">Element</span>) {</a>
+<a class="sourceLine" id="cb35-9" data-line-number="9">        Console.<span class="fu">WriteLine</span>(<span class="st">&quot;Found Element: &quot;</span> + reader.<span class="fu">Name</span>);</a>
+<a class="sourceLine" id="cb35-10" data-line-number="10">        <span class="kw">if</span> (reader.<span class="fu">HasAttributes</span>) {</a>
+<a class="sourceLine" id="cb35-11" data-line-number="11">          <span class="kw">while</span> (reader.<span class="fu">MoveToNextAttribute</span>())  {</a>
+<a class="sourceLine" id="cb35-12" data-line-number="12">            Console.<span class="fu">WriteLine</span>(<span class="st">&quot;Found Attribute: &quot;</span> + reader.<span class="fu">Name</span>);</a>
+<a class="sourceLine" id="cb35-13" data-line-number="13">          }</a>
+<a class="sourceLine" id="cb35-14" data-line-number="14">        }</a>
+<a class="sourceLine" id="cb35-15" data-line-number="15">      }</a>
+<a class="sourceLine" id="cb35-16" data-line-number="16">    }</a>
+<a class="sourceLine" id="cb35-17" data-line-number="17">    reader.<span class="fu">Close</span>();</a>
+<a class="sourceLine" id="cb35-18" data-line-number="18">  }</a>
+<a class="sourceLine" id="cb35-19" data-line-number="19">}</a></code></pre></div>
+</section></section>
+<section><section id="transformando-xml-css" class="title-slide slide level1"><h1>Transformando XML – CSS</h1></section><section id="cascading-style-sheets-css" class="slide level2">
+<h2>Cascading Style Sheets (CSS)</h2>
+<ul>
+<li><p>CSS significa Folhas de Estilo Em Cascata</p></li>
+<li><p>É utilizada com HTML</p></li>
+<li><p>Pode ser utilizada com XML</p></li>
+<li><p>Determina a formatação visual dos elementos</p></li>
+<li><p>Qualquer navegador com suporte a CSS pode formatar os elementos</p>
+<ul>
+<li><p>IE 5.x ou superior</p></li>
+<li><p>Netscape 6.x ou superior</p></li>
+</ul></li>
+<li><p>Padrão atualmente no nível 2 (CSS2)</p></li>
+</ul>
+</section><section id="exemplo-de-uso-da-css-com-xml" class="slide level2">
+<h2>Exemplo de uso da CSS com XML</h2>
+<ul>
+<li><p>Vamos abrir este documento XML em IE 5.0</p>
+<div class="sourceCode" id="cb36"><pre class="sourceCode xml"><code class="sourceCode xml"><a class="sourceLine" id="cb36-1" data-line-number="1"><span class="kw">&lt;?xml</span> version=&quot;1.0&quot; encoding=&quot;ISO-8859-1&quot;<span class="kw">?&gt;</span></a>
+<a class="sourceLine" id="cb36-2" data-line-number="2"><span class="kw">&lt;?XML:stylesheet</span> type=&quot;text/css&quot; href=&quot;artigo.css&quot;<span class="kw">?&gt;</span></a>
+<a class="sourceLine" id="cb36-3" data-line-number="3"><span class="kw">&lt;artigo&gt;</span></a>
+<a class="sourceLine" id="cb36-4" data-line-number="4">  <span class="kw">&lt;titulo&gt;</span>Frederico o Grande encontra Bach<span class="kw">&lt;/titulo&gt;</span></a>
+<a class="sourceLine" id="cb36-5" data-line-number="5">  <span class="kw">&lt;autor&gt;</span>Johann Nikolaus Forkel<span class="kw">&lt;/autor&gt;</span></a>
+<a class="sourceLine" id="cb36-6" data-line-number="6">  <span class="kw">&lt;paragrafo&gt;</span></a>
+<a class="sourceLine" id="cb36-7" data-line-number="7">    Uma noite, quando ele estava acabando de preparar a</a>
+<a class="sourceLine" id="cb36-8" data-line-number="8">    <span class="kw">&lt;instrumento&gt;</span>flauta<span class="kw">&lt;/instrumento&gt;</span> e seus músicos estavam</a>
+<a class="sourceLine" id="cb36-9" data-line-number="9">    reunidos, um oficial trouxe a lista de convidados.</a>
+<a class="sourceLine" id="cb36-10" data-line-number="10">  <span class="kw">&lt;/paragrafo&gt;</span></a>
+<a class="sourceLine" id="cb36-11" data-line-number="11"><span class="kw">&lt;/artigo&gt;</span></a></code></pre></div></li>
+</ul>
+</section><section id="exemplo-de-uso-de-css---artigo.css" class="slide level2">
+<h2>Exemplo de uso de CSS - artigo.css</h2>
+<div class="sourceCode" id="cb37"><pre class="sourceCode css"><code class="sourceCode css"><a class="sourceLine" id="cb37-1" data-line-number="1">instrumento { <span class="kw">display</span>: <span class="dv">inline</span> }</a>
+<a class="sourceLine" id="cb37-2" data-line-number="2">artigo, titulo, autor, paragrafo { <span class="kw">display</span>: <span class="dv">block</span> }</a>
+<a class="sourceLine" id="cb37-3" data-line-number="3">titulo { <span class="kw">font-size</span>: <span class="dv">1.3em</span> }</a>
+<a class="sourceLine" id="cb37-4" data-line-number="4">autor { <span class="kw">font-style</span>: <span class="dv">italic</span> }</a>
+<a class="sourceLine" id="cb37-5" data-line-number="5">artigo, titulo, autor, paragrafo { <span class="kw">margin</span>: <span class="dv">0.5em</span> }</a>
+<a class="sourceLine" id="cb37-6" data-line-number="6">instrumento { <span class="kw">font-style</span>: <span class="dv">italic</span> }</a></code></pre></div>
+</section><section id="seletores" class="slide level2">
+<h2>Seletores</h2>
+<ul>
+<li><p>Uma folha de estilo contém um conjunto de regras compostas de</p>
+<ul>
+<li><p>Seletores</p></li>
+<li><p>Blocos de declarações</p></li>
+</ul></li>
+<li><p>Um seletor especifica um ou mais elemento XML</p></li>
+<li><p>Exemplo</p>
+<div class="sourceCode" id="cb38"><pre class="sourceCode css"><code class="sourceCode css"><a class="sourceLine" id="cb38-1" data-line-number="1">artigo, titulo, autor, paragrafo { <span class="kw">display</span>: <span class="dv">block</span> }</a></code></pre></div>
+<ul>
+<li><p><code>artigo</code>, <code>titulo</code>, <code>autor</code> e <code>paragrafo</code> são seletores</p></li>
+<li><p>A declaração CSS começa depois de <code>{</code> e termina com <code>}</code></p></li>
+</ul></li>
+</ul>
+</section><section id="tipos-de-seletores" class="slide level2">
+<h2>Tipos de Seletores</h2>
+<ul>
+<li><p>Seletor Universal</p>
+<div class="sourceCode" id="cb39"><pre class="sourceCode css"><code class="sourceCode css"><a class="sourceLine" id="cb39-1" data-line-number="1">* { <span class="kw">color</span>: <span class="dv">blue</span> }</a></code></pre></div></li>
+<li><p>Seletor de tipo</p>
+<div class="sourceCode" id="cb40"><pre class="sourceCode css"><code class="sourceCode css"><a class="sourceLine" id="cb40-1" data-line-number="1">H1 { <span class="kw">color</span>: <span class="dv">blue</span> }</a></code></pre></div></li>
+<li><p>Seletor de classe (válido somente para HTML)</p>
+<div class="sourceCode" id="cb41"><pre class="sourceCode css"><code class="sourceCode css"><a class="sourceLine" id="cb41-1" data-line-number="1">p<span class="fu">.titulo</span> { <span class="kw">color</span>: <span class="dv">red</span> }</a></code></pre></div></li>
+<li><p>Seletor de ID</p>
+<div class="sourceCode" id="cb42"><pre class="sourceCode css"><code class="sourceCode css"><a class="sourceLine" id="cb42-1" data-line-number="1">H1<span class="pp">#chapter1</span> { <span class="kw">text-align</span>: <span class="dv">center</span> }</a></code></pre></div></li>
+</ul>
+</section><section id="mais-tipos-de-seletores" class="slide level2">
+<h2>Mais Tipos de Seletores</h2>
+<ul>
+<li><p>Seletor de descendente</p>
+<div class="sourceCode" id="cb43"><pre class="sourceCode css"><code class="sourceCode css"><a class="sourceLine" id="cb43-1" data-line-number="1">paragrafo { <span class="kw">color</span>: <span class="dv">blue</span> }</a>
+<a class="sourceLine" id="cb43-2" data-line-number="2">instrumento { <span class="kw">color</span>: <span class="dv">blue</span>; <span class="kw">font-style</span>: <span class="dv">italic</span> }</a>
+<a class="sourceLine" id="cb43-3" data-line-number="3">paragrafo instrumento { <span class="kw">color</span>: <span class="dv">red</span> }</a></code></pre></div></li>
+<li><p>Seletor de filho</p>
+<div class="sourceCode" id="cb44"><pre class="sourceCode css"><code class="sourceCode css"><a class="sourceLine" id="cb44-1" data-line-number="1">BODY &gt; P { <span class="kw">line-height</span>: <span class="dv">1.3</span> }</a></code></pre></div></li>
+<li><p>Seletor de irmão adjacente</p>
+<div class="sourceCode" id="cb45"><pre class="sourceCode css"><code class="sourceCode css"><a class="sourceLine" id="cb45-1" data-line-number="1">H1 + H2 { <span class="kw">margin-top</span>: <span class="dv">-5mm</span> }</a></code></pre></div></li>
+<li><p>Seletor de atributos</p>
+<div class="sourceCode" id="cb46"><pre class="sourceCode css"><code class="sourceCode css"><a class="sourceLine" id="cb46-1" data-line-number="1">*<span class="ex">[LANG=fr]</span> { <span class="kw">display</span>: <span class="dv">none</span> }</a></code></pre></div></li>
+</ul>
+</section><section id="pseudo-elementos-e-pseudo-classes" class="slide level2">
+<h2>Pseudo-elementos e Pseudo-Classes</h2>
+<ul>
+<li><p>Pseudo-classes</p>
+<ul>
+<li><p><code>:first-child</code>, <code>:link</code>, <code>:visited</code>, <code>:hover</code>, <code>:active</code>, <code>:focus</code> e <code>:lang</code></p>
+<div class="sourceCode" id="cb47"><pre class="sourceCode css"><code class="sourceCode css"><a class="sourceLine" id="cb47-1" data-line-number="1">DIV &gt; P<span class="in">:first-child</span> { <span class="kw">text-indent</span>: <span class="dv">0</span> }</a>
+<a class="sourceLine" id="cb47-2" data-line-number="2">A<span class="in">:link</span> { <span class="kw">color</span>: <span class="dv">red</span> }</a>
+<a class="sourceLine" id="cb47-3" data-line-number="3">A<span class="in">:focus</span> { <span class="kw">background</span>: <span class="dv">yellow</span> }</a>
+<a class="sourceLine" id="cb47-4" data-line-number="4">HTML<span class="in">:lang(fr)</span> { <span class="kw">quotes</span>: <span class="st">&#39;« &#39;</span> <span class="st">&#39; »&#39;</span> }</a></code></pre></div></li>
+</ul></li>
+<li><p>Pseudo-elementos</p>
+<ul>
+<li><p><code>:first-line</code>, <code>:first-letter</code>, <code>:before</code> e <code>:after</code></p>
+<div class="sourceCode" id="cb48"><pre class="sourceCode css"><code class="sourceCode css"><a class="sourceLine" id="cb48-1" data-line-number="1">P<span class="in">:first-line</span> { <span class="kw">text-transform</span>: <span class="dv">uppercase</span> }</a>
+<a class="sourceLine" id="cb48-2" data-line-number="2">P<span class="in">:first-letter</span> { <span class="kw">color</span>: <span class="dv">green</span>; <span class="kw">font-size</span>: <span class="dv">200%</span> }</a>
+<a class="sourceLine" id="cb48-3" data-line-number="3">H1<span class="in">:before</span> {<span class="kw">content</span>: <span class="fu">counter</span>(chapno, <span class="dv">upper-roman</span>) <span class="st">&quot;. &quot;</span>}</a></code></pre></div></li>
+</ul></li>
+</ul>
+</section><section id="valor-das-propriedades" class="slide level2">
+<h2>Valor das Propriedades</h2>
+<ul>
+<li><p>Propriedades estão contidas dentro de um bloco de declaração</p></li>
+<li><p>Valores de alguns tipos básicos</p></li>
+<li><p>Comprimento</p>
+<ul>
+<li>Um número seguido de uma unidade de medida como <code>em</code>, <code>px</code>, <code>cm</code> e <code>mm</code></li>
+</ul></li>
+<li><p>Porcentagem</p></li>
+<li><p>Cor</p>
+<ul>
+<li><p>Um valor hexadecimal, por exemplo, <code>#FFFFFF</code> é a cor branca</p></li>
+<li><p>Uma especificação RGB explicita, por exemplo, <code>rgb(0, 0, 255)</code> ou <code>rgb(0%, 0%, 100%)</code></p></li>
+<li><p>Palavras chaves</p></li>
+</ul></li>
+<li><p>URL (para imagens)</p></li>
+</ul>
+</section><section id="propriedades-da-caixa" class="slide level2">
+<h2>Propriedades da Caixa</h2>
+<ul>
+<li><p>Os elementos são pintados dentro de uma caixa, retângulo por padrão</p></li>
+<li><p>Display</p>
+<ul>
+<li><p><code>display: block</code> cria um novo bloco contendo o texto do elemento</p></li>
+<li><p><code>display: inline</code> evita criar um novo bloco e mostra o texto dentro do bloco do elemento pai</p></li>
+<li><p><code>display: none</code> suprime o elemento</p></li>
+</ul></li>
+<li><p>Margem</p>
+<ul>
+<li><code>margin-top</code>, <code>margin-right</code>, <code>margin-bottom</code> e <code>margin-left</code>, ou apenas <code>margin</code></li>
+</ul></li>
+<li><p>Padding</p>
+<ul>
+<li><code>padding-top</code>, <code>padding-right</code>, <code>padding-bottom</code> e <code>padding-left</code>, ou apenas <code>padding</code></li>
+</ul></li>
+<li><p>Borda</p>
+<ul>
+<li><p>Tipo <code>none</code>, <code>dotted</code>, <code>dashed</code>, <code>solid</code>, <code>double</code>, <code>groove</code>, <code>ridge</code>, <code>inset</code>, ou <code>outset</code>, por exemplo, <code>border: solid, dotted, double, inset;</code></p></li>
+<li><p>Largura <code>border-top-width</code>, <code>border-right-width</code>, <code>border-bottom-width</code> e <code>border-left-width</code>, ou apenas <code>border-width</code></p></li>
+</ul></li>
+</ul>
+</section><section id="propriedades-de-texto-e-fonte" class="slide level2">
+<h2>Propriedades de Texto e Fonte</h2>
+<ul>
+<li><p>Nome da fonte - <code>font-family</code></p></li>
+<li><p>Comprimento da fonte - <code>font-size</code></p></li>
+<li><p>Estilo e peso - <code>font-style</code> e <code>font-weight</code></p></li>
+<li><p>Alinhamento do Texto - <code>text-align</code> e <code>vertical-align</code></p></li>
+<li><p>Endentação e Altura de Linha - <code>text-indent</code> e <code>line-height</code></p></li>
+</ul>
+</section><section id="propriedades-da-cor-e-fundo" class="slide level2">
+<h2>Propriedades da Cor e Fundo</h2>
+<ul>
+<li><p>Cor do primeiro plano - <code>color</code></p></li>
+<li><p>Cor de fundo - <code>background-color</code></p></li>
+<li><p>Cor da borda - <code>border-color</code></p></li>
+<li><p>Imagem de fundo - <code>background-image</code></p></li>
+</ul>
+</section><section id="importando-uma-folha-de-estilo" class="slide level2">
+<h2>Importando uma Folha de Estilo</h2>
+<ul>
+<li><p>Uma folha de estilo pode ser importada dentro da outra</p></li>
+<li><p>Regras especificadas no arquivo atual sobrepõem as regras do arquivo importado</p></li>
+<li><p>Utilizamos <code>@import</code> para fazer a importação</p></li>
+<li><p>Exemplo</p>
+<div class="sourceCode" id="cb49"><pre class="sourceCode css"><code class="sourceCode css"><a class="sourceLine" id="cb49-1" data-line-number="1"><span class="im">@import</span> url(http://www<span class="dv">.</span>w3<span class="dv">.</span>org/css/<span class="dv">default.</span>css);</a></code></pre></div></li>
+</ul>
+</section><section id="exercício-6" class="slide level2">
+<h2>Exercício 6</h2>
+<ul>
+<li>Crie um documento CSS para mostrar o catálogo de livros dentro do browser</li>
+</ul>
+</section></section>
+<section><section id="transformando-xml-xsl" class="title-slide slide level1"><h1>Transformando XML – XSL</h1></section><section id="extended-stylesheet-language" class="slide level2">
+<h2>eXtended Stylesheet Language</h2>
+<ul>
+<li><p>CSS faz transformações básicas</p></li>
+<li><p>Queremos transformar</p>
+<ul>
+<li><p>XML para XML</p></li>
+<li><p>XML para HTML</p></li>
+<li><p>Agrupar, filtrar, calcular e classificar</p></li>
+</ul></li>
+<li><p>Não estamos falando em deixar de usar a CSS</p></li>
+</ul>
+</section><section id="conceito-de-xsl" class="slide level2">
+<h2>Conceito de XSL</h2>
+<ul>
+<li><p>O processo de usar XSLT</p>
+<ul>
+<li><p>Ler documento XML</p></li>
+<li><p>Aplicar Transformações</p></li>
+<li><p>Gravar documento resultante</p></li>
+</ul></li>
+</ul>
+<p><img data-src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAeQAAABxCAYAAAAEctC9AAAgAElEQVR4nO3deUBU5f748fcMyD4wIIKgIgIqIoYoIgIqaq7ZlZtbmuXWYmlZWl39mbncrJtdvZe6tiiZJlclMpdvNzXT3AgXTJFCTTFQtmTfGbb5/TFJoewuM+rn9Y+cc57znM9zzuN85jznzDkKrVarRQghhBB6pdR3AEIIIYSQhCyEEEIYBEnIQgghhAGQhCyEEEIYAEnIQgghhAEwrm9Bhyfa0LFtu7sZixAAlGrKGN57NG9P/6e+QxFCiLum3oTs2rY9YfNm3c1YhAAg7lIiFxIr9B2GEELcVTJkLYQQQhgASchCCCGEAZCELIQQQhgASchCCCGEAZCELIQQQhgASchCCCGEAZCELIQQQhgASchCCCGEAZCELIQQQhiAW0rIcydv5Nkx63h2zDpmj1/Pspe+5OutP6Ipuz+eshS2bDfX0vKbXP5aWj5zJ28k6WJmrfk7N8eycsEuqqqqAd1+e2NWJFqttla5stJyXnp8AysX7KqZN3fyRn46dbVJ2489msg/Xt/JnAmfMWf8elbM387RfefrLZ/1WyHPjllHZWVVg/U2tVxjblc9QghxP6r30ZlN9dKbI/Du3YGigjKSE7PYvukE8aeu8trbozFuZXQ7YtSb9Cu5zSrv4GzDxKf7EfHRURa+NwYjIyXX0vM5svc8C1bqpq+rrKjiXFwqXj3b18w7cTgRM/NWLYp197Yz7NkWx/jpffHu7YKRsZJzZ1KIDI8hPSWP8dMDblrH3lHF2p3PNFp3U8sJIYRouVtOyNdZWZvR3bc9Hd3tWTZ3G9H7LzBwhBcAF+LTiPrsGBkp+djYmjN4tDdDHvUGIOFMClHrj3MtPR+n9momzOxHF28n0lPyWDI7qlYiWD53G6Mm+NKpcxvenB3F9JdDiAyPobK8iglPB1BZUc32TSdRKGDSs4H4Bbtz6VwGUeuPk5qUjUptzthpffELcgMg+1ohb86O4rnXh7B1XQyF+aX4+HdkxishvP3qDnKyinnj+S+YPCsIp/bqetvwZ4GDu3DuTCoHdycwZLQ3keHHGD8jAHtHVa1y3Xt14PCec7US8uG95+jeqz2/pTb9rBygsKCUr7f+yLSXBtKnv3vNfP8BHlirzfnXm98waFR3AJbMieKxqf5s//wk85aP4h9/28WH22ZgbGzED/t/4evIHyku0jD8rw9xLi6VwCFd6OzlxP97disfbptBfk5JvftMqdR94Th9LIkdESfJ+q0QlY05j0zwpf8wz2a1SQghHjS3/RqylbUZfYLdSDidCkBRQRkfvrOP4KGerPp8CjNeGcSuzbGci0ulsKCMj97Zx6jxPVkd8RQDR3oRvuoAlZXVDW7DyNiIivIqriRmsXzNeEY/3osvwo+RmVHAik8mMnRMD3Zt+ZHC/FLClu7Gf4A7qyKeYupLA9kQdoj0q7m16omPvcqiVaEsWDmGM8eTuRCfzoKVYwB466MJ+AW51duGukyeFUTM/l84uDsBSysT+g70uKlMnwHunI29Ql5OCQDJiVnkZhXTzaf5b9i6fP4aWq2W3kGdblrm+VA71HaWnItLxbiVrr35OSWs2vQkKrV5TbmcrCI+/89hHpvqzz/CJ6Epq+TK5WwUCkWd+76ufQZQrqlk05ojPPp4L8I2T2X8jL5EfHiE/NySZrdLCCEeJLftDPnPLKxMufprDgDn49OwtDIlZKTubNnd0xEf/47EnUimIK8UW3urmrO6/sM8m3gmpbv2GjLKC3MLE7x7dyAyPIahoT1+n3bh68jT/Hw6BZWNec2ZrGcPZ3wDXIk9eplHJ/WuqWdo6ENYqsywVJnh7GJLTmZRra011Ia6Euj1mDZ/HM2Li4fX2QK71pZ07eHM0X3nGT2xF4f3nCMgpDNKo+Z/Ryou0mCttqg5Q72R2s6C4sKymvYGPdwVU1PjWsn2QnwaDs42NaMHj07qxaE9CXXU1vA+MzE1ZvWmJ2tK9w50o5XJIbIzi7C2Ma+jvrptP/8V7y77d5PLN8bB0oHlg5Yz03cmxso70u2FEOKW3JFPpsz0AmzsLAAoyC3BWl37g1ilNicvu5iigjKsVKYt3o6Vygyg5tqsylq3HSNjJdXV1RQXampuJPqzwCFdak1bq81q/jY2VlJdXftmq4baUJcrl7M4vPc846b3ZfMn0Szu5oiF5c3tDHq4K1+uP8bg0d6cPJLI6//4CxmpeU1peu1YrM3Izy2hsrIKY+Obr9vn5ZRgbWtRM31jWwBKistR2fx5Pxhh29qy3m3Wt8+0Wi3/++I0MQd+IT+3lMqKKt2yG25ga0x/l/58MvrpZq1THy1aIn+KZO7uubwX/R7LBy1nUo9JKFA0vrIQQtwltz0h5+eWcOZEMpOfCwLAxs6iZlj2jzKl2NhaYGNrXu9QplKp+7CsrKzG2FiXcAvzS5sVi529Je062rHk/bHNbUYtDbXhRpqyCsL/eYBx0/sSOLgLVy5ns3XtD8x4ZdBNZXv6d2Tzx9FErY/Bwdma9q52LUrIHl5tMTZWcuJQ4k1fNs7Hp1GQX4rXn87kFXXkIXNzE0qKNDXTVVXV5GU3f5j57Mkr7N/1Ey8sGoqLexuMlArmTt7Y7HrsLdoQ4hrS7PXqM8h1EEtClvDW4beYtmMa70a/y4rBKxjdZfRt24YQQtyK23YNWVNWwYX4NMKW7sbFzR6/YN3Qp2cPZ0pLyjm0JwFNWQUXEzI4cywJ3wBXuvm0Iz+3lCPfnqekWMPxQ5eYN+VzNGUV2NiaY2SkIO5EEpqyCr7dcZby8ub9XKbrQ+3Izynm6L7zaDSVpKfk8farO7iYkN7oukqlAoUCcrKL8fBqW28bbrRl7Q84u9gSOFiXGCc9049zZ9OIPZp4U1njVkb4D3An+rtfasq3hLmFCX99sg9b1kZz5Nvz5OWUoNFUcuqHy6x7bz+PTPBF3cDZLoCbpwOpybmcjb1CaUk5O/8bi5bmndWC7kuThcqUNo7WlBZr2LXlFCYmxmRmFN70M6+7zcnKiTWj1nDhxQv0bNuTMVvH0O/TfhxLOabXuIQQAm7DGfL7y/cAugTW2sEK/wEejBzXs2YY2VJlxgsLhxK1/hhR64+jtrNg4tP96NzdCYA5i4ez+eNotqyNxtFZzcz5gzE10/30J3RKHyLWHKVaq2XEWB9c3OybFZuFpQlzFg8nMjyGretisFKZEjzMk85eTo2uq1Qq8Qt2I2zpbkKf8GuwDdedPJLIz6dTeDPssZp5liozps4ZwKerv8fd0xFbe6ta6wQP9eTQnnP4D7j5xq/rru/j61zcW/PG6sdqzRs82htrWwv27ThLZHgMaLU4udgyfkYAASGdG21v23Zqxk3vy6b/HKaqSssjE31xdLJp9qBu7yA3Th5J5I1Zkdg5qJg8K4hyTSUbPzjE0/NvHiXQh07qTmwM3ciC4AUsPrCYfp/2Y6THSN4d+i49HHroOzwhxANKoa3ntKX/fF/C5s262/EIA7Lg6S08MSuIHn4ud3W7cZcSuZBYwT9m/OuubO/H9B9ZdGARey/tZXz38awYvAIPu/q/IAkhxJ0gj84UgO6Sw8oFuzhzPImy0nKO7jtPUUEZHT2aNypxL+rl1IvdT+zmh5k/cCX/Cp7/8eSZ/3uG9KLGL20IIcTtIr//EACYmrUieJgnX3x6jLycYtq0tebp+YOwVt9849r9KqB9ADEzY9h9aTd/2/c3Ov27E7P9Z7Oo/yLszO30HZ4Q4j4nCVnUCBzc5ZZuLrtfjPQYyQiPEXyZ8CULv1vIulPrmB84n/n95mNlYtV4BUII0QIyZC1EHRQoGO81ngsvXuCDUR+w/vR6OoV1YnXMasqryvUdnhDiPiQJWYgGGCmMmOozlYsvXmRpyFLejX4X9/fdCf8xnCqtvLVKCHH7SEIWoglMjEyY3Wc2SS8n8aL/i7z67at4rfHii5+/aNHvtYUQ4kaSkIVoBnNjc14Pep3kV5KZ2H0i03dOp/cnvdlzaU/jKwshRAMkIQvRAjamNiwftJzkl5MZ1GkQoVtD6fdpP2LTYvUdmhDiHiUJWYhbYG9hz6phq0icm4iPow/9Pu3Ho1seJSGzrjdlCSFE/ep9UpfXM678pX/g3Y5HCNKzs3G28eKdu/SkrtspMTeRpQeXsiV+CxO9J/LW4LfopNa9pzopLwnfT3z5fur39GzbU8+RCiEMTb0JeVfM9rsdixA13J07072jt77DaLGfrv3E4u8X879f/sfMXjNZFrKM1/e9zsa4jfRs25Pvp36P2kyt7zCFEAak3oQshLh1J1JP8MaBNzicfBhN1R+vt5zbdy7/HvFvPUYmhDA0kpCFuAtG/XcUuy/trjVv+8TthHqG6ikiIYShkYQsxB2WlJdEp7BON803b2VO0twkHCwd9BCVEMLQSEIWoplyCrOZv3Y21drqJpU/k3GavLK8OpeZGJkS2EFunmwqBTBzxBz6ew/Qdyh1+ikpnn9uewv5WBX1cWvrzpIp79S5TF4uIUQzlWhKyMhL5vmxjzSp/FgeusMRPTi+P3WapN8uG2xC/i03A6VREaEh/fQdijBQ723aJglZiNvJwtSc9m3a6DuMB46NlaW+Q2iUlYWF9A3RIvJgECGEEMIASEIWQgghDIAkZCGEEMIASEIWQgghDIAkZCGEEMIASEIWQgghDIAkZCGEEMIASEIWQgghfpd+NZfXpv+Xiz+n3/Vty4NBhLhD5k7eSGlxec20tdqcrj2cGD89AHVrw3/Axe3wzms7GfSIFwEhnfUdikH5c99oZWKEg5M1vQPdGBraA1OzVnqO7taFLdvNpGcCcXC2aXEdLe07uVlFbPv8JBfOplJUqMHC0gSPbm0ZN70vbdpaN7huRXkl2zaeYN7yUTh1sL1tMTWVJGQh7qCX3hyBd+8OaLVacrKKiAyPYcP7h3h52Sh9hyZuwcGkg7iqXXFVu7a4jut9o6igjOTELLZvOkH8qau89vZojFsZ3cZo7770K7l623b46u9xdLZh4T9DsVabU1SgYf+ueGKjLzNybM8G121lYsycN4bfpUhvJglZiLtAoVDQuo2K/kM9+fRf3wOQ9VshS+ZE8dhUf7Z/fpK3PprAb2n5RH12jIyUfGxszRk82pshj3oDkHAmhaj1x7mWno9TezUTZvaji7dTg8suncsgav1xUpOyUanNGTutL35BblRXVxO1/jjHD12ivKyC9p1aM+WF/rR3tWtw2eljSeyIOEnWb4WobMx5ZIIv/Yd51rQz+rsL/N/WHykt1jDoke619sGF+LQ621bXfjD0EYSDSQdZdmgZ03pOY8nAJbeUmK2szeju256O7vYsm7uN6P0XGDjCC6h/n0Hdx1ylNmfJ7CjW7nympv7lc7cxaoIvfkFuZF8r5M3ZUUx/OYTI8Bgqy6uY8HQAlRXVbN90EoUCJj0biF+we71953odz70+hK3rYijML8XHvyMzXglBqVTy1ryvyMkq5o3nv2DyrCCc2qvrbcOfNdR36oulLilJOYwa1xM7eysA1HYWjJ3Wt1aZhvrxygW7CB7qSeCQLg3G1Nj/hZaQa8hC3CV52cUc2Xced09HAIxbGVFRXkV+TgmrNj2JUSslH76zj+Chnqz6fAozXhnErs2xnItLpbCgjI/e2ceo8T1ZHfEUA0d6Eb7qAJWV1fUuy80uJmzpbvwHuLMq4immvjSQDWGHSL+ay7m4NOJOJPPmvx/jX/99Ch//jmzfdBKg3mXlmko2rTnCo4/3ImzzVMbP6EvEh0fIzy0BdEOFER8dZdw0f1Z+9gQqG3NSk3MAKCooq7dtN+4HGzsL/RygFthwZgOdwjoxfed0kvKSbqkuK2sz+gS7kXA6FWh4n9V3zKuqGn4DmZGxbl9fScxi+ZrxjH68F1+EHyMzo4AVn0xk6Jge7NryI4X5pfX2net1xMdeZdGqUBasHMOZ48lciNddc12wcgwAb300Ab8gt3rb8GcN9Z2GYqlL78BObPjgMHu/iiM5MeumfdJYP25KTE2to7nkDFmIO+j95Xtq/rayNqObjzNPzAr+fY7uFX1BD3fF1NSY+NgrWFqZEjJSd3bk7umIj39H4k4kU5BXiq29FX36uwPQf5hnzbfxhNMpdS47dvAiKhvzmrMRzx7O+Aa4Env0Mj0DXCkqKCP+1FUe6uPCyHF/DOXphvnqXrZ605M1f/cOdKOVySGyM4uwsbXgl58zsHdQ4Resi2PIo97s+SoOgPPxafW2zamDutZ+aMyuC7tINLq15HerDiYdrDW94cwGNpzZQFfjzjzcpkeL67WwMuXqr7oP/Yb2WX39IT2l7td8/kHX50JGeWFuYYJ37w5EhscwNLTH79MufB15mp9Pp9Tbd/oP1/W7oaEPYakyw1JlhrOLLTmZRTdtraE2dPNpV1Ouob7TUCyPTup90zanvBDMicOJnIq+zN6v4qiqqsbHvyNjpvjRuo0KE1PjBvtxU2Jqah3NJQlZiDvo+nXChlirzQEoyC2p+fs6ldqcvOxiigrKsFKZ1rl+fcuKCzVk/VbIs2PW1ZofOKQLHTq1ZtaChzn4TQJffnaMtu1tGTfNn87dnepd5uHVlv99cZqYA7+Qn1tKZUUV1dVa+P3dv0UFZahszGq3zabxtt24H+5lt/oe5Mz0gpoRgpb2h6awUumOk5GRbpBUZa3bjpGxkurq6gb7znXW6j+OtbGxUtcXbtCU4w4N952mxPJnSqWSgJDOBIR0RqvVcuVyFjsjYvnP3/ey5P1xaLXaBvtxU2Jqah3NJQlZCD1TKHT/2thZkJdTe8grP7cUG1sLbGzN6x0Oq2+Znb0l7TraseT9sXWu59WzPV4921NZUcWBr3/m43e/Y9XnT9a77Kk5A9i/6ydeWDQUF/c2GCkVzJ28saY+S5UpRYVlNdNarbYmrobaduN+aMxfuv6FJ0OmNa3wHbL04FIOJR+qmZ7qM5WlIUtJ/PUiO0+ubVGd+bklnDmRzOTngoCW9QelUrcTKyurMTbWJdvC/NJmx9JQ38nLKa5jjbo15bhDw32nsX7cEIVCQUf3NoyZ0ocV87ZTrqnkXFxqg/24KTGdPXmlSXU0l1xDFsJAePZwprSknEN7EtCUVXAxIYMzx5LwDXClm0878nNLOfLteUqKNRw/dIl5Uz5HU1ZR77JOXR3Izynm6L7zaDSVpKfk8farO7iYkM7BbxL48J19ug8YhQI7B6uaOOpbVphfioXKlDaO1pQWa9i15RQmJsZkZhSi1Wrx6NaWa2kFnD6WhKasggNf/4ymrKLRtt3LpvpM5de5v7IhdEOLb+zSlFVwIT6NsKW7cXGzxy9Yd7NSS/qDmXkrjIwUxJ3QHYNvd5ylvLyq2TF1fahdvX2nMUqlAoUCcrKL8fBq26Tj3lDfaU4saVdyeXVqBLHRlykpLqeysorMjAL27TiLu6cjJqbGjfbjpsTU1DqaS86QhTAQliozXlg4lKj1x4hafxy1nQUTn+5H5+66O6nnLB7O5o+j2bI2GkdnNTPnD8bUrBWmZq3qXKa2s2TO4uFEhsewdV0MVipTgod50tlLNyx96VwGS+ZEUVFeRdt2ambOGwRAwCCPOpd16uLAySOJvDErEjsHFZNnBVGuqWTjB4do01aFW1dHHn82kC2fRFNWWsHAEd1w93REq9U22LbmnHEZihDXEKb1nHZLd1dfv79AqVTQ2sEK/wEejBzXs2YYuSX9wcbWgtApfYhYc5RqrZYRY31wcbNvdmwWlib19p3GjpdSqcQv2I2wpbsJfcKvwTZcZ++oqrfvNBTLjZxdbHni+WC+2xVPxIdH0JRVYmNrgXev9jz3tyEA9A5ya7AfNyWmxupw6+rY7H0OoNDe6kUPIR4wKVlXmfvxVBZNn6jvUB44u45G424/mCeH6HfIuj77T+9j58m1THvkYX2HIgzU3NUfc2TV6TqXyZC1EEIIYQAkIQshhBAGQBKyEEIIYQAkIQshhBAGQBKyEEIIYQAkIQshhBAGQBKyEEIIYQAkIQshhBAGQBKyEEIIYQDk0ZlCtECJppSUzEx9h/HAyS8qhuY/CfKuKiopkb4hWkQSshDNZGFqgZOtK1/tj29S+fhr8WSV1P0BbWJkSlCHoNsZ3n1NgTGujm76DqNebe2c0Farmtw3xIPnYd+R9S6TZ1kLcYcl5SXRKazTTfPNjM1IfjkZB0sHPUQlhDA0cg1ZiDvMVe3KSI+bvxVvGbtFkrEQooYkZCHuoJNpJxm2aRgHfj1Qa/7cvnMJ9QzVU1RCCEOktyFrTYWGPbHf6GPT4hY5t3amT5e++g7DoP2c+TOLDyzm61++ZobvDJaELGHhdwvZGLcRH0cfDk47iNpMre8whRAGRG8JOTM/k+GLghnm31sfmxctVFhSQn6BMRGvf6nvUAzS5dzLLDm4hC3xW5jQfQIrhqygk1p3/TgpL4mQDSHseHwHPdv21HOkQghDo9e7rJ1at2HCkIH6DEE0U0Z2Dpv3xOo7DIOTWpjK3w/9nU9Pf8pw9+Gcff4sXm28apVxVbuS9HKSniIUQhg6+dmTELcgqySLd46+w5oTa/B18iVmZgx+zn76DksIcQ+ShCxEC+Rr8ln1wyr+dexfeNh5sP3x7XXeSS2EEE0lCVmIZiitLOWD4x/w9pG3cbRyJPwv4UzoPgEFCn2HJoS4x0lCFqIJyqvKWffjOpYfWo6JkQnvDXuPGb4zMFIY6Ts0IcR9QhKyEA2o0laxKW4TSw4uoaSihIXBC5ntPxtTI1N9hyaEuM9IQhaiDlq0fJnwJQu/W8i14mvM6zePVwNfxcrESt+hCSHuU5KQhbjBNxe/YcF3C/gl+xdm+89mUf9F2Jnb6TssIcR9ThKyEL87euUor+17jZOpJ5nuO529T+7FycpJ32EJIR4QBp+Q507eSGlxOQCtTIxwcLKmd6AbQ0N7YGrWSs/R3bqwZbuZ9EwgDs42TSp/LS2fFa/u4JVlo3Dt3KZm/s7NsVw4m8b8FaMxMlKSm1XEts9PcuFsKkWFGiwsTfDo1pZx0/vSpq01oNu3z8wfjHfvDnekbfeKU+mnWLR/Ed8mfsv47uPZ9NdNeNh56DssIcQDxuATMsBLb47Au3cHigrKSE7MYvumE8Sfusprb4/GuNW9fZdr+pXcZpV3cLZh4tP9iPjoKAvfG4ORkZJr6fkc2XueBSt10wDhq7/H0dmGhf8MxVptTlGBhv274omNvszIsfLYRoCEzAQWf7+Yr859xUiPkcQ9H0cPhx76DksI8YC6JxLydVbWZnT3bU9Hd3uWzd1G9P4LDByhezzhhfg0oj47RkZKPja25gwe7c2QR70BSDiTQtT641xLz8epvZoJM/vRxduJ9JQ8lsyOYu3OZ2q2sXzuNkZN8KVT5za8OTuK6S+HEBkeQ2V5FROeDqCyoprtm06iUMCkZwPxC3bn0rkMotYfJzUpG5XanLHT+uIXpHuJeva1Qt6cHcVzrw9h67oYCvNL8fHvyIxXQnj71R3kZBXzxvNfMHlWEE7t1fW24c8CB3fh3JlUDu5OYMhobyLDjzF+RgD2jqqaMilJOYwa1xM7e91NSGo7C8ZOkxdCAPya9ytLDy4l4mwE/u38iZkZQ0D7AH2HJYR4wN2Tr1+0sjajT7AbCadTASgqKOPDd/YRPNSTVZ9PYcYrg9i1OZZzcakUFpTx0Tv7GDW+J6sjnmLgSC/CVx2gsrK6wW0YGRtRUV7FlcQslq8Zz+jHe/FF+DEyMwpY8clEho7pwa4tP1KYX0rY0t34D3BnVcRTTH1pIBvCDpF+NbdWPfGxV1m0KpQFK8dw5ngyF+LTWbByDABvfTQBvyC3ettQl8mzgojZ/wsHdydgaWVC34G1h1h7B3ZiwweH2ftVHMmJWVRVNdzeB0FaYRov/O8Fun7QlbiMOHY+vlOSsRDCYNxTZ8h/ZmFlytVfcwA4H5+GpZUpISN1Z8vuno74+Hck7kQyBXml2Npb0ae/OwD9h3nSf5hnE7agewlWyCgvzC1M8O7dgcjwGIaG9vh92oWvI0/z8+kUVDbmNWeynj2c8Q1wJfboZR6d1LumnqGhD2GpMsNSZYaziy05mUW1ttZQG7r5tLspuusxbf44mhcXD79p+ZQXgjlxOJFT0ZfZ+1UcVVXV+Ph3ZMwUP1q3Ud1UvjmKyos5mHTwluq4m7Roifwpkg1nNtDBpgMb/7qRx70fl6drCSEMyj2bkDPTC7CxswCgILcEa7V5reUqtTl52cUUFZRhpWr5QxysVGYANddmVda67RgZK6murqa4UEPWb4U8O2ZdrfUCh3SpNW2tNqv529hYSXV17bdeNtSGuly5nMXhvecZN70vmz+JZnE3Ryws/2inUqkkIKQzASGd0Wq1XLmcxc6IWP7z970seX9cc3bBTX7N+5VBGwfdUh13m4OlA2Ejw5jpOxNj5T3b7YUQ97F78pMpP7eEMyeSmfxcEAA2dhbk5ZTcUKYUG1sLbGzNyc8tqasalErdGVJlZTXGxrqEW5hf2qxY7OwtadfRjiXvj21uM2ppqA030pRVEP7PA4yb3pfAwV24cjmbrWt/YMYrdSdJhUJBR/c2jJnShxXztlOuqcTEtOWHvoeDN3GvX2jx+kIIIW52T11D1pRVcCE+jbClu3Fxs8cvWHfjlGcPZ0pLyjm0JwFNWQUXEzI4cywJ3wBXuvm0Iz+3lCPfnqekWMPxQ5eYN+VzNGUV2NiaY2SkIO5EEpqyCr7dcZby8qpmxdT1oXbk5xRzdN95NJpK0lPyePvVHVxMSG90XaVSgUIBOdnFeHi1rbcNN9qy9gecXWwJHKw7C5/0TD/OnU0j9mgiAGlXcnl1agSx0ZcpKS6nsrKKzIwC9u04i7un4y0lYyGEEHfGPfHJ/P7yPYAugbV2sMJ/gAcjx/WsGUa2VJnxwsKhRK0/RtT646jtLJj4dD86d9c91GHO4uFs/jiaLWujcSZM9I0AAAFPSURBVHRWM3P+4JrfMIdO6UPEmqNUa7WMGOuDi5t9s2KzsDRhzuLhRIbHsHVdDFYqU4KHedLZq/EHSiiVSvyC3QhbupvQJ/wabMN1J48k8vPpFN4Me6xmnqXKjKlzBvDp6u9x93TE2cWWJ54P5rtd8UR8eARNWSU2thZ492rPc38bUue+vc7FvTVvrH4MIYQQd5dCq9VqGy92+2XmZzJt9V/5+7NP6mPzooUysnPYvCeWiNe36TsUIYS4r9xTQ9ZCCCHE/UoSshBCCGEAJCELIYQQBkASshBCCGEAJCELIYQQBkASshBCCGEAJCELIYQQBkASshBCCGEAJCELIYQQBkASshBCCGEA9PYs61ZGxhQWl/HS6o/0FYJooUE+w/QdghBC3Hf09ixrIYQQQvxBhqyFEEIIAyAJWQghhDAAkpCFEEIIAyAJWQghhDAA/x+qgnvugryJDgAAAABJRU5ErkJggg==" alt="" /></p>
+</section><section id="exemplo-de-xslt---documento-original" class="slide level2">
+<h2>Exemplo de XSLT - Documento Original</h2>
+<ul>
+<li><p>Vamos aplicar transformações neste documento</p>
+<div class="sourceCode" id="cb50"><pre class="sourceCode xml"><code class="sourceCode xml"><a class="sourceLine" id="cb50-1" data-line-number="1"><span class="kw">&lt;?xml</span> version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;<span class="kw">?&gt;</span></a>
+<a class="sourceLine" id="cb50-2" data-line-number="2"><span class="kw">&lt;?xml-stylesheet</span> type=&quot;text/xsl&quot; href=&quot;catalogo.xsl&quot;<span class="kw">?&gt;</span></a>
+<a class="sourceLine" id="cb50-3" data-line-number="3"><span class="kw">&lt;catalogo&gt;</span></a>
+<a class="sourceLine" id="cb50-4" data-line-number="4">  <span class="kw">&lt;livros&gt;</span></a>
+<a class="sourceLine" id="cb50-5" data-line-number="5">    <span class="kw">&lt;livro</span><span class="ot"> nome=</span><span class="st">&quot;Professional XML&quot;</span><span class="kw">/&gt;</span></a>
+<a class="sourceLine" id="cb50-6" data-line-number="6">    <span class="kw">&lt;livro</span><span class="ot"> nome=</span><span class="st">&quot;XML By Example&quot;</span><span class="kw">/&gt;</span></a>
+<a class="sourceLine" id="cb50-7" data-line-number="7">  <span class="kw">&lt;/livros&gt;</span></a>
+<a class="sourceLine" id="cb50-8" data-line-number="8"><span class="kw">&lt;/catalogo&gt;</span></a></code></pre></div></li>
+</ul>
+</section><section id="exemplo-de-xslt" class="slide level2">
+<h2>Exemplo de XSLT</h2>
+<div class="sourceCode" id="cb51"><pre class="sourceCode xsl"><code class="sourceCode xslt"><a class="sourceLine" id="cb51-1" data-line-number="1"><span class="kw">&lt;?xml</span> version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;<span class="kw">?&gt;</span></a>
+<a class="sourceLine" id="cb51-2" data-line-number="2"><span class="kw">&lt;xsl:stylesheet</span><span class="ot"> version=</span><span class="st">&quot;1.0&quot;</span><span class="ot"> xmlns:xsl=</span><span class="st">&quot;http://www.w3.org/1999/XSL/Transform&quot;</span><span class="ot"> xmlns:msxsl=</span><span class="st">&quot;urn:schemas-microsoft-com:xslt&quot;</span><span class="kw">&gt;</span></a>
+<a class="sourceLine" id="cb51-3" data-line-number="3">    <span class="kw">&lt;xsl:template</span><span class="ot"> match=&quot;/&quot;</span><span class="kw">&gt;</span></a>
+<a class="sourceLine" id="cb51-4" data-line-number="4">        <span class="kw">&lt;html&gt;</span></a>
+<a class="sourceLine" id="cb51-5" data-line-number="5">            <span class="kw">&lt;body&gt;</span></a>
+<a class="sourceLine" id="cb51-6" data-line-number="6">                <span class="kw">&lt;xsl:apply-templates/&gt;</span></a>
+<a class="sourceLine" id="cb51-7" data-line-number="7">            <span class="kw">&lt;/body&gt;</span></a>
+<a class="sourceLine" id="cb51-8" data-line-number="8">        <span class="kw">&lt;/html&gt;</span></a>
+<a class="sourceLine" id="cb51-9" data-line-number="9">    <span class="kw">&lt;/xsl:template&gt;</span></a>
+<a class="sourceLine" id="cb51-10" data-line-number="10">    <span class="kw">&lt;xsl:template</span><span class="ot"> match=&quot;catalogo&quot;</span><span class="kw">&gt;</span></a>
+<a class="sourceLine" id="cb51-11" data-line-number="11">        <span class="kw">&lt;table</span><span class="ot"> width</span>=<span class="st">&quot;100%&quot;</span><span class="ot"> border</span>=<span class="st">&quot;1&quot;</span><span class="kw">&gt;</span></a>
+<a class="sourceLine" id="cb51-12" data-line-number="12">            <span class="kw">&lt;tr&gt;</span></a>
+<a class="sourceLine" id="cb51-13" data-line-number="13">                <span class="kw">&lt;th&gt;&lt;p&gt;</span>Livros<span class="kw">&lt;/p&gt;&lt;/th&gt;</span></a>
+<a class="sourceLine" id="cb51-14" data-line-number="14">            <span class="kw">&lt;/tr&gt;</span></a>
+<a class="sourceLine" id="cb51-15" data-line-number="15">            <span class="kw">&lt;xsl:for-each</span><span class="ot"> select = &quot;livros/livro&quot;</span><span class="kw">&gt;</span></a>
+<a class="sourceLine" id="cb51-16" data-line-number="16">            <span class="kw">&lt;tr&gt;</span></a>
+<a class="sourceLine" id="cb51-17" data-line-number="17">                <span class="kw">&lt;td&gt;</span></a>
+<a class="sourceLine" id="cb51-18" data-line-number="18">                    <span class="kw">&lt;p&gt;&lt;xsl:value-of</span><span class="ot"> select=&quot;</span>@nome<span class="ot">&quot;</span><span class="kw">/&gt;&lt;/p&gt;</span></a>
+<a class="sourceLine" id="cb51-19" data-line-number="19">                 <span class="kw">&lt;/td&gt;</span></a>
+<a class="sourceLine" id="cb51-20" data-line-number="20">            <span class="kw">&lt;/tr&gt;</span></a>
+<a class="sourceLine" id="cb51-21" data-line-number="21">            <span class="kw">&lt;/xsl:for-each&gt;</span></a>
+<a class="sourceLine" id="cb51-22" data-line-number="22">        <span class="kw">&lt;/table&gt;</span></a>
+<a class="sourceLine" id="cb51-23" data-line-number="23">    <span class="kw">&lt;/xsl:template&gt;</span></a>
+<a class="sourceLine" id="cb51-24" data-line-number="24"><span class="kw">&lt;/xsl:stylesheet&gt;</span></a></code></pre></div>
+</section><section id="exemplo-de-xslt---resultado" class="slide level2">
+<h2>Exemplo de XSLT - Resultado</h2>
+<table>
+<thead>
+<tr class="header">
+<th>Livros</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Professional XML</td>
+</tr>
+<tr class="even">
+<td>XML By Example</td>
+</tr>
+</tbody>
+</table>
+</section><section id="xpath" class="slide level2">
+<h2>XPATH</h2>
+<ul>
+<li><p>Padrão base para XSLT</p></li>
+<li><p>Usado para selecionar elementos e atributos</p></li>
+<li><p>Trata documento como sistema de arquivos (elementos = pastas)</p></li>
+<li><p>Um caminho pode ser relativo ou absoluto</p></li>
+<li><p>Permite usar expressões lógicas e funções</p></li>
+<li><p>Exemplo</p>
+<div class="sourceCode" id="cb52"><pre class="sourceCode xsl"><code class="sourceCode xslt"><a class="sourceLine" id="cb52-1" data-line-number="1">/artigo/secao[position()=2]/titulo/text()</a></code></pre></div></li>
+</ul>
+</section><section id="caminhos" class="slide level2">
+<h2>Caminhos</h2>
+<table>
+<thead>
+<tr class="header">
+<th>Caminho</th>
+<th>Descrição</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code>/</code></td>
+<td>Elemento raiz</td>
+</tr>
+<tr class="even">
+<td><code>//</code></td>
+<td>Seleciona todos os nós descendentes</td>
+</tr>
+<tr class="odd">
+<td><code>*</code></td>
+<td>Qualquer elemento</td>
+</tr>
+<tr class="even">
+<td><code>.</code></td>
+<td>Nó atual</td>
+</tr>
+<tr class="odd">
+<td><code>|</code></td>
+<td>Seleciona entre várias caminhos (OU)</td>
+</tr>
+</tbody>
+</table>
+</section><section id="controlando-a-saída" class="slide level2">
+<h2>Controlando a Saída</h2>
+<ul>
+<li><p>Podemos controlar a saída do processador XSLT usando <code>xsl:output</code></p></li>
+<li><p>Podemos escolher a saída atribuindo os seguinte valores para o atributo method</p>
+<ul>
+<li><p>xml</p></li>
+<li><p>text</p></li>
+<li><p>html</p></li>
+</ul></li>
+<li><p>Deve aparecer logo após <code>xsl:stylesheet</code></p></li>
+<li><p>Exemplo</p>
+<div class="sourceCode" id="cb53"><pre class="sourceCode xsl"><code class="sourceCode xslt"><a class="sourceLine" id="cb53-1" data-line-number="1"><span class="kw">&lt;xsl:stylesheet</span><span class="ot"> version=</span><span class="st">&quot;1.0&quot;</span><span class="ot"> xmlns:xsl=</span><span class="st">&quot;http://www.w3.org/1999/XSL/Transform&quot;</span><span class="ot"> xmlns:fo=</span><span class="st">&quot;http://www.w3.org/1999/XSL/Format&quot;</span><span class="kw">&gt;</span></a>
+<a class="sourceLine" id="cb53-2" data-line-number="2">  <span class="kw">&lt;xsl:output</span><span class="ot"> method=</span><span class="st">&quot;xml&quot;</span><span class="kw">/&gt;</span></a>
+<a class="sourceLine" id="cb53-3" data-line-number="3">  <span class="co">&lt;!-- ... --&gt;</span></a>
+<a class="sourceLine" id="cb53-4" data-line-number="4"><span class="kw">&lt;/xsl:stylesheet&gt;</span></a></code></pre></div></li>
+</ul>
+</section><section id="definindo-templates" class="slide level2">
+<h2>Definindo Templates</h2>
+<ul>
+<li><p>Documento XSL contém pelo menos um elemento <code>xsl:template</code></p></li>
+<li><p>O atributo <code>match</code> desse elemento seleciona o nó que será processado</p></li>
+<li><p>Ao atributo <code>match</code> deve ser atribuído uma expressão XPATH válida</p></li>
+<li><p>Dentro do elemento <code>xsl:template</code> podemos ter um elemento <code>xsl:apply-templates</code> para aplicar os demais templates</p></li>
+</ul>
+</section><section id="variáveis-e-parâmetros" class="slide level2">
+<h2>Variáveis e Parâmetros</h2>
+<ul>
+<li><p>Elemento <code>xsl:variable</code></p>
+<ul>
+<li>O tipo do valor pode ser qualquer texto ou nó selecionado usando expressões XPATH ou constante</li>
+</ul></li>
+<li><p>Elemento <code>xsl:param</code></p>
+<ul>
+<li>Parâmetros podem ser passados usando o elemento <code>xsl:with-param</code></li>
+</ul></li>
+<li><p>Exemplo</p>
+<div class="sourceCode" id="cb54"><pre class="sourceCode xsl"><code class="sourceCode xslt"><a class="sourceLine" id="cb54-1" data-line-number="1"><span class="kw">&lt;xsl:template</span><span class="ot"> name=</span><span class="st">&quot;qualquer&quot;</span><span class="kw">&gt;</span></a>
+<a class="sourceLine" id="cb54-2" data-line-number="2">  <span class="kw">&lt;xsl:param</span><span class="ot"> name=</span><span class="st">&quot;param-1&quot;</span><span class="ot"> select=&quot;1&quot;</span><span class="kw">/&gt;</span></a>
+<a class="sourceLine" id="cb54-3" data-line-number="3">  <span class="kw">&lt;xsl:variable</span><span class="ot"> name=</span><span class="st">&quot;var-1&quot;</span><span class="ot"> select=&quot;2&quot;</span><span class="kw">/&gt;</span></a>
+<a class="sourceLine" id="cb54-4" data-line-number="4">  <span class="kw">&lt;xsl:variable</span><span class="ot"> name=</span><span class="st">&quot;var-2&quot;</span><span class="kw">&gt;</span>valor texto<span class="kw">&lt;/xsl:variable</span><span class="ot"> </span><span class="kw">&gt;</span></a>
+<a class="sourceLine" id="cb54-5" data-line-number="5"><span class="kw">&lt;/xsl:template&gt;</span></a>
+<a class="sourceLine" id="cb54-6" data-line-number="6"><span class="kw">&lt;xsl:call-template</span><span class="ot"> name=</span><span class="st">&quot;qualquer&quot;</span><span class="kw">&gt;</span></a>
+<a class="sourceLine" id="cb54-7" data-line-number="7">  <span class="kw">&lt;xsl:with-param</span><span class="ot"> name=</span><span class="st">&quot;param-1&quot;</span><span class="kw">&gt;</span>3<span class="kw">&lt;/xsl:with-param&gt;</span></a>
+<a class="sourceLine" id="cb54-8" data-line-number="8"><span class="kw">&lt;/xsl:call-template&gt;</span></a></code></pre></div></li>
+</ul>
+</section><section id="lendo-valores-e-copiando-fragmentos-do-documento" class="slide level2">
+<h2>Lendo valores e Copiando Fragmentos do Documento</h2>
+<ul>
+<li><p>Elemento <code>xsl:value-of</code></p>
+<ul>
+<li><p>Recupera valor de um nó ou variável</p></li>
+<li><p>Atributo <code>select</code> usado para selecionar o nó</p></li>
+<li><p>O valor recuperado é escrito para a saída</p></li>
+</ul></li>
+<li><p>Elemento <code>xsl:copy</code></p>
+<ul>
+<li><p>Copia nó atual para a saída</p></li>
+<li><p>Não copia atributos e sub nós</p></li>
+</ul></li>
+<li><p>Elemento <code>xsl:copy-of</code></p>
+<ul>
+<li>Copia um nó, seus atributos e sub nós para a saída</li>
+</ul></li>
+</ul>
+</section><section id="processamento-condicional" class="slide level2">
+<h2>Processamento Condicional</h2>
+<ul>
+<li><p>Elemento <code>xsl:if</code></p>
+<ul>
+<li><p>Expressão lógica atribuída ao atributo test</p></li>
+<li><p>Não tem “Se Não”</p></li>
+</ul>
+<div class="sourceCode" id="cb55"><pre class="sourceCode xsl"><code class="sourceCode xslt"><a class="sourceLine" id="cb55-1" data-line-number="1"><span class="kw">&lt;xsl:template</span><span class="ot"> match=&quot;livros/livro&quot;</span><span class="kw">&gt;</span></a>
+<a class="sourceLine" id="cb55-2" data-line-number="2">  <span class="kw">&lt;xsl:value-of</span><span class="ot"> select=&quot;</span>@nome<span class="ot">&quot;</span><span class="kw">/&gt;</span></a>
+<a class="sourceLine" id="cb55-3" data-line-number="3">  <span class="kw">&lt;xsl:if</span><span class="ot"> test=&quot;</span><span class="kw">not</span><span class="ot">(</span><span class="kw">position</span><span class="ot">()=</span><span class="kw">last</span><span class="ot">())&quot;</span><span class="kw">&gt;</span>, <span class="kw">&lt;/xsl:if&gt;</span></a>
+<a class="sourceLine" id="cb55-4" data-line-number="4"><span class="kw">&lt;/xsl:template&gt;</span></a></code></pre></div></li>
+<li><p>Elemento <code>xsl:choose</code></p>
+<ul>
+<li><p>Seleciona uma entre várias possibilidades</p></li>
+<li><p>Possibilidades especificadas usando atributo test do elemento <code>xsl:when</code></p></li>
+<li><p>Elemento <code>xsl:otherwise</code> especifica o processamento caso nenhuma das possibilidades for válida</p></li>
+</ul></li>
+</ul>
+</section><section id="repetição" class="slide level2">
+<h2>Repetição</h2>
+<ul>
+<li><p>Usando elemento <code>xsl:for-each</code></p>
+<div class="sourceCode" id="cb56"><pre class="sourceCode xsl"><code class="sourceCode xslt"><a class="sourceLine" id="cb56-1" data-line-number="1"><span class="kw">&lt;xsl:template</span><span class="ot"> match=&quot;catalogo&quot;</span><span class="kw">&gt;</span></a>
+<a class="sourceLine" id="cb56-2" data-line-number="2">  <span class="kw">&lt;xsl:for-each</span><span class="ot"> select=&quot;livros/livro&quot;</span><span class="kw">&gt;</span></a>
+<a class="sourceLine" id="cb56-3" data-line-number="3">    <span class="kw">&lt;xsl:value-of</span><span class="ot"> select=&quot;</span>@nome<span class="ot">&quot;</span><span class="kw">/&gt;</span></a>
+<a class="sourceLine" id="cb56-4" data-line-number="4">  <span class="kw">&lt;/xsl:for-each&gt;</span></a>
+<a class="sourceLine" id="cb56-5" data-line-number="5"><span class="kw">&lt;/xsl:template&gt;</span></a></code></pre></div></li>
+<li><p>Atributo select é atribuído uma expressão XPATH que deverá retornar uma lista de nós</p></li>
+<li><p>Dentro do elemento deverá ser definido o template a ser aplicado nos nós selecionados</p></li>
+</ul>
+</section><section id="classificação" class="slide level2">
+<h2>Classificação</h2>
+<ul>
+<li>Usando elemento <code>xsl:sort</code></li>
+</ul>
+<div class="sourceCode" id="cb57"><pre class="sourceCode xsl"><code class="sourceCode xslt"><a class="sourceLine" id="cb57-1" data-line-number="1"><span class="kw">&lt;xsl:template</span><span class="ot"> match=&quot;catalogo&quot;</span><span class="kw">&gt;</span></a>
+<a class="sourceLine" id="cb57-2" data-line-number="2">  <span class="kw">&lt;xsl:apply-templates</span><span class="ot"> select=&quot;livros/livro&quot;</span><span class="kw">&gt;</span></a>
+<a class="sourceLine" id="cb57-3" data-line-number="3">    <span class="kw">&lt;xsl:sort</span><span class="ot"> select=&quot;</span>@nome<span class="ot">&quot;</span><span class="kw">/&gt;</span></a>
+<a class="sourceLine" id="cb57-4" data-line-number="4">  <span class="kw">&lt;/xsl:apply-templates&gt;</span></a>
+<a class="sourceLine" id="cb57-5" data-line-number="5"><span class="kw">&lt;/xsl:template&gt;</span></a>
+<a class="sourceLine" id="cb57-6" data-line-number="6"><span class="kw">&lt;xsl:template</span><span class="ot"> match=&quot;livros/livro&quot;</span><span class="kw">&gt;</span></a>
+<a class="sourceLine" id="cb57-7" data-line-number="7">  <span class="kw">&lt;p&gt;&lt;xsl:value-of</span><span class="ot"> select=&quot;</span>@nome<span class="ot">&quot;</span><span class="kw">/&gt;&lt;/p&gt;</span></a>
+<a class="sourceLine" id="cb57-8" data-line-number="8"><span class="kw">&lt;/xsl:template&gt;</span></a></code></pre></div>
+<ul>
+<li><p>Pode aparecer dentro dos elementos <code>xsl:apply-templates</code> ou <code>xsl:for-each</code></p></li>
+<li><p>Pode aparecer uma sequencia de elementos <code>xsl:sort</code></p>
+<ul>
+<li>Isso permite classificar por várias colunas</li>
+</ul></li>
+<li><p>O valor do atributo select deve ser uma expressão XPATH apontando para um objeto válido</p>
+<ul>
+<li>O valor padrão do atributo select é “.”</li>
+</ul></li>
+<li><p>O valor do atributo <code>data-type</code> pode ser <code>text</code> ou <code>number</code></p></li>
+</ul>
+</section><section id="formatação-de-números" class="slide level2">
+<h2>Formatação de Números</h2>
+<ul>
+<li><p>O elemento <code>xsl:number</code> pode ser usado para inserir um número formatado na saída</p>
+<div class="sourceCode" id="cb58"><pre class="sourceCode xsl"><code class="sourceCode xslt"><a class="sourceLine" id="cb58-1" data-line-number="1"><span class="kw">&lt;xsl:template</span><span class="ot"> match=&quot;livros&quot;</span><span class="kw">&gt;</span></a>
+<a class="sourceLine" id="cb58-2" data-line-number="2">  <span class="kw">&lt;xsl:for-each</span><span class="ot"> select=&quot;livro&quot;</span><span class="kw">&gt;</span></a>
+<a class="sourceLine" id="cb58-3" data-line-number="3">    <span class="kw">&lt;xsl:sort</span><span class="ot"> select=&quot;</span>@nome<span class="ot">&quot;</span><span class="kw">/&gt;</span></a>
+<a class="sourceLine" id="cb58-4" data-line-number="4">    <span class="kw">&lt;p&gt;</span></a>
+<a class="sourceLine" id="cb58-5" data-line-number="5">      <span class="kw">&lt;xsl:number</span><span class="ot"> value=</span><span class="st">&quot;position()&quot;</span><span class="ot"> format=</span><span class="st">&quot;1. &quot;</span><span class="kw">/&gt;</span></a>
+<a class="sourceLine" id="cb58-6" data-line-number="6">      <span class="kw">&lt;xsl:value-of</span><span class="ot"> select=&quot;</span>@nome<span class="ot">&quot;</span><span class="kw">/&gt;</span></a>
+<a class="sourceLine" id="cb58-7" data-line-number="7">    <span class="kw">&lt;/p&gt;</span></a>
+<a class="sourceLine" id="cb58-8" data-line-number="8">  <span class="kw">&lt;/xsl:for-each&gt;</span></a>
+<a class="sourceLine" id="cb58-9" data-line-number="9"><span class="kw">&lt;/xsl:template&gt;</span></a></code></pre></div></li>
+<li><p>O atributo <code>value</code> deve conter uma expressão</p></li>
+<li><p>O atributo <code>format</code> especifica o formato de conversão do número para texto</p></li>
+</ul>
+</section><section id="importando-folhas-de-estilo-xsl" class="slide level2">
+<h2>Importando Folhas de Estilo XSL</h2>
+<ul>
+<li><p>Elemento <code>xsl:import</code></p>
+<ul>
+<li><p>Importa o arquivo especificado pelo atributo <code>href</code> dentro do arquivo XSL atual</p></li>
+<li><p>Os templates do arquivo importado têm uma precedência menor</p></li>
+<li><p>Só pode aparecer dentro do elemento <code>xsl:stylesheet</code> e antes de qualquer outro elemento</p></li>
+</ul></li>
+<li><p>Elemento <code>xsl:include</code></p>
+<ul>
+<li><p>Igual ao elemento <code>xsl:import</code></p></li>
+<li><p>Templates do arquivo XSL importado têm a mesma precedência dos templates locais</p></li>
+</ul></li>
+</ul>
+<div class="sourceCode" id="cb59"><pre class="sourceCode xsl"><code class="sourceCode xslt"><a class="sourceLine" id="cb59-1" data-line-number="1"><span class="kw">&lt;xsl:stylesheet</span><span class="ot"> version=</span><span class="st">&quot;1.0&quot;</span><span class="ot"> xmlns:xsl=</span><span class="st">&quot;http://www.w3.org/1999/XSL/Transform&quot;</span><span class="kw">&gt;</span></a>
+<a class="sourceLine" id="cb59-2" data-line-number="2">  <span class="kw">&lt;xsl:import</span><span class="ot"> href=</span><span class="st">&quot;marca_corporativa.xsl&quot;</span><span class="kw">/&gt;</span></a>
+<a class="sourceLine" id="cb59-3" data-line-number="3">  <span class="co">&lt;!-- ... --&gt;</span></a>
+<a class="sourceLine" id="cb59-4" data-line-number="4"><span class="kw">&lt;/xsl:stylesheet&gt;</span></a></code></pre></div>
+</section><section id="chamando-templates-nomeados" class="slide level2">
+<h2>Chamando Templates Nomeados</h2>
+<ul>
+<li><p>Usando elemento <code>xsl:call-template</code></p></li>
+<li><p>O atributo <code>name</code> do elemento deve especificar o nome do template à chamar</p>
+<div class="sourceCode" id="cb60"><pre class="sourceCode xsl"><code class="sourceCode xslt"><a class="sourceLine" id="cb60-1" data-line-number="1"><span class="kw">&lt;xsl:template</span><span class="ot"> match=&quot;/&quot;</span><span class="kw">&gt;</span></a>
+<a class="sourceLine" id="cb60-2" data-line-number="2">  <span class="kw">&lt;xsl:call-template</span><span class="ot"> name=</span><span class="st">&quot;imprimir-titulo&quot;</span><span class="kw">/&gt;</span></a>
+<a class="sourceLine" id="cb60-3" data-line-number="3"><span class="kw">&lt;/xsl:template&gt;</span></a>
+<a class="sourceLine" id="cb60-4" data-line-number="4"><span class="kw">&lt;xsl:template</span><span class="ot"> name=</span><span class="st">&quot;imprimir-titulo&quot;</span><span class="kw">&gt;</span></a>
+<a class="sourceLine" id="cb60-5" data-line-number="5">  <span class="kw">&lt;h1&gt;</span>Título<span class="kw">&lt;/h1&gt;</span></a>
+<a class="sourceLine" id="cb60-6" data-line-number="6"><span class="kw">&lt;/xsl:template&gt;</span></a></code></pre></div></li>
+</ul>
+</section><section id="criando-elementos" class="slide level2">
+<h2>Criando Elementos</h2>
+<ul>
+<li><p>Usando elemento <code>xsl:element</code></p></li>
+<li><p>O nome do elemento criado é especificado usando atributo <code>name</code></p></li>
+<li><p>O espaço identificador pode ser especificado usando atributo <code>namespace</code></p></li>
+<li><p>Um conjunto de atributos pode ser especificado usando o atributo <code>use-attribute-sets</code></p>
+<div class="sourceCode" id="cb61"><pre class="sourceCode xsl"><code class="sourceCode xslt"><a class="sourceLine" id="cb61-1" data-line-number="1"><span class="kw">&lt;xsl:template</span><span class="ot"> match=&quot;/&quot;</span><span class="kw">&gt;</span></a>
+<a class="sourceLine" id="cb61-2" data-line-number="2">  <span class="kw">&lt;xsl:call-template</span><span class="ot"> name=</span><span class="st">&quot;imprimir-titulo&quot;</span><span class="kw">/&gt;</span></a>
+<a class="sourceLine" id="cb61-3" data-line-number="3"><span class="kw">&lt;/xsl:template&gt;</span></a>
+<a class="sourceLine" id="cb61-4" data-line-number="4"><span class="kw">&lt;xsl:template</span><span class="ot"> name=</span><span class="st">&quot;imprimir-titulo&quot;</span><span class="kw">&gt;</span></a>
+<a class="sourceLine" id="cb61-5" data-line-number="5">  <span class="kw">&lt;xsl:element</span><span class="ot"> name=</span><span class="st">&quot;h1&quot;</span><span class="ot"> namespace=</span><span class="st">&quot;&quot;</span><span class="kw">&gt;</span></a>
+<a class="sourceLine" id="cb61-6" data-line-number="6">    Título</a>
+<a class="sourceLine" id="cb61-7" data-line-number="7">  <span class="kw">&lt;/xsl:element&gt;</span></a>
+<a class="sourceLine" id="cb61-8" data-line-number="8"><span class="kw">&lt;/xsl:template&gt;</span></a></code></pre></div></li>
+</ul>
+</section><section id="criando-atributos" class="slide level2">
+<h2>Criando Atributos</h2>
+<ul>
+<li><p>Elemento <code>xsl:attribute</code></p>
+<ul>
+<li><p>Atributo <code>name</code> especifica o nome</p></li>
+<li><p>Atributo <code>namespace</code> especifica o espaço identificador</p></li>
+</ul></li>
+<li><p>Elemento <code>xsl:attribute-set</code> para criar conjuntos</p>
+<ul>
+<li><p>Contém uma série de elementos <code>xsl:attribute</code></p></li>
+<li><p>Atributo <code>name</code> especifica o nome do conjunto</p></li>
+<li><p>Nome de um conjunto pode ser atribuído à atributo <code>use-attribute-sets</code> dos elementos <code>xsl:element</code>, <code>xsl:copy</code> ou <code>xsl:attribute-set</code></p></li>
+</ul></li>
+</ul>
+</section><section id="criando-atributos---exemplo" class="slide level2">
+<h2>Criando Atributos - Exemplo</h2>
+<ul>
+<li><p>Exemplo</p>
+<div class="sourceCode" id="cb62"><pre class="sourceCode xsl"><code class="sourceCode xslt"><a class="sourceLine" id="cb62-1" data-line-number="1"><span class="kw">&lt;xsl:template</span><span class="ot"> match=&quot;/&quot;</span><span class="kw">&gt;</span></a>
+<a class="sourceLine" id="cb62-2" data-line-number="2">  <span class="kw">&lt;xsl:call-template</span><span class="ot"> name=</span><span class="st">&quot;imprimir-titulo&quot;</span><span class="kw">/&gt;</span></a>
+<a class="sourceLine" id="cb62-3" data-line-number="3"><span class="kw">&lt;/xsl:template&gt;</span></a>
+<a class="sourceLine" id="cb62-4" data-line-number="4"><span class="kw">&lt;xsl:attribute-set</span><span class="ot"> name=</span><span class="st">&quot;atrib-titulo&quot;</span><span class="kw">&gt;</span></a>
+<a class="sourceLine" id="cb62-5" data-line-number="5">  <span class="kw">&lt;xsl:attribute</span><span class="ot"> name=</span><span class="st">&quot;class&quot;</span><span class="kw">&gt;</span>classe-h1<span class="kw">&lt;/xsl:attribute&gt;</span></a>
+<a class="sourceLine" id="cb62-6" data-line-number="6">  <span class="kw">&lt;xsl:attribute</span><span class="ot"> name=</span><span class="st">&quot;title&quot;</span><span class="kw">&gt;</span>Título<span class="kw">&lt;/xsl:attribute&gt;</span></a>
+<a class="sourceLine" id="cb62-7" data-line-number="7"><span class="kw">&lt;/xsl:attribute-set&gt;</span></a>
+<a class="sourceLine" id="cb62-8" data-line-number="8"><span class="kw">&lt;xsl:template</span><span class="ot"> name=</span><span class="st">&quot;imprimir-titulo&quot;</span><span class="kw">&gt;</span></a>
+<a class="sourceLine" id="cb62-9" data-line-number="9">  <span class="kw">&lt;xsl:element</span><span class="ot"> name=</span><span class="st">&quot;h1&quot;</span><span class="ot"> use-attribute-sets=</span><span class="st">&quot;atrib-titulo&quot;</span><span class="kw">&gt;</span></a>
+<a class="sourceLine" id="cb62-10" data-line-number="10">    Título</a>
+<a class="sourceLine" id="cb62-11" data-line-number="11">  <span class="kw">&lt;/xsl:element&gt;</span></a>
+<a class="sourceLine" id="cb62-12" data-line-number="12"><span class="kw">&lt;/xsl:template&gt;</span></a></code></pre></div></li>
+<li><p>Saida</p></li>
+</ul>
+<div class="sourceCode" id="cb63"><pre class="sourceCode xml"><code class="sourceCode xml"><a class="sourceLine" id="cb63-1" data-line-number="1"><span class="kw">&lt;?xml</span> version=&quot;1.0&quot; encoding=&quot;UTF-16&quot;<span class="kw">?&gt;</span></a>
+<a class="sourceLine" id="cb63-2" data-line-number="2"><span class="kw">&lt;h1</span><span class="ot"> class=</span><span class="st">&quot;classe-h1&quot;</span><span class="ot"> title=</span><span class="st">&quot;Título&quot;</span><span class="kw">&gt;</span></a>
+<a class="sourceLine" id="cb63-3" data-line-number="3">    Título</a>
+<a class="sourceLine" id="cb63-4" data-line-number="4"><span class="kw">&lt;/h1&gt;</span></a></code></pre></div>
+</section><section id="criando-texto" class="slide level2">
+<h2>Criando Texto</h2>
+<ul>
+<li><p>Usando elemento <code>xsl:text</code></p></li>
+<li><p>Usado para colocar texto na saída</p></li>
+<li><p>Atributo <code>disable-output-escaping</code> especifica se o tratamento de saída deve ser desabilitado</p>
+<div class="sourceCode" id="cb64"><pre class="sourceCode xsl"><code class="sourceCode xslt"><a class="sourceLine" id="cb64-1" data-line-number="1"><span class="kw">&lt;xsl:text</span><span class="ot"> disable-output-escaping=</span><span class="st">&quot;no&quot;</span><span class="kw">&gt;</span>A <span class="dv">&amp;amp;</span> B<span class="kw">&lt;/xsl:text&gt;</span></a></code></pre></div>
+<p>Saida - <code>A &amp;amp; B</code></p>
+<div class="sourceCode" id="cb65"><pre class="sourceCode xsl"><code class="sourceCode xslt"><a class="sourceLine" id="cb65-1" data-line-number="1"><span class="kw">&lt;xsl:text</span><span class="ot"> disable-output-escaping=</span><span class="st">&quot;yes&quot;</span><span class="kw">&gt;</span>A <span class="dv">&amp;amp;</span> B<span class="kw">&lt;/xsl:text&gt;</span></a></code></pre></div>
+<p>Saida - <code>A &amp; B</code></p></li>
+</ul>
+</section><section id="criando-comentários-e-instruções-de-processamento" class="slide level2">
+<h2>Criando Comentários e Instruções de Processamento</h2>
+<ul>
+<li><p>Elemento <code>xsl:comment</code></p>
+<ul>
+<li>Para criar comentário</li>
+</ul></li>
+<li><p>Elemento <code>xsl:processing-instruction</code></p>
+<ul>
+<li><p>Para criar instrução de processamento</p></li>
+<li><p>Pode ser usado para atribuir uma CSS ao documento de saída</p></li>
+</ul>
+<div class="sourceCode" id="cb66"><pre class="sourceCode xsl"><code class="sourceCode xslt"><a class="sourceLine" id="cb66-1" data-line-number="1"><span class="kw">&lt;xsl:template</span><span class="ot"> match=&quot;/&quot;</span><span class="kw">&gt;</span></a>
+<a class="sourceLine" id="cb66-2" data-line-number="2">  <span class="kw">&lt;xsl:processing-instruction</span><span class="ot"> name=</span><span class="st">&quot;xml-stylesheet&quot;</span><span class="kw">&gt;</span></a>
+<a class="sourceLine" id="cb66-3" data-line-number="3">    href=&quot;article.css&quot; type=&quot;text/css&quot;</a>
+<a class="sourceLine" id="cb66-4" data-line-number="4">  <span class="kw">&lt;/xsl:processing-instruction&gt;</span></a>
+<a class="sourceLine" id="cb66-5" data-line-number="5">  <span class="kw">&lt;xsl:apply-templates/&gt;</span></a>
+<a class="sourceLine" id="cb66-6" data-line-number="6"><span class="kw">&lt;/xsl:template&gt;</span></a></code></pre></div></li>
+</ul>
+</section><section id="exemplo-de-criação-de-menu---xml" class="slide level2">
+<h2>Exemplo de Criação de Menu - XML</h2>
+<ul>
+<li>Vamos colocar os dados representando o menu num arquivo XML como mostrado a seguir</li>
+</ul>
+<div class="sourceCode" id="cb67"><pre class="sourceCode xml"><code class="sourceCode xml"><a class="sourceLine" id="cb67-1" data-line-number="1"><span class="kw">&lt;?xml</span> version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;<span class="kw">?&gt;</span></a>
+<a class="sourceLine" id="cb67-2" data-line-number="2"><span class="kw">&lt;?xml-stylesheet</span> href=&quot;menu.xsl&quot; type=&quot;text/xsl&quot;<span class="kw">?&gt;</span></a>
+<a class="sourceLine" id="cb67-3" data-line-number="3"><span class="kw">&lt;menu&gt;</span></a>
+<a class="sourceLine" id="cb67-4" data-line-number="4">  <span class="kw">&lt;link</span><span class="ot"> url=</span><span class="st">&quot;1.asp&quot;</span><span class="ot"> nome=</span><span class="st">&quot;1&quot;</span><span class="kw">/&gt;</span></a>
+<a class="sourceLine" id="cb67-5" data-line-number="5">  <span class="kw">&lt;link</span><span class="ot"> url=</span><span class="st">&quot;2.asp&quot;</span><span class="ot"> nome=</span><span class="st">&quot;2&quot;</span><span class="kw">/&gt;</span></a>
+<a class="sourceLine" id="cb67-6" data-line-number="6">  <span class="kw">&lt;titulo</span><span class="ot"> nome=</span><span class="st">&quot;t1&quot;</span><span class="kw">&gt;</span></a>
+<a class="sourceLine" id="cb67-7" data-line-number="7">    <span class="kw">&lt;link</span><span class="ot"> url=</span><span class="st">&quot;3.asp&quot;</span><span class="ot"> nome=</span><span class="st">&quot;3&quot;</span><span class="kw">/&gt;</span></a>
+<a class="sourceLine" id="cb67-8" data-line-number="8">  <span class="kw">&lt;/titulo&gt;</span></a>
+<a class="sourceLine" id="cb67-9" data-line-number="9">  <span class="kw">&lt;titulo</span><span class="ot"> nome=</span><span class="st">&quot;t2&quot;</span><span class="kw">&gt;</span></a>
+<a class="sourceLine" id="cb67-10" data-line-number="10">    <span class="kw">&lt;link</span><span class="ot"> url=</span><span class="st">&quot;4.asp&quot;</span><span class="ot"> nome=</span><span class="st">&quot;4&quot;</span><span class="kw">/&gt;</span></a>
+<a class="sourceLine" id="cb67-11" data-line-number="11">  <span class="kw">&lt;/titulo&gt;</span></a>
+<a class="sourceLine" id="cb67-12" data-line-number="12"><span class="kw">&lt;/menu&gt;</span></a></code></pre></div>
+</section><section id="exemplo-de-criação-de-menu---xsl" class="slide level2">
+<h2>Exemplo de Criação de Menu - XSL</h2>
+<div class="sourceCode" id="cb68"><pre class="sourceCode xsl"><code class="sourceCode xslt"><a class="sourceLine" id="cb68-1" data-line-number="1"><span class="kw">&lt;?xml</span> version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;<span class="kw">?&gt;</span></a>
+<a class="sourceLine" id="cb68-2" data-line-number="2"><span class="kw">&lt;xsl:stylesheet</span><span class="ot"> version=</span><span class="st">&quot;1.0&quot;</span><span class="ot"> xmlns:xsl=</span><span class="st">&quot;http://www.w3.org/1999/XSL/Transform&quot;</span><span class="kw">&gt;</span></a>
+<a class="sourceLine" id="cb68-3" data-line-number="3">  <span class="kw">&lt;xsl:output</span><span class="ot"> encoding=</span><span class="st">&quot;UTF-8&quot;</span><span class="ot"> method=</span><span class="st">&quot;html&quot;</span><span class="kw">/&gt;</span></a>
+<a class="sourceLine" id="cb68-4" data-line-number="4">  <span class="kw">&lt;xsl:template</span><span class="ot"> match=&quot;menu&quot;</span><span class="kw">&gt;</span></a>
+<a class="sourceLine" id="cb68-5" data-line-number="5">    <span class="kw">&lt;xsl:for-each</span><span class="ot"> select=&quot;link | titulo&quot;</span><span class="kw">&gt;</span></a>
+<a class="sourceLine" id="cb68-6" data-line-number="6">      <span class="kw">&lt;xsl:choose&gt;</span></a>
+<a class="sourceLine" id="cb68-7" data-line-number="7">        <span class="kw">&lt;xsl:when</span><span class="ot"> test=&quot;</span><span class="kw">name</span><span class="ot">()=</span><span class="st">&#39;link&#39;</span><span class="ot">&quot;</span><span class="kw">&gt;</span></a>
+<a class="sourceLine" id="cb68-8" data-line-number="8">          <span class="kw">&lt;xsl:call-template</span><span class="ot"> name=</span><span class="st">&quot;link&quot;</span><span class="kw">/&gt;</span></a>
+<a class="sourceLine" id="cb68-9" data-line-number="9">        <span class="kw">&lt;/xsl:when&gt;</span></a>
+<a class="sourceLine" id="cb68-10" data-line-number="10">        <span class="kw">&lt;xsl:when</span><span class="ot"> test=&quot;</span><span class="kw">name</span><span class="ot">()=</span><span class="st">&#39;titulo&#39;</span><span class="ot">&quot;</span><span class="kw">&gt;</span></a>
+<a class="sourceLine" id="cb68-11" data-line-number="11">          <span class="kw">&lt;xsl:call-template</span><span class="ot"> name=</span><span class="st">&quot;titulo&quot;</span><span class="kw">/&gt;</span></a>
+<a class="sourceLine" id="cb68-12" data-line-number="12">        <span class="kw">&lt;/xsl:when&gt;</span></a>
+<a class="sourceLine" id="cb68-13" data-line-number="13">      <span class="kw">&lt;/xsl:choose&gt;</span></a>
+<a class="sourceLine" id="cb68-14" data-line-number="14">    <span class="kw">&lt;/xsl:for-each&gt;</span></a>
+<a class="sourceLine" id="cb68-15" data-line-number="15">  <span class="kw">&lt;/xsl:template&gt;</span></a>
+<a class="sourceLine" id="cb68-16" data-line-number="16">  <span class="kw">&lt;xsl:template</span><span class="ot"> name=</span><span class="st">&quot;link&quot;</span><span class="kw">&gt;</span></a>
+<a class="sourceLine" id="cb68-17" data-line-number="17">    <span class="kw">&lt;xsl:element</span><span class="ot"> name=</span><span class="st">&quot;a&quot;</span><span class="kw">&gt;</span></a>
+<a class="sourceLine" id="cb68-18" data-line-number="18">      <span class="kw">&lt;xsl:attribute</span><span class="ot"> name=</span><span class="st">&quot;href&quot;</span><span class="kw">&gt;</span></a>
+<a class="sourceLine" id="cb68-19" data-line-number="19">        <span class="kw">&lt;xsl:value-of</span><span class="ot"> select=&quot;</span>@url<span class="ot">&quot;</span><span class="kw">/&gt;</span></a>
+<a class="sourceLine" id="cb68-20" data-line-number="20">      <span class="kw">&lt;/xsl:attribute&gt;&lt;xsl:value-of</span><span class="ot"> select=&quot;</span>@nome<span class="ot">&quot;</span><span class="kw">/&gt;</span></a>
+<a class="sourceLine" id="cb68-21" data-line-number="21">    <span class="kw">&lt;/xsl:element&gt;&lt;br/&gt;</span></a>
+<a class="sourceLine" id="cb68-22" data-line-number="22">  <span class="kw">&lt;/xsl:template&gt;</span></a>
+<a class="sourceLine" id="cb68-23" data-line-number="23">  <span class="kw">&lt;xsl:template</span><span class="ot"> name=</span><span class="st">&quot;titulo&quot;</span><span class="kw">&gt;</span></a>
+<a class="sourceLine" id="cb68-24" data-line-number="24">    <span class="kw">&lt;xsl:value-of</span><span class="ot"> select=&quot;</span>@nome<span class="ot">&quot;</span><span class="kw">/&gt;&lt;br/&gt;</span></a>
+<a class="sourceLine" id="cb68-25" data-line-number="25">    <span class="kw">&lt;xsl:for-each</span><span class="ot"> select=&quot;link&quot;</span><span class="kw">&gt;</span></a>
+<a class="sourceLine" id="cb68-26" data-line-number="26">      <span class="kw">&lt;xsl:call-template</span><span class="ot"> name=</span><span class="st">&quot;link&quot;</span><span class="kw">/&gt;</span></a>
+<a class="sourceLine" id="cb68-27" data-line-number="27">    <span class="kw">&lt;/xsl:for-each&gt;</span></a>
+<a class="sourceLine" id="cb68-28" data-line-number="28">  <span class="kw">&lt;/xsl:template&gt;</span></a>
+<a class="sourceLine" id="cb68-29" data-line-number="29"><span class="kw">&lt;/xsl:stylesheet&gt;</span></a></code></pre></div>
+</section><section id="exemplo-de-criação-de-menu---resultado" class="slide level2">
+<h2>Exemplo de Criação de Menu - Resultado</h2>
+<p><a href="#/">1</a><br />
+<a href="#/">2</a><br />
+t1<br />
+<a href="#/">3</a><br />
+t2<br />
+<a href="#/">4</a></p>
+<h3 id="melhorias">Melhorias</h3>
+<ul>
+<li><p>Aninhar os itens do menu com títulos</p></li>
+<li><p>Permitir criar títulos dentro de títulos</p></li>
+<li><p>Gerar DHTML para fechar e abrir títulos</p></li>
+</ul>
+</section><section id="transformação-usando-jaxp" class="slide level2">
+<h2>Transformação usando JAXP</h2>
+<ul>
+<li><p>Utilizando JAXP para transformar XML via programa</p></li>
+<li><p>Pacotes utilizados</p>
+<ul>
+<li><p>javax.xml.parsers</p></li>
+<li><p>org.xml.sax</p></li>
+<li><p>org.w3c.dom</p></li>
+<li><p>javax.xml.transform</p></li>
+<li><p>javax.xml.transform.dom</p></li>
+<li><p>javax.xml.transform.stream</p></li>
+<li><p>java.io</p></li>
+</ul></li>
+</ul>
+</section><section id="transformação-usando-jaxp---código" class="slide level2">
+<h2>Transformação usando JAXP - Código</h2>
+<div class="sourceCode" id="cb69"><pre class="sourceCode java"><code class="sourceCode java"><a class="sourceLine" id="cb69-1" data-line-number="1"><span class="kw">import</span><span class="im"> java.io.*;</span></a>
+<a class="sourceLine" id="cb69-2" data-line-number="2"><span class="kw">import</span><span class="im"> org.xml.sax.*;</span>             <span class="co">// SAXException, SAXParseException</span></a>
+<a class="sourceLine" id="cb69-3" data-line-number="3"><span class="kw">import</span><span class="im"> org.w3c.dom.*;</span>             <span class="co">// Document, DOMException</span></a>
+<a class="sourceLine" id="cb69-4" data-line-number="4"><span class="kw">import</span><span class="im"> javax.xml.parsers.*;</span>       <span class="co">// DocumentBuilder, DocumentBuilderFactory</span></a>
+<a class="sourceLine" id="cb69-5" data-line-number="5"><span class="kw">import</span><span class="im"> javax.xml.transform.*;</span>     <span class="co">// Transformer, TransformerFactory</span></a>
+<a class="sourceLine" id="cb69-6" data-line-number="6"><span class="kw">import</span><span class="im"> javax.xml.transform.dom.*; // DOMSource;</span></a>
+<a class="sourceLine" id="cb69-7" data-line-number="7"><span class="kw">import</span><span class="im"> javax.xml.transform.stream.*;</span> <span class="co">// StreamResult, StreamSource</span></a>
+<a class="sourceLine" id="cb69-8" data-line-number="8"><span class="kw">public</span> <span class="kw">class</span> XSLTransform {</a>
+<a class="sourceLine" id="cb69-9" data-line-number="9">    <span class="dt">static</span> <span class="bu">Document</span> document; <span class="co">// Valor global referenciado pelo tree-adapter</span></a>
+<a class="sourceLine" id="cb69-10" data-line-number="10">    <span class="kw">public</span> <span class="dt">static</span> <span class="dt">void</span> <span class="fu">main</span> (<span class="bu">String</span> argv []) {</a>
+<a class="sourceLine" id="cb69-11" data-line-number="11">        <span class="bu">DocumentBuilderFactory</span> factory = <span class="bu">DocumentBuilderFactory</span>.<span class="fu">newInstance</span>();</a>
+<a class="sourceLine" id="cb69-12" data-line-number="12">        <span class="kw">try</span> {</a>
+<a class="sourceLine" id="cb69-13" data-line-number="13">            <span class="bu">DocumentBuilder</span> builder = factory.<span class="fu">newDocumentBuilder</span>();</a>
+<a class="sourceLine" id="cb69-14" data-line-number="14">            document = builder.<span class="fu">parse</span>(<span class="st">&quot;catalogo.xml&quot;</span>);</a>
+<a class="sourceLine" id="cb69-15" data-line-number="15">            <span class="bu">TransformerFactory</span> tFactory = <span class="bu">TransformerFactory</span>.<span class="fu">newInstance</span>();</a>
+<a class="sourceLine" id="cb69-16" data-line-number="16">            <span class="bu">StreamSource</span> stylesheet = <span class="kw">new</span> <span class="bu">StreamSource</span>(<span class="st">&quot;catalogo.xsl&quot;</span>);</a>
+<a class="sourceLine" id="cb69-17" data-line-number="17">            <span class="bu">Transformer</span> transformer = tFactory.<span class="fu">newTransformer</span>(stylesheet);</a>
+<a class="sourceLine" id="cb69-18" data-line-number="18">            <span class="bu">DOMSource</span> source = <span class="kw">new</span> <span class="bu">DOMSource</span>(document);</a>
+<a class="sourceLine" id="cb69-19" data-line-number="19">            <span class="bu">StreamResult</span> result = <span class="kw">new</span> <span class="bu">StreamResult</span>(<span class="bu">System</span>.<span class="fu">out</span>);</a>
+<a class="sourceLine" id="cb69-20" data-line-number="20">            transformer.<span class="fu">transform</span>(source, result);</a>
+<a class="sourceLine" id="cb69-21" data-line-number="21">        } <span class="kw">catch</span> (<span class="bu">TransformerConfigurationException</span> tce) {</a>
+<a class="sourceLine" id="cb69-22" data-line-number="22">            <span class="co">// Erro gerado pelo parser</span></a>
+<a class="sourceLine" id="cb69-23" data-line-number="23">            <span class="bu">System</span>.<span class="fu">out</span>.<span class="fu">println</span> (<span class="st">&quot;</span><span class="sc">\n</span><span class="st">** Erro de Transformer Factory&quot;</span>);</a>
+<a class="sourceLine" id="cb69-24" data-line-number="24">            <span class="bu">System</span>.<span class="fu">out</span>.<span class="fu">println</span>(<span class="st">&quot; &quot;</span> + tce.<span class="fu">getMessage</span>() );</a>
+<a class="sourceLine" id="cb69-25" data-line-number="25">        } <span class="kw">catch</span> (<span class="bu">TransformerException</span> te) { </a>
+<a class="sourceLine" id="cb69-26" data-line-number="26">            <span class="co">// Erro gerado pelo transformador</span></a>
+<a class="sourceLine" id="cb69-27" data-line-number="27">            <span class="bu">System</span>.<span class="fu">out</span>.<span class="fu">println</span> (<span class="st">&quot;</span><span class="sc">\n</span><span class="st">** Erro de Transformação&quot;</span>);</a>
+<a class="sourceLine" id="cb69-28" data-line-number="28">            <span class="bu">System</span>.<span class="fu">out</span>.<span class="fu">println</span>(<span class="st">&quot; &quot;</span> + te.<span class="fu">getMessage</span>() );</a>
+<a class="sourceLine" id="cb69-29" data-line-number="29">        } <span class="kw">catch</span> (<span class="bu">SAXParseException</span> spe) { <span class="co">// Erro gerado pelo parser</span></a>
+<a class="sourceLine" id="cb69-30" data-line-number="30">            <span class="bu">System</span>.<span class="fu">out</span>.<span class="fu">println</span> (<span class="st">&quot;</span><span class="sc">\n</span><span class="st">** Erro de Parser&quot;</span>);</a>
+<a class="sourceLine" id="cb69-31" data-line-number="31">            <span class="bu">System</span>.<span class="fu">out</span>.<span class="fu">println</span>(<span class="st">&quot; &quot;</span> + spe.<span class="fu">getMessage</span>() );</a>
+<a class="sourceLine" id="cb69-32" data-line-number="32">        } <span class="kw">catch</span> (<span class="bu">SAXException</span> sxe) {</a>
+<a class="sourceLine" id="cb69-33" data-line-number="33">            <span class="co">// Erro gerado pelo aplicativo</span></a>
+<a class="sourceLine" id="cb69-34" data-line-number="34">            <span class="co">// (ou erro de inicialização do parser)</span></a>
+<a class="sourceLine" id="cb69-35" data-line-number="35">            <span class="bu">Exception</span> x = sxe;</a>
+<a class="sourceLine" id="cb69-36" data-line-number="36">            <span class="kw">if</span> (sxe.<span class="fu">getException</span>() != <span class="kw">null</span>) x = sxe.<span class="fu">getException</span>();</a>
+<a class="sourceLine" id="cb69-37" data-line-number="37">            x.<span class="fu">printStackTrace</span>();</a>
+<a class="sourceLine" id="cb69-38" data-line-number="38">        } <span class="kw">catch</span> (<span class="bu">ParserConfigurationException</span> pce) {</a>
+<a class="sourceLine" id="cb69-39" data-line-number="39">            <span class="co">// Opções especificadas não podem criar o Parser</span></a>
+<a class="sourceLine" id="cb69-40" data-line-number="40">            pce.<span class="fu">printStackTrace</span>();</a>
+<a class="sourceLine" id="cb69-41" data-line-number="41">        } <span class="kw">catch</span> (<span class="bu">IOException</span> ioe) { <span class="co">// Erro de E/S</span></a>
+<a class="sourceLine" id="cb69-42" data-line-number="42">            ioe.<span class="fu">printStackTrace</span>();</a>
+<a class="sourceLine" id="cb69-43" data-line-number="43">        }</a>
+<a class="sourceLine" id="cb69-44" data-line-number="44">    }</a>
+<a class="sourceLine" id="cb69-45" data-line-number="45">}</a></code></pre></div>
+</section><section id="transformação-usando-jaxp---classes-utilizadas" class="slide level2">
+<h2>Transformação usando JAXP - Classes Utilizadas</h2>
+<ul>
+<li><p>DocumentBuilderFactory e DocumentBuilder</p>
+<ul>
+<li>Para ler o documento XML</li>
+</ul></li>
+<li><p>TransformerFactory, Transformer</p>
+<ul>
+<li>Para transformar documento XML</li>
+</ul></li>
+<li><p>DOMSource, StreamSource, StreamResult</p>
+<ul>
+<li>Entrada e saída do transformador</li>
+</ul></li>
+</ul>
+</section><section id="exercício-7" class="slide level2">
+<h2>Exercício 7</h2>
+<ul>
+<li>Crie um documento XSL para gerar uma página HTML contendo uma tabela listando informações sobre os livros dentro do catálogo</li>
+</ul>
+</section></section>
+    </div>
+  </div>
+
+  <script src="reveal.js/lib/js/head.min.js"></script>
+  <script src="reveal.js/js/reveal.js"></script>
+
+  <script>
+
+      // Full list of configuration options available at:
+      // https://github.com/hakimel/reveal.js#configuration
+      Reveal.initialize({
+        // Push each slide change to the browser history
+        history: true,
+        // The "normal" size of the presentation, aspect ratio will be preserved
+        // when the presentation is scaled to fit different resolutions. Can be
+        // specified using percentage units.
+        width: "100%",
+        height: "150%",
+        // Factor of the display size that should remain empty around the content
+        margin: 0.05,
+        // Bounds for smallest/largest possible scale to apply to content
+        minScale: 0.2,
+        maxScale: 1.5,
+
+        // Optional reveal.js plugins
+        dependencies: [
+          { src: 'reveal.js/lib/js/classList.js', condition: function() { return !document.body.classList; } },
+          { src: 'reveal.js/plugin/zoom-js/zoom.js', async: true },
+          { src: 'reveal.js/plugin/notes/notes.js', async: true }
+        ]
+      });
+    </script>
+    </body>
+</html>
