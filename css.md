@@ -178,19 +178,21 @@ instrumento { font-style: italic }
 
   - `display: none` suprime o elemento
 
-- Margem
+- Margem (externo à borda)
 
   - `margin-top`, `margin-right`, `margin-bottom` e `margin-left`, ou apenas `margin`
 
-- Padding
-
-  - `padding-top`, `padding-right`, `padding-bottom` e `padding-left`, ou apenas `padding`
+## Mais Propriedades da Caixa
 
 - Borda
 
   - Tipo `none`, `dotted`, `dashed`, `solid`, `double`, `groove`, `ridge`, `inset`, ou `outset`, por exemplo, `border: solid, dotted, double, inset;`
 
   - Largura `border-top-width`, `border-right-width`, `border-bottom-width` e `border-left-width`, ou apenas `border-width`
+
+- Padding (enchimento interno à borda)
+
+  - `padding-top`, `padding-right`, `padding-bottom` e `padding-left`, ou apenas `padding`
 
 ## Propriedades de Texto e Fonte
 
