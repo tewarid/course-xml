@@ -171,19 +171,19 @@
 
 - Vantagens
 
-  - Possível restringir valor usando DTD
+  - Possível restringir valor usando DTD
 
-  - Validação de ID e IDREF
+  - Validação de ID e IDREF
 
-  - Requer menos espaço
+  - Requer menos espaço
 
-  - Fácil processar usando DOM e SAX
+  - Fácil processar usando DOM e SAX
 
 - Desvantagens
 
   - Valores simples
 
-  - Não suporta atributos sobre atributos
+  - Não suporta atributos sobre atributos
 
 ## Quando usar Elementos Filhos para Propriedades
 
@@ -193,13 +193,13 @@
 
   - Suporta atributos sobre atributos
 
-  - Extensível quando modelo de dados muda (um livro vários autores)
+  - Extensível quando modelo de dados muda (um livro vários autores)
 
 - Desvantagens
 
-  - Requer mais espaço
+  - Requer mais espaço
 
-  - Mais difícil processar
+  - Mais difícil processar
 
 ## Exercício 1
 

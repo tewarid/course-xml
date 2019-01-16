@@ -78,7 +78,7 @@
 
 ## Espaço Identificadores (namespaces)
 
-- Evitam ambigüidade e colisão de nomes quando um elemento XML utilizar  esquemas diferentes
+- Evitam ambiguidade e colisão de nomes quando um elemento XML utilizar  esquemas diferentes
 
 - O elemento declara a utilização de um esquema usando o atributo `xmlns` ou a forma `xmlns:`_`prefixo`_
 
@@ -120,29 +120,27 @@
     xsi:noNamespaceSchemaLocation="cpf.xsd">011.077.604-61</cpf>
   ```
 
-## Esquema para validar CPF
+## Esquema para validar CPF - cpf.xsd
 
-- Exemplo - `cpf.xsd`
-
-  ```xsd
-  <xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema">
-      <xs:element name="cpf">
-          <xs:simpleType>
-              <xs:union memberTypes="tipoCPF tipoCPFFormatado"/>
-          </xs:simpleType>
-      </xs:element>
-      <xs:simpleType name="tipoCPF">
-          <xs:restriction base="xs:string">
-              <xs:pattern value="[0-9]{11}"/>
-          </xs:restriction>
-      </xs:simpleType>
-      <xs:simpleType name="tipoCPFFormatado">
-          <xs:restriction base="xs:string">
-              <xs:pattern value="[0-9]{3}\.[0-9]{3}\.[0-9]{3}-[0-9]{2}"/>
-          </xs:restriction>
-      </xs:simpleType>
-  </xs:schema>
-  ```
+```xsd
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema">
+    <xs:element name="cpf">
+        <xs:simpleType>
+            <xs:union memberTypes="tipoCPF tipoCPFFormatado"/>
+        </xs:simpleType>
+    </xs:element>
+    <xs:simpleType name="tipoCPF">
+        <xs:restriction base="xs:string">
+            <xs:pattern value="[0-9]{11}"/>
+        </xs:restriction>
+    </xs:simpleType>
+    <xs:simpleType name="tipoCPFFormatado">
+        <xs:restriction base="xs:string">
+            <xs:pattern value="[0-9]{3}\.[0-9]{3}\.[0-9]{3}-[0-9]{2}"/>
+        </xs:restriction>
+    </xs:simpleType>
+</xs:schema>
+```
 
 ## Definição de Tipos Complexos
 
@@ -269,15 +267,15 @@
 
 - Temos três tipos de grupos de modelos
 
-  - Seqüência
+  - Sequência
 
   - Conjunção
 
   - Disjunção
 
-## Seqüência
+## Sequência
 
-- Todos os elementos deveriam ser especificados e seguem uma seqüência rígida
+- Todos os elementos deveriam ser especificados e seguem uma sequência rígida
 
 - Exemplo
 
@@ -293,17 +291,17 @@
 
 ## Conjunção e Disjunção
 
-- Conjunção
+- Conjunção
 
-  - Todos os elementos deveriam ser especificados mas não seguem uma seqüência rígida
+  - Todos os elementos deveriam ser especificados mas não seguem uma sequência rígida
 
-  - Uma conjunção é criada usando elemento `xs:all`
+  - Uma conjunção é criada usando elemento `xs:all`
 
-- Disjunção
+- Disjunção
 
   - Qualquer um dos elementos precisa ser especificado
   
-  - Uma disjunção é criada usando o elemento `xs:choice`
+  - Uma disjunção é criada usando o elemento `xs:choice`
 
 ## Definição de Grupos de Modelos
 
@@ -370,7 +368,7 @@
 
 ## Tipos de Dados Internos
 
-- Tipos primitivos internos fazem parte da especificação de Esquemas XML
+- Tipos primitivos internos fazem parte da especificação de Esquemas XML
 
 |              |         |           |
 | ------------ | ------- | --------- |

@@ -24,4 +24,4 @@ I suggest reading the contents in the following order
 
 ## Presentation Slides
 
-Presentation slides are available in [reveal.js](slides.html) and [PowerPoint](slides.pptx) formats.
+Presentation slides are available in [reveal.js](slides.html) and [PDF](slides.pdf) formats.

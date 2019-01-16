@@ -105,9 +105,9 @@ graph LR;
 | Caminho |  Descrição                           |
 | ------- | ------------------------------------ |
 | `/`     | Elemento raiz                        |
-| `//`    | Seleciona todos os nós descendentes  |
+| `//`    | Seleciona todos os nós descendentes  |
 | `*`     | Qualquer elemento                    |
-| `.`     | Nó atual                             |
+| `.`     | Nó atual                             |
 | `|`     | Seleciona entre várias caminhos (OU) |
 
 ## Controlando a Saída

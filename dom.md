@@ -27,47 +27,47 @@
 
 - O objeto Node disponibiliza várias propriedades para navegar a árvore do DOM
 
-  - nodeType: Tipo do objeto representado pelo nó
+  - nodeType: Tipo do objeto representado pelo nó
 
-  - parentNode: Objeto pai do nó atual
+  - parentNode: Objeto pai do nó atual
 
-  - childNodes: Lista de nós filhos do nó atual
+  - childNodes: Lista de nós filhos do nó atual
 
-  - firstChild: Primeiro nó filho
+  - firstChild: Primeiro nó filho
 
-  - lastChild: Último nó filho
+  - lastChild: Último nó filho
 
-  - previousSibling: Nó anterior no mesmo nível que o atual (último irmão)
+  - previousSibling: Nó anterior no mesmo nível que o atual (último irmão)
 
-  - nextSibling: Nó posterior no mesmo nível que o atual (próximo irmão)
+  - nextSibling: Nó posterior no mesmo nível que o atual (próximo irmão)
 
-  - attributes: Lista de atributos caso o nó atual tiver atributos
+  - attributes: Lista de atributos caso o nó atual tiver atributos
 
-  - nodeName: Nome do nó
+  - nodeName: Nome do nó
 
-  - nodeValue: Valor texto do nó
+  - nodeValue: Valor texto do nó
 
 ## Métodos do Objeto Node
 
 - Disponibilizados pelo objeto Node para inserir, duplicar, remover e substituir outros objeto Node
 
-  - appendChild: Adiciona um novo nó filho.
+  - appendChild: Adiciona um novo nó filho.
 
-  - cloneNode: Cria cópia de um nó.
+  - cloneNode: Cria cópia de um nó.
 
-  - hasAttributes: Retorna verdadeiro se o nó tiver atributos.
+  - hasAttributes: Retorna verdadeiro se o nó tiver atributos.
 
-  - hasChildNodes: Retorna verdadeiro se o nó tiver filhos
+  - hasChildNodes: Retorna verdadeiro se o nó tiver filhos
 
-  - insertBefore: Insere um nó filho antes do nó filho especificado
+  - insertBefore: Insere um nó filho antes do nó filho especificado
 
   - isSupported: Retorna verdadeiro se tiver suporte para um recurso do DOM
 
-  - normalize: Normaliza a estrutura do nó
+  - normalize: Normaliza a estrutura do nó
 
-  - removeChild: Remove um nó filho
+  - removeChild: Remove um nó filho
   
-  - replaceChild: Substitui um nó filho
+  - replaceChild: Substitui um nó filho
 
 ## Objetos NodeList e NamedNodeMap
 
@@ -162,7 +162,7 @@
     <catalogo data="12/01/2001"><livro nome="Programando em Java"/></catalogo>
     ```
 
-## Exemplo usando MSXML Parser versão 3.0
+## Exemplo usando MSXML Parser versão 3.0
 
 ```vb
 Dim oDom As New MSXML2.DOMDocument
@@ -196,7 +196,7 @@ oAtributo.Text = "Programando em Java"
 
   - Como ler todos os nós de um documento XML usando um método recursivo
 
-## Ler documento DOM usando método recursivo
+## Ler documento DOM usando método recursivo
 
 ```vb
 oDom.Load "nome do arquivo XML"

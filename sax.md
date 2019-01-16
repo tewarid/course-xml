@@ -222,7 +222,7 @@ class LeitorSAX extends DefaultHandler {
 
 - O exemplo utiliza a linguagem C## da plataforma .NET
 
-## Método Pull para ler documento XML em C\#
+## Método Pull para ler documento XML em C\#
 
 ```c#
 using System;
