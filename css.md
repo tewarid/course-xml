@@ -47,6 +47,8 @@ artigo, titulo, autor, paragrafo { margin: 0.5em }
 instrumento { font-style: italic }
 ```
 
+![](media/css-article.png)
+
 ## Seletores
 
 - Uma folha de estilo contém um conjunto de regras compostas de
